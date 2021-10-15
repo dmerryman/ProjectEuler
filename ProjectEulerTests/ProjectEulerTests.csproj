@@ -49,8 +49,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="10001stPrimeTests.cs" />
+    <Compile Include="EvenFibonacciNumbersTests.cs" />
+    <Compile Include="LargestPalindromeProductTests.cs" />
+    <Compile Include="LargestPrimeFactorTests.cs" />
+    <Compile Include="LargestProductInASeriesTests.cs" />
     <Compile Include="MultiplesOf3And5Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmallestMultipleTests.cs" />
+    <Compile Include="SpecialPythagoreanTripletTests.cs" />
+    <Compile Include="SumSquareDifferenceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
