@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31808.319
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectEuler", "ProjectEuler\ProjectEuler.csproj", "{D4DF83C5-F923-46C6-8957-9AADA9F3FFFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectEulerTests", "ProjectEulerTests\ProjectEulerTests.csproj", "{2A8BDC84-3D3A-491C-93BD-DD654D22631B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4DF83C5-F923-46C6-8957-9AADA9F3FFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DF83C5-F923-46C6-8957-9AADA9F3FFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DF83C5-F923-46C6-8957-9AADA9F3FFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DF83C5-F923-46C6-8957-9AADA9F3FFFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8BDC84-3D3A-491C-93BD-DD654D22631B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8BDC84-3D3A-491C-93BD-DD654D22631B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8BDC84-3D3A-491C-93BD-DD654D22631B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8BDC84-3D3A-491C-93BD-DD654D22631B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EA3F2CF-483F-4AD1-B6E6-C74A33DE6C8D}
+	EndGlobalSection
+EndGlobal
