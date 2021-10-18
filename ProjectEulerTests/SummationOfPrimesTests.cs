@@ -60,15 +60,15 @@ namespace ProjectEulerTests
         #endregion
 
         [TestMethod]
-        public void SmallTest()
+        public void SmallTestSlow()
         {
-            Assert.AreEqual(17, SummationOfPrimes.FindSummationOfPrimes(limit: 10));
+            Assert.AreEqual(17, SummationOfPrimes.FindSummationOfPrimesSlow(limit: 10));
         }
 
         [TestMethod]
-        public void LargeTest()
+        public void LargeTestSlow()
         {
-            Assert.AreEqual(17, SummationOfPrimes.FindSummationOfPrimes(limit: 2000000));
+            Assert.AreEqual(19, SummationOfPrimes.FindSummationOfPrimesSlow(limit: 2000000));
         }
     }
 }

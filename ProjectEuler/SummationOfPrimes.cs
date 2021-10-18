@@ -18,7 +18,6 @@ namespace ProjectEuler
                     sumOfPrimes += i;
                 }
             }
-
             return sumOfPrimes;
         }
     }
