@@ -10,7 +10,8 @@ namespace ProjectEuler
     {
         public static int FindLargestProductInAGrid(int numMultiplier)
         {
-            int possibleProduct = 1;
+            int largestProduct = Int32.MinValue;
+            ;
             int[,] grid = GetGrid();
             for (int i = 0; i < 20; i++)
             {
@@ -18,17 +19,35 @@ namespace ProjectEuler
                 {
                     if (CanGoRight(gridLength: 20, numMultiplier: numMultiplier, col: j))
                     {
+                        int possibleProduct = 1;
+                        for (int k = 0; k <= numMultiplier; k++)
+                        {
+                            possibleProduct *= grid[i, j + k];
+                        }
 
+                        if (possibleProduct > largestProduct)
+                        {
+                            largestProduct = possibleProduct;
+                        }
                     }
 
                     if (CanGoDown(gridLength: 20, numMultiplier: numMultiplier, row: i))
                     {
+                        int possibleProduct = 1;
+                        for (int k = 0; k <= numMultiplier; k++)
+                        {
+                            possibleProduct *= grid[i + k, j];
+                        }
 
+                        if (possibleProduct > largestProduct)
+                        {
+                            largestProduct = possibleProduct;
+                        }
                     }
 
                     if (CanGoDiagonal(gridLength: 20, numMultiplier: numMultiplier, row: i, col: j))
                     {
-
+                        
                     }
                 }
             }
