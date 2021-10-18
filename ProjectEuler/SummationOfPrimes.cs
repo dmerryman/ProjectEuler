@@ -8,9 +8,18 @@ namespace ProjectEuler
 {
     public static class SummationOfPrimes
     {
-        public static long FindSummationOfPrimes(int limit)
+        public static long FindSummationOfPrimesSlow(int limit)
         {
-            throw new NotFiniteNumberException();
+            long sumOfPrimes = 0;
+            for (int i = 1; i < limit; i++)
+            {
+                if (SharedCode.Math.IsItPrime(number: i))
+                {
+                    sumOfPrimes += i;
+                }
+            }
+
+            return sumOfPrimes;
         }
     }
 }
