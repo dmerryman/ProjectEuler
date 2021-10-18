@@ -20,7 +20,8 @@ namespace ProjectEuler
                     }
                 }
             }
-            throw new NotImplementedException();
+
+            throw new Exception("No triplet exists for this sum.");
         }
 
         public static int FindSpecialPythagoreanTripletBetter(int sum)
@@ -35,7 +36,8 @@ namespace ProjectEuler
                     }
                 }
             }
-            throw new NotImplementedException();
+
+            throw new Exception("No triplet exists for this sum.");
         }
     }
 }

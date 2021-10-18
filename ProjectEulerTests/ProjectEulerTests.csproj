@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmallestMultipleTests.cs" />
     <Compile Include="SpecialPythagoreanTripletTests.cs" />
+    <Compile Include="SummationOfPrimesTests.cs" />
     <Compile Include="SumSquareDifferenceTests.cs" />
   </ItemGroup>
   <ItemGroup>
