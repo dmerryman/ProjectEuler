@@ -53,6 +53,7 @@
     <Compile Include="EvenFibonacciNumbersTests.cs" />
     <Compile Include="LargestPalindromeProductTests.cs" />
     <Compile Include="LargestPrimeFactorTests.cs" />
+    <Compile Include="LargestProductInAGridTests.cs" />
     <Compile Include="LargestProductInASeriesTests.cs" />
     <Compile Include="MultiplesOf3And5Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
