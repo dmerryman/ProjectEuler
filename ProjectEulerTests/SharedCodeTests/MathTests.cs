@@ -2,17 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ProjectEuler;
 
-namespace ProjectEulerTests
+namespace ProjectEulerTests.SharedCodeTests
 {
     /// <summary>
-    /// Summary description for SummationOfPrimesTests
+    /// Summary description for MathTests
     /// </summary>
     [TestClass]
-    public class SummationOfPrimesTests
+    public class MathTests
     {
-        public SummationOfPrimesTests()
+        public MathTests()
         {
             //
             // TODO: Add constructor logic here
@@ -60,15 +59,16 @@ namespace ProjectEulerTests
         #endregion
 
         [TestMethod]
-        public void SmallTestFaster()
+        public void IsItPrime()
         {
-            Assert.AreEqual(17, SummationOfPrimes.FindSummationOfPrimesFaster(limit: 10));
-        }
-
-        [TestMethod]
-        public void LargeTestFaster()
-        {
-            Assert.AreEqual(142913828922, SummationOfPrimes.FindSummationOfPrimesFaster(limit: 2000000));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPrime(number: 5));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPrime(number: 7));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPrime(number: 13));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPrime(number: 29));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPrime(number: 6857));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPrime(number: 9973));
+            Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItPrime(number: 6858));
+            Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItPrime(number: 500));
         }
     }
 }

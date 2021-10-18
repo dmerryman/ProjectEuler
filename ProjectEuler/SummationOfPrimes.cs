@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,13 @@ namespace ProjectEuler
 {
     public static class SummationOfPrimes
     {
-        public static long FindSummationOfPrimesSlow(int limit)
+        public static long FindSummationOfPrimesFaster(int limit)
         {
             long sumOfPrimes = 0;
-            for (int i = 1; i < limit; i++)
+            bool[] sieve = SharedCode.Math.GeneratePrimeSieve(limit: limit);
+            for (int i = 2; i < limit; i++)
             {
-                if (SharedCode.Math.IsItPrime(number: i))
+                if (!sieve[i])
                 {
                     sumOfPrimes += i;
                 }

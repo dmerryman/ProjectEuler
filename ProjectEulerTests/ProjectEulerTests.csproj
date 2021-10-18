@@ -56,6 +56,7 @@
     <Compile Include="LargestProductInASeriesTests.cs" />
     <Compile Include="MultiplesOf3And5Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedCodeTests\MathTests.cs" />
     <Compile Include="SmallestMultipleTests.cs" />
     <Compile Include="SpecialPythagoreanTripletTests.cs" />
     <Compile Include="SummationOfPrimesTests.cs" />
@@ -70,6 +71,7 @@
       <Name>ProjectEuler</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
