@@ -10,11 +10,17 @@ namespace ProjectEuler
     {
         public static int FindHighlyDivisibleTriangularNumber(int numDivisors)
         {
-            List<int> triangleNumbers = new List<int>();
-            throw new NotImplementedException();
+            int currNum = 1;
+            int currNumToAdd = 1;
+            while (FindNumberOfDivisors(number: currNum) <= 500)
+            {
+                currNumToAdd++;
+                currNum += currNumToAdd;
+            
+            return currNum;
         }
 
-        private static int FindNumberOfDivisors(int number);
+        private static int FindNumberOfDivisors(int number)
         {
             throw new NotImplementedException();
         }
