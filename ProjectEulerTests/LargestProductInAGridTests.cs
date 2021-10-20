@@ -61,7 +61,7 @@ namespace ProjectEulerTests
         [TestMethod]
         public void SmallTest()
         {
-            Assert.AreEqual(1788696, ProjectEuler.LargestProductInAGrid.FindLargestProductInAGrid(numMultiplier: 4));
+            Assert.AreEqual(70600674, ProjectEuler.LargestProductInAGrid.FindLargestProductInAGrid(numMultiplier: 4));
         }
     }
 }

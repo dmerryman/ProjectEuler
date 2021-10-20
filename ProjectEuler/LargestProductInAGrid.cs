@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,39 +21,82 @@ namespace ProjectEuler
                     if (CanGoRight(gridLength: 20, numMultiplier: numMultiplier, col: j))
                     {
                         int possibleProduct = 1;
-                        for (int k = 0; k <= numMultiplier; k++)
+                        for (int k = 0; k < numMultiplier; k++)
                         {
                             possibleProduct *= grid[i, j + k];
                         }
-
+                        //Debug.WriteLine("Going right - {0} * {1} * {2} * {3} = {4}", grid[i, j], grid[i, j + 1],
+                        //    grid[i, j + 2], grid[i, j + 3], possibleProduct);
                         if (possibleProduct > largestProduct)
                         {
-                            largestProduct = possibleProduct;
+                            Debug.WriteLine(
+                                "Going right - {0} * {1} * {2} * {3} = {4} > {5}, so {4} is the new largest product.",
+                                grid[i, j], grid[i, j + 1], grid[i, j + 2], grid[i, j + 3], possibleProduct,
+                                largestProduct);
                         }
+                        largestProduct = possibleProduct > largestProduct ? possibleProduct : largestProduct;
                     }
 
                     if (CanGoDown(gridLength: 20, numMultiplier: numMultiplier, row: i))
                     {
                         int possibleProduct = 1;
-                        for (int k = 0; k <= numMultiplier; k++)
+                        for (int k = 0; k < numMultiplier; k++)
                         {
                             possibleProduct *= grid[i + k, j];
+                        }
+                        //Debug.WriteLine("Going down - {0} * {1} * {2} * {3} = {4}", grid[i, j], grid[i + 1, j],
+                        //    grid[i + 2, j], grid[i + 3, j], possibleProduct);
+                        if (possibleProduct > largestProduct)
+                        {
+                            Debug.WriteLine(
+                                "Going down - {0} * {1} * {2} * {3} = {4} > {5}, so {4} is the new largest product.",
+                                grid[i, j], grid[i + 1, j], grid[i + 2, j], grid[i + 3, j], possibleProduct,
+                                largestProduct);
+                        }
+                        largestProduct = possibleProduct > largestProduct ? possibleProduct : largestProduct;
+                    }
+
+                    if (CanGoDiagonalDR(gridLength: 20, numMultiplier: numMultiplier, row: i, col: j))
+                    {
+                        int possibleProduct = 1;
+                        for (int k = 0; k < numMultiplier; k++)
+                        {
+                            possibleProduct *= grid[i + k, j + k];
+                        }
+                        //Debug.WriteLine("Going diagonally - {0} * {1} * {2} * {3} = {4}", grid[i, j],
+                        //    grid[i + 1, j + 1],
+                        //    grid[i + 2, j + 2], grid[i + 3, j + 3], possibleProduct);
+                        if (possibleProduct > largestProduct)
+                        {
+                            Debug.WriteLine(
+                                "Going diagonally DR - {0} * {1} * {2} * {3} = {4} > {5}, so {4} is the new largest product.",
+                                grid[i, j], grid[i + 1, j + 1], grid[i + 2, j + 2], grid[i + 3, j + 3], possibleProduct,
+                                largestProduct);
+                        }
+                        largestProduct = possibleProduct > largestProduct ? possibleProduct : largestProduct;
+                    }
+
+                    if (CanGoDiagonalUR(gridLength: 20, numMultiplier: numMultiplier, row: i, col: j))
+                    {
+                        int possibleProduct = 1;
+                        for (int k = 0; k < numMultiplier; k++)
+                        {
+                            possibleProduct *= grid[i - k, j + k];
                         }
 
                         if (possibleProduct > largestProduct)
                         {
-                            largestProduct = possibleProduct;
+                            Debug.WriteLine(
+                                "Going diagonally UR - {0} * {1} * {2} * {3} = {4} > {5}, so {4} is the new largest product.",
+                                grid[i, j], grid[i - 1, j + 1], grid[i - 2, j + 2], grid[i - 3, j + 3], possibleProduct,
+                                largestProduct);
                         }
-                    }
 
-                    if (CanGoDiagonal(gridLength: 20, numMultiplier: numMultiplier, row: i, col: j))
-                    {
-                        
+                        largestProduct = possibleProduct > largestProduct ? possibleProduct : largestProduct;
                     }
                 }
             }
-
-            throw new NotImplementedException();
+            return largestProduct;
         }
 
         private static bool CanGoRight(int gridLength, int numMultiplier, int col)
@@ -65,9 +109,14 @@ namespace ProjectEuler
             return (row < gridLength - numMultiplier + 1);
         }
 
-        private static bool CanGoDiagonal(int gridLength, int numMultiplier, int row, int col)
+        private static bool CanGoDiagonalDR(int gridLength, int numMultiplier, int row, int col)
         {
             return (col < gridLength - numMultiplier + 1) && (row < gridLength - numMultiplier + 1);
+        }
+
+        private static bool CanGoDiagonalUR(int gridLength, int numMultiplier, int row, int col)
+        {
+            return (col < (gridLength - numMultiplier + 1)) && (row > numMultiplier - 2);
         }
 
         private static int[,] GetGrid()
