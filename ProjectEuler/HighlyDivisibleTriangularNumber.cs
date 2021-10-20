@@ -10,6 +10,12 @@ namespace ProjectEuler
     {
         public static int FindHighlyDivisibleTriangularNumber(int numDivisors)
         {
+            List<int> triangleNumbers = new List<int>();
+            throw new NotImplementedException();
+        }
+
+        private static int FindNumberOfDivisors(int number);
+        {
             throw new NotImplementedException();
         }
     }
