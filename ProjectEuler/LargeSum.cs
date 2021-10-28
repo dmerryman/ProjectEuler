@@ -9,24 +9,25 @@ namespace ProjectEuler
 {
     public static class LargeSum
     {
-        public static String FindLargeSum()
+        public static String FindLargeSumFirstNDigits(int numDigits)
         {
             String[] numbersToAdd = GetInputStrings();
-            return FindSumOfFirstTenDigits(numbersToAdd: numbersToAdd);
+            return FindSumOfFirstTenDigits(numbersToAdd: numbersToAdd, numDigits: numDigits);
         }
 
-        private static string FindSumOfFirstTenDigits(String[] numbersToAdd)
+        private static string FindSumOfFirstTenDigits(String[] numbersToAdd, int numDigits)
         {
-            int[] digits = new int[15];
+            int numDigitsToTrack = numDigits + 5;
+            int[] digits = new int[numDigitsToTrack];
             for (int i = 0; i < numbersToAdd.Length; i++)
             {
-                for (int j = 12; j >= 0; j--)
+                for (int j = numDigits + 1; j >= 0; j--)
                 {
                     digits[j + 2] += (int)char.GetNumericValue(c: numbersToAdd[i].ToCharArray()[j]);
                 }
             }
 
-            for (int i = 14; i >= 2; i--)
+            for (int i = numDigits + 4; i >= 2; i--)
             {
                 int number = digits[i];
                 int digit3 = number % 10;
@@ -38,7 +39,7 @@ namespace ProjectEuler
             }
 
             var sb = new StringBuilder();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < numDigits; i++)
             {
                 sb.Append(digits[i]);
             }
