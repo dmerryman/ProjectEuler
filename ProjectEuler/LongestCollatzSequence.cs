@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace ProjectEuler
 {
     public static class LongestCollatzSequence
     {
-        public static int FindLongestCollatzSequenceSlow(int ceiling)
+        public static int FindLongestCollatzSequenceSlowest(int ceiling)
         {
             // From 1 to ceiling, go through the number of steps in each Collatz sequence, and get the number of steps involved.
             // For each number of steps, check if it exceeds the value of the previous maximum, and if so, set the maximum to be that value.
@@ -33,7 +34,7 @@ namespace ProjectEuler
             return valueWithMaximumNumberOfSteps;
         }
 
-        public static int FindLongestCollatzSequenceFaster(int ceiling)
+        public static int FindLongestCollatzSequenceFast(int ceiling)
         {
             // From 1 to ceiling, go through the number of steps in each Collatz sequence, and get the number of steps involved.
             // For each number of steps, check if it exceeds the value of the previous maximum, and if so, set the maximum to be that value.
@@ -78,6 +79,44 @@ namespace ProjectEuler
                 numberOfSteps++;
             }
             return numberOfSteps;
+        }
+
+        public static int FindNumberOfStepsInCollatzSequenceFaster(int ceiling)
+        {
+            Dictionary<long, int> collatzSequence = new Dictionary<long, int>();
+            collatzSequence.Add(key: 1, value: 1);
+            int largestNumberOfSteps = int.MinValue;
+            int valueWithLargestNumberOfSteps = int.MinValue;
+            for (int i = ceiling / 2; i <= ceiling; i++)
+            {
+                int numberOfSteps = GetNumberOfStepsInCollatzSequenceFasterHelper(collatzDictionary: collatzSequence, value: i);
+                if (numberOfSteps > largestNumberOfSteps)
+                {
+                    largestNumberOfSteps = numberOfSteps;
+                    valueWithLargestNumberOfSteps = i;
+                }
+            }
+
+            return valueWithLargestNumberOfSteps;
+        }
+
+        private static int GetNumberOfStepsInCollatzSequenceFasterHelper(Dictionary<long, int> collatzDictionary, long value)
+        {
+            if (collatzDictionary.ContainsKey(key: value))
+            {
+                return collatzDictionary[value];
+            }
+
+            if (value % 2 == 0)
+            {
+                collatzDictionary.Add(key: value, value: 1 + GetNumberOfStepsInCollatzSequenceFasterHelper(collatzDictionary: collatzDictionary, value: value / 2));
+            }
+            else
+            {
+                collatzDictionary.Add(key: value, value: 2 + GetNumberOfStepsInCollatzSequenceFasterHelper(collatzDictionary: collatzDictionary, value: (((value * 3) + 1) / 2)));
+            }
+
+            return collatzDictionary[value];
         }
     }
 }
