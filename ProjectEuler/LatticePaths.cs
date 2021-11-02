@@ -8,9 +8,18 @@ namespace ProjectEuler
 {
     public static class LatticePaths
     {
-        public static int FindLatticePaths(int squareSize)
+        public static long FindLatticePathsSlowest(int squareSize)
         {
-            throw new NotImplementedException();
+            return FindLatticePathHelper(squareSize, squareSize);
+        }
+
+        private static long FindLatticePathHelper(int i, int j)
+        {
+            if (i == 0 || j == 0)
+            {
+                return 1;
+            }
+            return FindLatticePathHelper(i, j - 1) + FindLatticePathHelper(j - 1, i);
         }
     }
 }

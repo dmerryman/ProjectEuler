@@ -7,15 +7,18 @@ namespace ProjectEulerTests
     public class LatticePathsTests
     {
         [TestMethod]
-        public void TestSmall()
+        public void TestSmallSlowest()
         {
-            Assert.AreEqual(6, ProjectEuler.LatticePaths.FindLatticePaths(squareSize: 2));
+            Assert.AreEqual(6, ProjectEuler.LatticePaths.FindLatticePathsSlowest(squareSize: 2));
         }
 
-        [TestMethod]
-        public void TestLarge()
-        {
-            Assert.AreEqual(137846528820, ProjectEuler.LatticePaths.FindLatticePaths(squareSize: 20));
-        }
+        // 20+ minutes!
+        //[TestMethod]
+        //public void TestLarge()
+        //{
+        //    Assert.AreEqual(137846528820, ProjectEuler.LatticePaths.FindLatticePathsSlowest(squareSize: 20));
+        //}
+
+
     }
 }
