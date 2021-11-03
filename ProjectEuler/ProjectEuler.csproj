@@ -55,6 +55,7 @@
     <Compile Include="LongestCollatzSequence.cs" />
     <Compile Include="MultiplesOf3And5.cs" />
     <Compile Include="Driver.cs" />
+    <Compile Include="PowerDigitSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\Math.cs" />
     <Compile Include="SmallestMultiple.cs" />

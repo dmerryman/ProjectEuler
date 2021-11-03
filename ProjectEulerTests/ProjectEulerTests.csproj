@@ -60,6 +60,7 @@
     <Compile Include="LatticePathsTests.cs" />
     <Compile Include="LongestCollatzSequenceTests.cs" />
     <Compile Include="MultiplesOf3And5Tests.cs" />
+    <Compile Include="PowerDigitSumTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCodeTests\MathTests.cs" />
     <Compile Include="SmallestMultipleTests.cs" />
