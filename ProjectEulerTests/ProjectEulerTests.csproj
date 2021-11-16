@@ -59,6 +59,7 @@
     <Compile Include="LargeSumTests.cs" />
     <Compile Include="LatticePathsTests.cs" />
     <Compile Include="LongestCollatzSequenceTests.cs" />
+    <Compile Include="MaximumPathSumITests.cs" />
     <Compile Include="MultiplesOf3And5Tests.cs" />
     <Compile Include="NumberLetterCountsTest.cs" />
     <Compile Include="PowerDigitSumTests.cs" />

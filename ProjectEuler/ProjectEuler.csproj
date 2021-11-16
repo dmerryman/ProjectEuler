@@ -54,6 +54,7 @@
     <Compile Include="LargeSum.cs" />
     <Compile Include="LatticePaths.cs" />
     <Compile Include="LongestCollatzSequence.cs" />
+    <Compile Include="MaximumPathSumI.cs" />
     <Compile Include="MultiplesOf3And5.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="NumberLetterCounts.cs" />
