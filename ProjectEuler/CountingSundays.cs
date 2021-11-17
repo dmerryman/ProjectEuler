@@ -29,9 +29,25 @@ namespace ProjectEuler
             return numSundaysOnFirst;
         }
 
-        private bool IsItALeapYear(int year)
+        private static bool IsItALeapYear(int year)
         {
-            throw new NotImplementedException();
+            if (year % 4 == 0)
+            {
+
+                if (year % 400 == 0)
+                {
+                    return true;
+                }
+
+                if (year % 100 == 0)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
 }
