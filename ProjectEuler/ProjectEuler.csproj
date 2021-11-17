@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="10001stPrime.cs" />
+    <Compile Include="CountingSundays.cs" />
     <Compile Include="EvenFibonacciNumbers.cs" />
     <Compile Include="HighlyDivisibleTriangularNumber.cs" />
     <Compile Include="LargestPalindromeProduct.cs" />
