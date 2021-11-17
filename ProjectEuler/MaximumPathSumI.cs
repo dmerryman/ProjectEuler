@@ -12,20 +12,17 @@ namespace ProjectEuler
         {
             int[][] pyramid = GetSmallPyramid();
             return maxSum(graph: pyramid, x: 0, y: 0, sum: 0);
-            throw new NotImplementedException();
         }
 
         private static int maxSum(int[][] graph, int x, int y, int sum)
         {
             if (x == graph.Length - 1)
             {
-                return sum + graph[x][y];
+                return graph[x][y];
             }
 
-            int max = Math.Max(maxSum(graph: graph, x: x + 1, y: y, sum: sum),
-                maxSum(graph: graph, x: x + 1, y: y + 1, sum));
-            sum += graph[x][y];
-            return sum + max;
+            return graph[x][y] + Math.Max(maxSum(graph: graph, x: x + 1, y: y, sum: sum),
+                maxSum(graph: graph, x: x + 1, y: y + 1, sum: sum));
         }
 
         public static int FindMaximumPathSumILarge()
