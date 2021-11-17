@@ -52,6 +52,7 @@
     <Compile Include="10001stPrimeTests.cs" />
     <Compile Include="CountingSundaysTests.cs" />
     <Compile Include="EvenFibonacciNumbersTests.cs" />
+    <Compile Include="FactorialDigitSumTests.cs" />
     <Compile Include="HighlyDivisibleTriangularNumberTests.cs" />
     <Compile Include="LargestPalindromeProductTests.cs" />
     <Compile Include="LargestPrimeFactorTests.cs" />
