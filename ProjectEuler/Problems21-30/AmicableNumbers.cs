@@ -14,6 +14,21 @@ namespace ProjectEuler.Problems21_30
             // for each number, find the sum of the divisors as N,
             // then find the sum of the divisors for N. If the sum of the divisors for N
             // is equal to the original number, those 2 numbers are an amicable pair.
+            int sumOfAmicableNumbers = 0;
+            for (int i = 3; i < ceiling; i++)
+            {
+                int amicableNumber = FindSumOfDivisors(number: i);
+                if (FindSumOfDivisors(number: amicableNumber) == i && amicableNumber != i)
+                {
+                    sumOfAmicableNumbers += i;
+                }
+            }
+
+            return sumOfAmicableNumbers;
+        }
+
+        public static int FindAmicableNumbersUsingHashset(int ceiling)
+        {
             throw new NotImplementedException();
         }
 
