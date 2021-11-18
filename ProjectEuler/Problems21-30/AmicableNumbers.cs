@@ -20,7 +20,14 @@ namespace ProjectEuler.Problems21_30
         private static int FindSumOfDivisors(int number)
         {
             // Get the list of divisors and then add them up.
-            throw new NotImplementedException();
+            int sumOfDivisors = 0;
+            List<int> divisors = SharedCode.Math.FindProperDivisorsOf(number: number);
+            foreach (int i in divisors)
+            {
+                sumOfDivisors += i;
+            }
+
+            return sumOfDivisors;
         }
     }
 }
