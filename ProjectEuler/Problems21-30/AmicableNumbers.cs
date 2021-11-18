@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace ProjectEuler.Problems21_30
             // then find the sum of the divisors for N. If the sum of the divisors for N
             // is equal to the original number, those 2 numbers are an amicable pair.
             int sumOfAmicableNumbers = 0;
-            for (int i = 3; i < ceiling; i++)
+            for (int i = 220; i < ceiling; i++)
             {
                 int amicableNumber = FindSumOfDivisors(number: i);
                 if (FindSumOfDivisors(number: amicableNumber) == i && amicableNumber != i)
@@ -29,7 +30,25 @@ namespace ProjectEuler.Problems21_30
 
         public static int FindAmicableNumbersUsingHashset(int ceiling)
         {
-            throw new NotImplementedException();
+            int sumOfAmicableNumbers = 0;
+            HashSet<int> amicableNumbers = new HashSet<int>();
+            for (int i = 220; i < ceiling; i++)
+            {
+                if (!amicableNumbers.Contains(i))
+                {
+                    int amicableNumber = FindSumOfDivisors(number: i);
+                    int otherAmicableNumber = FindSumOfDivisors(number: amicableNumber);
+                    if (otherAmicableNumber == i && amicableNumber != i)
+                    {
+                        amicableNumbers.Add(item: amicableNumber);
+                        amicableNumbers.Add(item: otherAmicableNumber);
+                        sumOfAmicableNumbers += amicableNumber + otherAmicableNumber;
+                    }
+                }
+            }
+
+            amicableNumbers = null;
+            return sumOfAmicableNumbers;
         }
 
         private static int FindSumOfDivisors(int number)

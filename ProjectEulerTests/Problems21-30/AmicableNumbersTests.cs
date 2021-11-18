@@ -11,5 +11,13 @@ namespace ProjectEulerTests.Problems21_30
         {
             Assert.AreEqual(31626, ProjectEuler.Problems21_30.AmicableNumbers.FindAmicableNumbers(10000));
         }
+
+        [TestMethod]
+        public void TestFindAmicableNumbersUsingHashSet()
+        {
+            Assert.AreEqual(31626, ProjectEuler.Problems21_30.AmicableNumbers.FindAmicableNumbersUsingHashset(10000));
+        }
+
+        
     }
 }
