@@ -70,5 +70,12 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItPrime(number: 6858));
             Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItPrime(number: 500));
         }
+
+        [TestMethod]
+        public void TestFindProperDivisorsOf()
+        {
+            Assert.AreEqual(110, ProjectEuler.SharedCode.Math.FindProperDivisorsOf(220)[10]);
+            Assert.AreEqual(11, ProjectEuler.SharedCode.Math.FindProperDivisorsOf(220).Count);
+        }
     }
 }

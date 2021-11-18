@@ -63,5 +63,20 @@ namespace ProjectEuler.SharedCode
 
             return true;
         }
+
+        public static List<int> FindProperDivisorsOf(int number)
+        {
+            List<int> properDivisors = new List<int>();
+            properDivisors.Add(item: 1);
+            for (int i = 2; i <= number / 2; i++)
+            {
+                if (number % i == 0)
+                {
+                    properDivisors.Add(item: i);
+                }
+            }
+
+            return properDivisors;
+        }
     }
 }
