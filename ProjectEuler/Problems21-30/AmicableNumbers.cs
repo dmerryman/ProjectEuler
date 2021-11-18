@@ -16,5 +16,11 @@ namespace ProjectEuler.Problems21_30
             // is equal to the original number, those 2 numbers are an amicable pair.
             throw new NotImplementedException();
         }
+
+        private static int FindSumOfDivisors(int number)
+        {
+            // Get the list of divisors and then add them up.
+            throw new NotImplementedException();
+        }
     }
 }
