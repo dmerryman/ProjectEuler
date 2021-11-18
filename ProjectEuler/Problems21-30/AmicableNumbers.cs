@@ -10,6 +10,10 @@ namespace ProjectEuler.Problems21_30
     {
         public static int FindAmicableNumbers(int ceiling)
         {
+            // loop from 3 to ceiling.
+            // for each number, find the sum of the divisors as N,
+            // then find the sum of the divisors for N. If the sum of the divisors for N
+            // is equal to the original number, those 2 numbers are an amicable pair.
             throw new NotImplementedException();
         }
     }
