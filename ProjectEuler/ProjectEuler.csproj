@@ -44,34 +44,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="10001stPrime.cs" />
-    <Compile Include="CountingSundays.cs" />
-    <Compile Include="EvenFibonacciNumbers.cs" />
-    <Compile Include="FactorialDigitSum.cs" />
-    <Compile Include="HighlyDivisibleTriangularNumber.cs" />
-    <Compile Include="LargestPalindromeProduct.cs" />
-    <Compile Include="LargestPrimeFactor.cs" />
-    <Compile Include="LargestProductInAGrid.cs" />
-    <Compile Include="LargestProductInASeries.cs" />
-    <Compile Include="LargeSum.cs" />
-    <Compile Include="LatticePaths.cs" />
-    <Compile Include="LongestCollatzSequence.cs" />
-    <Compile Include="MaximumPathSumI.cs" />
-    <Compile Include="MultiplesOf3And5.cs" />
+    <Compile Include="Problems1-10\10001stPrime.cs" />
+    <Compile Include="Problems11-20\CountingSundays.cs" />
+    <Compile Include="Problems1-10\EvenFibonacciNumbers.cs" />
+    <Compile Include="Problems11-20\FactorialDigitSum.cs" />
+    <Compile Include="Problems11-20\HighlyDivisibleTriangularNumber.cs" />
+    <Compile Include="Problems11-20\LargestPalindromeProduct.cs" />
+    <Compile Include="Problems1-10\LargestPrimeFactor.cs" />
+    <Compile Include="Problems11-20\LargestProductInAGrid.cs" />
+    <Compile Include="Problems1-10\LargestProductInASeries.cs" />
+    <Compile Include="Problems11-20\LargeSum.cs" />
+    <Compile Include="Problems11-20\LatticePaths.cs" />
+    <Compile Include="Problems11-20\LongestCollatzSequence.cs" />
+    <Compile Include="Problems11-20\MaximumPathSumI.cs" />
+    <Compile Include="Problems1-10\MultiplesOf3And5.cs" />
     <Compile Include="Driver.cs" />
-    <Compile Include="NumberLetterCounts.cs" />
+    <Compile Include="Problems11-20\NumberLetterCounts.cs" />
     <Compile Include="PowerDigitSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\Math.cs" />
-    <Compile Include="SmallestMultiple.cs" />
-    <Compile Include="SpecialPythagoreanTriplet.cs" />
-    <Compile Include="SummationOfPrimes.cs" />
-    <Compile Include="SumSquareDifference.cs" />
+    <Compile Include="Problems1-10\SmallestMultiple.cs" />
+    <Compile Include="Problems1-10\SpecialPythagoreanTriplet.cs" />
+    <Compile Include="Problems1-10\SummationOfPrimes.cs" />
+    <Compile Include="Problems1-10\SumSquareDifference.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Problems21-30\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

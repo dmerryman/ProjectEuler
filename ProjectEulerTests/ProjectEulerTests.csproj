@@ -49,28 +49,28 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="10001stPrimeTests.cs" />
-    <Compile Include="CountingSundaysTests.cs" />
-    <Compile Include="EvenFibonacciNumbersTests.cs" />
-    <Compile Include="FactorialDigitSumTests.cs" />
-    <Compile Include="HighlyDivisibleTriangularNumberTests.cs" />
-    <Compile Include="LargestPalindromeProductTests.cs" />
-    <Compile Include="LargestPrimeFactorTests.cs" />
-    <Compile Include="LargestProductInAGridTests.cs" />
-    <Compile Include="LargestProductInASeriesTests.cs" />
-    <Compile Include="LargeSumTests.cs" />
-    <Compile Include="LatticePathsTests.cs" />
-    <Compile Include="LongestCollatzSequenceTests.cs" />
-    <Compile Include="MaximumPathSumITests.cs" />
-    <Compile Include="MultiplesOf3And5Tests.cs" />
-    <Compile Include="NumberLetterCountsTest.cs" />
+    <Compile Include="Problems1-10\10001stPrimeTests.cs" />
+    <Compile Include="Problems11-20\CountingSundaysTests.cs" />
+    <Compile Include="Problems1-10\EvenFibonacciNumbersTests.cs" />
+    <Compile Include="Problems11-20\FactorialDigitSumTests.cs" />
+    <Compile Include="Problems11-20\HighlyDivisibleTriangularNumberTests.cs" />
+    <Compile Include="Problems11-20\LargestPalindromeProductTests.cs" />
+    <Compile Include="Problems1-10\LargestPrimeFactorTests.cs" />
+    <Compile Include="Problems11-20\LargestProductInAGridTests.cs" />
+    <Compile Include="Problems1-10\LargestProductInASeriesTests.cs" />
+    <Compile Include="Problems11-20\LargeSumTests.cs" />
+    <Compile Include="Problems11-20\LatticePathsTests.cs" />
+    <Compile Include="Problems11-20\LongestCollatzSequenceTests.cs" />
+    <Compile Include="Problems11-20\MaximumPathSumITests.cs" />
+    <Compile Include="Problems1-10\MultiplesOf3And5Tests.cs" />
+    <Compile Include="Problems11-20\NumberLetterCountsTest.cs" />
     <Compile Include="PowerDigitSumTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCodeTests\MathTests.cs" />
-    <Compile Include="SmallestMultipleTests.cs" />
-    <Compile Include="SpecialPythagoreanTripletTests.cs" />
-    <Compile Include="SummationOfPrimesTests.cs" />
-    <Compile Include="SumSquareDifferenceTests.cs" />
+    <Compile Include="Problems1-10\SmallestMultipleTests.cs" />
+    <Compile Include="Problems1-10\SpecialPythagoreanTripletTests.cs" />
+    <Compile Include="Problems1-10\SummationOfPrimesTests.cs" />
+    <Compile Include="Problems1-10\SumSquareDifferenceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -81,7 +81,9 @@
       <Name>ProjectEuler</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Problems21-30\" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
