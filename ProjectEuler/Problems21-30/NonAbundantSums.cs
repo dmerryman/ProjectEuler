@@ -28,14 +28,31 @@ namespace ProjectEuler.Problems21_30
             // Check to see if i + j == number
                 // if i + j == number, and both are abundant, return true.
             // return false.
-            throw new NotImplementedException();
+            for (int i = 12; i <= number - 12; i++)
+            {
+                for (int j = i; j <= number - 12; j++)
+                {
+                    if (i + j == number && IsNumberAbundant(number: i) && IsNumberAbundant(number: j))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
-        public static bool IsNumberAbundant(int number)
+        private static bool IsNumberAbundant(int number)
         {
             // Get the proper divisors for number, and add them up.
             // If the sum of the proper divisors is greater than number, return true. Otherwise, return false.
-            throw new NotImplementedException();
+            List<int> properDivisors = SharedCode.Math.FindProperDivisorsOf(number: number);
+            int sumOfProperDivisors = 0;
+            foreach (int i in properDivisors)
+            {
+                sumOfProperDivisors += i;
+            }
+            return (sumOfProperDivisors > number);
         }
     }
 }
