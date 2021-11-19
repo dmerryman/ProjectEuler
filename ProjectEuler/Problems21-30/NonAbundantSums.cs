@@ -13,15 +13,24 @@ namespace ProjectEuler.Problems21_30
             // An abundant number is a number if the sum of its proper divisors is greater than the number.
             // All numbers greater than 28123 can be written as the sum of two abundant numbers.
             
-            // Loop from 12 to 28123
+            // Loop from 23 to 28123
             // For each number, determine if it can be written as the sum of two abundant numbers.
             // initialize sumOfNonAbundantNumbers to track the sum of nonabundant numbers.
             // If the number cannot be written as the sum of two abundant numbers, add the number to SumOfNonAbundantNumbers
             // return sumOfNonAbundantNumbers.
-            throw new Exception();
+            int sumOfNonAbundantNumbers = 0;
+            for (int i = 23; i <= 28123; i++)
+            {
+                if (!CanBeWrittenAsSumOfTwoAbundantNumbersSlowest(number: i))
+                {
+                    sumOfNonAbundantNumbers += i;
+                }
+            }
+
+            return sumOfNonAbundantNumbers;
         }
 
-        public static bool CanBeWrittenAsSumOfTwoAbundantNumbers(int number)
+        public static bool CanBeWrittenAsSumOfTwoAbundantNumbersSlowest(int number)
         {
             // Loop from  i = 12 to number - 12.
             // Loop from j = i to number - 12
@@ -40,6 +49,14 @@ namespace ProjectEuler.Problems21_30
             }
 
             return false;
+        }
+
+        private static bool CanBeWrittenAsSumOfTwoAbundantNumbersSieve(int number, int[] sieve)
+        {
+            // Loop from i = 12 to number - 12; 
+            // return true if i and number - i are in the sieve.
+            // return false.
+            throw new NotImplementedException();
         }
 
         private static bool IsNumberAbundant(int number)
