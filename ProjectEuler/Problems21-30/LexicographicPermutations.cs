@@ -10,6 +10,8 @@ namespace ProjectEuler.Problems21_30
     {
         public static int FindLexicographicPermutations(int permutationNumber)
         {
+            // Let's try the Factoradic method?
+            String str = "0123456789";
             throw new NotImplementedException();
         }
     }
