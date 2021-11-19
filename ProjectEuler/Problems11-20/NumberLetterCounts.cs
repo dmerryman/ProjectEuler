@@ -37,7 +37,6 @@ namespace ProjectEuler.Problems11_20
             }
 
             return totalNumberOfLetters;
-            throw new NotImplementedException();
         }
 
         public static int GetNumberOfLettersInValue(int value)
@@ -63,7 +62,6 @@ namespace ProjectEuler.Problems11_20
                     if (value % 100 != 0)
                     {
                         numberOfLetters += connectorWord.Length;
-                        Debug.WriteLine("Connector word added for {0}", value);
                     }
                 }
             }
@@ -87,7 +85,6 @@ namespace ProjectEuler.Problems11_20
                 int thisOnes = value % 10;
                 numberOfLetters += ones[thisOnes - 1].Length;
             }
-            Debug.WriteLine("{0} has {1} letters.", value, numberOfLetters);
             return numberOfLetters;
         }
 

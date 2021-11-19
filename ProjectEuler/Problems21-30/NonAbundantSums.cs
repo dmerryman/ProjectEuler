@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace ProjectEuler.Problems21_30
 {
     public static class NonAbundantSums
     {
-        public static int FindNonAbundantSums()
+        public static int FindNonAbundantSumsSlowest()
         {
             // An abundant number is a number if the sum of its proper divisors is greater than the number.
             // All numbers greater than 28123 can be written as the sum of two abundant numbers.
@@ -19,7 +20,7 @@ namespace ProjectEuler.Problems21_30
             // If the number cannot be written as the sum of two abundant numbers, add the number to SumOfNonAbundantNumbers
             // return sumOfNonAbundantNumbers.
             int sumOfNonAbundantNumbers = 0;
-            for (int i = 23; i <= 28123; i++)
+            for (int i = 12; i <= 28123; i++)
             {
                 if (!CanBeWrittenAsSumOfTwoAbundantNumbersSlowest(number: i))
                 {
@@ -30,14 +31,30 @@ namespace ProjectEuler.Problems21_30
             return sumOfNonAbundantNumbers;
         }
 
-        public static bool CanBeWrittenAsSumOfTwoAbundantNumbersSlowest(int number)
+        public static int FindNonAbundantSumsSieve()
         {
-            // Loop from  i = 12 to number - 12.
-            // Loop from j = i to number - 12
+            bool[] sieve = GenerateAbundantNumberSieve();
+            int sumOfNonAbundantNumbers = 0;
+
+            for (int i = 1; i <= 28123; i++)
+            {
+                if (!CanBeWrittenAsSumOfTwoAbundantNumbersSieve(number: i, sieve: sieve))
+                {
+                    sumOfNonAbundantNumbers += i;
+                }
+            }
+
+            return sumOfNonAbundantNumbers;
+        }
+
+        private static bool CanBeWrittenAsSumOfTwoAbundantNumbersSlowest(int number)
+        {
+            // Loop from  i = 12 to number.
+            // Loop from j = i to number
             // Check to see if i + j == number
                 // if i + j == number, and both are abundant, return true.
             // return false.
-            for (int i = 12; i <= number - 12; i++)
+            for (int i = 12; i <= number; i++)
             {
                 for (int j = i; j <= number - 12; j++)
                 {
@@ -51,12 +68,27 @@ namespace ProjectEuler.Problems21_30
             return false;
         }
 
-        private static int[] GenerateAbundantNumberSieve()
+        private static bool CanBeWrittenAsSumOfTwoAbundantNumbersSieve(int number, bool[] sieve)
+        {
+            // Loop from i = 12 to number - 12; 
+            // return true if i and number - i are in the sieve.
+            // return false.
+            for (int i = 0; i < number; i++)
+            {
+                if (sieve[i] && sieve[number - i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static bool[] GenerateAbundantNumberSieve()
         {
             // Loop from i = 1 to 28123.
             // If i is an abundant number, set it to true.
             // return the sieve.
-            int[] sieve = new int[28124];
+            bool[] sieve = new bool[28124];
             for (int i = 12; i < sieve.Length; i++)
             {
                 if (IsNumberAbundant(number: i))
@@ -66,14 +98,6 @@ namespace ProjectEuler.Problems21_30
             }
 
             return sieve;
-        }
-
-        private static bool CanBeWrittenAsSumOfTwoAbundantNumbersSieve(int number, int[] sieve)
-        {
-            // Loop from i = 12 to number - 12; 
-            // return true if i and number - i are in the sieve.
-            // return false.
-            throw new NotImplementedException();
         }
 
         private static bool IsNumberAbundant(int number)
