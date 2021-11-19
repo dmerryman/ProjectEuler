@@ -51,6 +51,14 @@ namespace ProjectEuler.Problems21_30
             return false;
         }
 
+        private static int[] GenerateAbundantNumberSieve()
+        {
+            // Loop from i = 1 to 28123.
+            // If i is an abundant number, set it to true.
+            // return the sieve.
+            throw new NotImplementedException();
+        }
+
         private static bool CanBeWrittenAsSumOfTwoAbundantNumbersSieve(int number, int[] sieve)
         {
             // Loop from i = 12 to number - 12; 
