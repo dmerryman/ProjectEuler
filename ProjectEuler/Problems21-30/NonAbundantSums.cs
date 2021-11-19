@@ -56,7 +56,16 @@ namespace ProjectEuler.Problems21_30
             // Loop from i = 1 to 28123.
             // If i is an abundant number, set it to true.
             // return the sieve.
-            throw new NotImplementedException();
+            int[] sieve = new int[28124];
+            for (int i = 12; i < sieve.Length; i++)
+            {
+                if (IsNumberAbundant(number: i))
+                {
+                    sieve[i] = true;
+                }
+            }
+
+            return sieve;
         }
 
         private static bool CanBeWrittenAsSumOfTwoAbundantNumbersSieve(int number, int[] sieve)
