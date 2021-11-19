@@ -20,5 +20,15 @@ namespace ProjectEuler.Problems21_30
             // return sumOfNonAbundantNumbers.
             throw new Exception();
         }
+
+        public static bool CanBeWrittenAsSumOfTwoAbundantNumbers(int number)
+        {
+            // Loop from  i = 12 to number - 12.
+            // Loop from j = i to number - 12
+            // Check to see if i + j == number
+                // if i + j == number, and both are abundant, return true.
+            // return false.
+            throw new NotImplementedException();
+        }
     }
 }
