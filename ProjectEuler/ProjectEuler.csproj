@@ -62,6 +62,7 @@
     <Compile Include="Problems11-20\NumberLetterCounts.cs" />
     <Compile Include="PowerDigitSum.cs" />
     <Compile Include="Problems21-30\AmicableNumbers.cs" />
+    <Compile Include="Problems21-30\LexicographicPermutations.cs" />
     <Compile Include="Problems21-30\NamesScores.cs" />
     <Compile Include="Problems21-30\NonAbundantSums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
