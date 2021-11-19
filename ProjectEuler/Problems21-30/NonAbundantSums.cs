@@ -30,5 +30,12 @@ namespace ProjectEuler.Problems21_30
             // return false.
             throw new NotImplementedException();
         }
+
+        public static bool IsNumberAbundant(int number)
+        {
+            // Get the proper divisors for number, and add them up.
+            // If the sum of the proper divisors is greater than number, return true. Otherwise, return false.
+            throw new NotImplementedException();
+        }
     }
 }
