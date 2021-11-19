@@ -9,7 +9,7 @@ namespace ProjectEuler.Problems21_30
 {
     public static class NamesScores
     {
-        public static long FindNamesScores()
+        public static int FindNamesScores()
         {
             // Read in names.txt into an ArrayList.
             // Sort the arrayList alphabetically.
