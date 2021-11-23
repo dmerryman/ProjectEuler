@@ -9,8 +9,16 @@ namespace ProjectEulerTests.Problems21_30
         [TestMethod]
         public void TestLexicographicPermutations()
         {
-            Assert.AreEqual(2783915460,
+            Assert.AreEqual("2783915460",
                 ProjectEuler.Problems21_30.LexicographicPermutations.FindLexicographicPermutations(
+                    permutationNumber: 1000000));
+        }
+
+        [TestMethod]
+        public void TestLexicographicPermutationsFactoradic()
+        {
+            Assert.AreEqual("2783915460",
+                ProjectEuler.Problems21_30.LexicographicPermutations.FindLexicographicPermutationsFactoradic(
                     permutationNumber: 1000000));
         }
     }
