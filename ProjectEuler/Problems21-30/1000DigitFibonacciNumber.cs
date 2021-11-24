@@ -42,7 +42,11 @@ namespace ProjectEuler.Problems21_30
             int numDigits = 1;
             while (numDigits < 1000)
             {
-                throw new NotImplementedException();
+                BigNumber result = num1.Addition(otherNumber: num2);
+                num1 = num2;
+                num2 = result;
+                numDigits = result.ToString().Length;
+                index++;
             }
 
             return index;
