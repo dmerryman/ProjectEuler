@@ -61,11 +61,13 @@
     <Compile Include="Driver.cs" />
     <Compile Include="Problems11-20\NumberLetterCounts.cs" />
     <Compile Include="PowerDigitSum.cs" />
+    <Compile Include="Problems21-30\1000DigitFibonacciNumber.cs" />
     <Compile Include="Problems21-30\AmicableNumbers.cs" />
     <Compile Include="Problems21-30\LexicographicPermutations.cs" />
     <Compile Include="Problems21-30\NamesScores.cs" />
     <Compile Include="Problems21-30\NonAbundantSums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedCode\BigNumber.cs" />
     <Compile Include="SharedCode\InputHelper.cs" />
     <Compile Include="SharedCode\Math.cs" />
     <Compile Include="Problems1-10\SmallestMultiple.cs" />
