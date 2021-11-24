@@ -25,6 +25,13 @@ namespace ProjectEuler.SharedCode
             TrimLeadingZeroes();
         }
 
+        private BigNumber(int[] digits)
+        {
+            number = digits;
+            Carry();
+            TrimLeadingZeroes();
+        }
+
         public BigNumber Addition(BigNumber otherNumber)
         {
             int numDigits = 0;
@@ -52,9 +59,7 @@ namespace ProjectEuler.SharedCode
                 newNumberIndex--;
             }
 
-            this.number = newNumber;
-            Carry();
-            TrimLeadingZeroes();
+            return new BigNumber(digits: newNumber);
         }
 
         public BigNumber Multiplication(BigNumber otherNumber)

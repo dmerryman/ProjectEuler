@@ -38,8 +38,8 @@ namespace ProjectEulerTests.SharedCodeTests
         {
             BigNumber num1 = new BigNumber("500");
             BigNumber num2 = new BigNumber("525");
-            num1.Addition(otherNumber: num2);
-            Assert.AreEqual("1025", num1.ToString());
+            BigNumber result = num1.Addition(otherNumber: num2);
+            Assert.AreEqual("1025", result.ToString());
         }
 
         [TestMethod]
@@ -47,8 +47,8 @@ namespace ProjectEulerTests.SharedCodeTests
         {
             BigNumber num1 = new BigNumber("300");
             BigNumber num2 = new BigNumber("525");
-            num1.Addition(otherNumber: num2);
-            Assert.AreEqual("825", num1.ToString());
+            BigNumber result = num1.Addition(otherNumber: num2);
+            Assert.AreEqual("825", result.ToString());
         }
 
         [TestMethod]
@@ -56,8 +56,8 @@ namespace ProjectEulerTests.SharedCodeTests
         {
             BigNumber num1 = new BigNumber("11111111111111111111111111111111111111111111111111");
             BigNumber num2 = new BigNumber("11111111111111111111111111111111111111111111111111");
-            num1.Addition(otherNumber: num2);
-            Assert.AreEqual("22222222222222222222222222222222222222222222222222", num1.ToString());
+            BigNumber result = num1.Addition(otherNumber: num2);
+            Assert.AreEqual("22222222222222222222222222222222222222222222222222", result.ToString());
         }
 
         [TestMethod]
@@ -65,8 +65,8 @@ namespace ProjectEulerTests.SharedCodeTests
         {
             BigNumber num1 = new BigNumber("99999999999999999999999999999999999999999999999999");
             BigNumber num2 = new BigNumber("99999999999999999999999999999999999999999999999999");
-            num1.Addition(otherNumber: num2);
-            Assert.AreEqual("199999999999999999999999999999999999999999999999998", num1.ToString());
+            BigNumber result = num1.Addition(otherNumber: num2);
+            Assert.AreEqual("199999999999999999999999999999999999999999999999998", result.ToString());
         }
 
         [TestMethod]
