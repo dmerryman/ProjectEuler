@@ -25,7 +25,7 @@ namespace ProjectEuler.SharedCode
             TrimLeadingZeroes();
         }
 
-        public void Addition(BigNumber otherNumber)
+        public BigNumber Addition(BigNumber otherNumber)
         {
             int numDigits = 0;
             if (this.GetNumberOfDigits() > otherNumber.GetNumberOfDigits())
@@ -57,7 +57,7 @@ namespace ProjectEuler.SharedCode
             TrimLeadingZeroes();
         }
 
-        public void Multiplication(BigNumber otherNumber)
+        public BigNumber Multiplication(BigNumber otherNumber)
         {
             throw new NotImplementedException();
         }
@@ -114,7 +114,7 @@ namespace ProjectEuler.SharedCode
             }
         }
 
-        private int GetNumberOfDigits()
+        public int GetNumberOfDigits()
         {
             return number.Length;
         }

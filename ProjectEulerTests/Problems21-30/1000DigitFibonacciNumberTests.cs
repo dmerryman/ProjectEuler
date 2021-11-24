@@ -11,5 +11,12 @@ namespace ProjectEulerTests.Problems21_30
         {
             Assert.AreEqual(4782, ProjectEuler.Problems21_30._1000DigitFibonacciNumber.Find1000DigitFibonacciNumber());
         }
+
+        [TestMethod]
+        public void Test1000DigitFibonacciNumberMine()
+        {
+            Assert.AreEqual(4782,
+                ProjectEuler.Problems21_30._1000DigitFibonacciNumber.Find1000DigitFibonacciNumberMine());
+        }
     }
 }

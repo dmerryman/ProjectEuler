@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectEuler.SharedCode;
 
 namespace ProjectEuler.Problems21_30
 {
@@ -27,6 +29,20 @@ namespace ProjectEuler.Problems21_30
                 num2 = result;
                 numDigits = result.ToString().Length;
                 index++;
+            }
+
+            return index;
+        }
+
+        public static int Find1000DigitFibonacciNumberMine()
+        {
+            BigNumber num1 = new BigNumber("1");
+            BigNumber num2 = new BigNumber("1");
+            int index = 2;
+            int numDigits = 1;
+            while (numDigits < 1000)
+            {
+                throw new NotImplementedException();
             }
 
             return index;
