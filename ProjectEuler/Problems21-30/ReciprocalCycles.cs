@@ -24,5 +24,10 @@ namespace ProjectEuler.Problems21_30
             }
             throw new NotImplementedException();
         }
+
+        public static int GetLengthOfReciprocalCycle(int d)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
