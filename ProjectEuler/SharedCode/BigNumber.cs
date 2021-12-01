@@ -64,6 +64,8 @@ namespace ProjectEuler.SharedCode
 
         public BigNumber Multiplication(BigNumber otherNumber)
         {
+            int numDigits = this.GetNumberOfDigits() + otherNumber.GetNumberOfDigits();
+            int[] newNumber = new int[numDigits];
             throw new NotImplementedException();
         }
 
