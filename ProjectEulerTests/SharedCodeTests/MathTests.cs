@@ -77,5 +77,20 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.AreEqual(110, ProjectEuler.SharedCode.Math.FindProperDivisorsOf(220)[10]);
             Assert.AreEqual(11, ProjectEuler.SharedCode.Math.FindProperDivisorsOf(220).Count);
         }
+
+        [TestMethod]
+        public void TestGetDecimalLengthOfNonRepeatingFraction()
+        {
+            Assert.AreEqual(1,
+                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 2));
+            Assert.AreEqual(1,
+                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 4, denominator: 8));
+            Assert.AreEqual(2,
+                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 4));
+            Assert.AreEqual(3,
+                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 8));
+            Assert.AreEqual(4,
+                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 16));
+        }
     }
 }
