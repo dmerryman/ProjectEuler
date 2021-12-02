@@ -78,19 +78,37 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.AreEqual(11, ProjectEuler.SharedCode.Math.FindProperDivisorsOf(220).Count);
         }
 
+        //[TestMethod]
+        //public void TestGetDecimalLengthOfNonRepeatingFraction()
+        //{
+        //    Assert.AreEqual(1,
+        //        ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 2));
+        //    Assert.AreEqual(1,
+        //        ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 4, denominator: 8));
+        //    Assert.AreEqual(2,
+        //        ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 4));
+        //    Assert.AreEqual(3,
+        //        ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 8));
+        //    Assert.AreEqual(4,
+        //        ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 16));
+        //}
+
         [TestMethod]
-        public void TestGetDecimalLengthOfNonRepeatingFraction()
+        public void TestGetDecimalLength()
         {
             Assert.AreEqual(1,
-                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 2));
+                ProjectEuler.SharedCode.Math.GetDecimalLength(numerator: 1, denominator: 2));
             Assert.AreEqual(1,
-                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 4, denominator: 8));
+                ProjectEuler.SharedCode.Math.GetDecimalLength(numerator: 1, denominator: 3));
             Assert.AreEqual(2,
-                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 4));
-            Assert.AreEqual(3,
-                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 8));
-            Assert.AreEqual(4,
-                ProjectEuler.SharedCode.Math.GetDecimalLengthOfNonRepeatingFraction(numerator: 1, denominator: 16));
+                ProjectEuler.SharedCode.Math.GetDecimalLength(numerator: 1, denominator: 6));
+        }
+
+        [TestMethod]
+        public void TestGetLengthOfReciprocalCycle()
+        {
+            Assert.AreEqual(1, ProjectEuler.SharedCode.Math.GetLengthOfReciprocalCycle(numerator:1, denominator: 3));
+            Assert.AreEqual(6, ProjectEuler.SharedCode.Math.GetLengthOfReciprocalCycle(numerator: 1, denominator: 7));
         }
     }
 }
