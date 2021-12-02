@@ -21,45 +21,15 @@ namespace ProjectEuler.Problems21_30
             int longestReciprocatingCyclePosition = Int32.MinValue;
             for (int i = 2; i < d; i++)
             {
-                int currReciprocalyCycles = GetLengthOfReciprocalCycle(d: i);
-                Debug.WriteLine("1 / {0} is {1} decimal places long.", i, currReciprocalyCycles);
-            }
-            throw new NotImplementedException();
-        }
-
-        public static int GetLengthOfReciprocalCycle(int d)
-        {
-            int numerator = 1;
-            int denominator = d;
-            int length = 0;
-            while (length < 25)
-            {
-                bool alreadyIncreased = false;
-                while (d > numerator)
+                int currReciprocalyCycles = SharedCode.Math.GetLengthOfReciprocalCycle(numerator: 1, denominator: i);
+                if (currReciprocalyCycles > longestReciprocatingCycle)
                 {
-                    length++;
-                    numerator *= 10;
-                    alreadyIncreased = true;
-                }
-
-                int quotient = numerator / denominator;
-                int remainder = numerator % denominator;
-                //Debug.WriteLine("{0} // {1} = {2} R {3}", numerator, denominator, quotient, remainder);
-                if (!alreadyIncreased)
-                {
-                    length++;
-                }
-                if (remainder == 0)
-                {
-                    break;
-                }
-                else
-                {
-                    numerator = remainder;
+                    longestReciprocatingCycle = currReciprocalyCycles;
+                    longestReciprocatingCyclePosition = i;
                 }
             }
 
-            return length;
+            return longestReciprocatingCyclePosition;
         }
     }
 }
