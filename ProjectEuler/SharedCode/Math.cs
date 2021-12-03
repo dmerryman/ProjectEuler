@@ -33,7 +33,7 @@ namespace ProjectEuler.SharedCode
 
         public static bool IsItPrime(int number)
         {
-            if (number == 1)
+            if (number <= 2)
             {
                 return false;
             }
