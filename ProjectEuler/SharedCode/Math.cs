@@ -133,7 +133,6 @@ namespace ProjectEuler.SharedCode
                 if (divisions.Contains(item: thisOperation))
                 {
                     // Cycle detected.
-                    //Debug.WriteLine("Cycle detected at {0} length", length - 1);
                     return length - 1;
                 }
                 else
@@ -177,7 +176,6 @@ namespace ProjectEuler.SharedCode
                 if (divisions.Contains(item: thisOperation))
                 {
                     // Cycle detected.
-                    //Debug.WriteLine("Cycle detected at {0} length", length - 1);
                     if (!cycleDetected)
                     {
                         cycleDetected = true;

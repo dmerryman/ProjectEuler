@@ -52,7 +52,6 @@ namespace ProjectEuler.Problems11_20
                     maximumNumberOfSteps = numberOfSteps;
                     valueWithMaximumNumberOfSteps = numberToCheck;
                 }
-                //Debug.WriteLine("{0} had {1} steps. Maximum is {2} with {3}", numberToCheck, numberOfSteps, valueWithMaximumNumberOfSteps, maximumNumberOfSteps);
             }
 
             return valueWithMaximumNumberOfSteps;

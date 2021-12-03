@@ -36,7 +36,6 @@ namespace ProjectEuler.Problems21_30
             {
                 int a = s.Peek();
                 result += str[a];
-                Debug.WriteLine("{0} after appending {1}", result, str[a]);
                 int j;
                 // Remove 1-element in each cycle.
                 for (j = a; j < str.Length - 1; j++)
