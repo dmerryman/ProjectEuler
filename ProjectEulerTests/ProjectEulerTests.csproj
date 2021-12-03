@@ -71,6 +71,7 @@
     <Compile Include="Problems21-30\LexicographicPermutationsTests.cs" />
     <Compile Include="Problems21-30\NamesScoresTests.cs" />
     <Compile Include="Problems21-30\NonAbundantSumsTests.cs" />
+    <Compile Include="Problems21-30\NumberSpiralDiagonals.cs" />
     <Compile Include="Problems21-30\QuadraticPrimesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCodeTests\BigNumberTests.cs" />

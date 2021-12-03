@@ -69,6 +69,7 @@
     <Compile Include="Problems21-30\LexicographicPermutations.cs" />
     <Compile Include="Problems21-30\NamesScores.cs" />
     <Compile Include="Problems21-30\NonAbundantSums.cs" />
+    <Compile Include="Problems21-30\NumberSpiralDiagonals.cs" />
     <Compile Include="Problems21-30\QuadraticPrimes.cs" />
     <Compile Include="Problems21-30\ReciprocalCycles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
