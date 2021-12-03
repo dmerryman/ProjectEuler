@@ -27,7 +27,7 @@ namespace ProjectEuler.Problems21_30
             int largestNumConsecutivePrimesA = Int32.MinValue;
             int largestNumConsecutivePrimesB = Int32.MinValue;
 
-            for (int a = -limit; a <= limit; a++)
+            for (int a = -limit + 1; a < limit; a++)
             {
                 for (int b = -limit; b <= limit; b++)
                 {
@@ -59,7 +59,42 @@ namespace ProjectEuler.Problems21_30
 
         public static int FindQuadraticPrimesSieve(int limit)
         {
-            throw new NotImplementedException();
+            int largestNumConsecutivePrimes = Int32.MinValue;
+            int largestNumConsecutivePrimesA = Int32.MinValue;
+            int largestNumConsecutivePrimesB = Int32.MinValue;
+            bool[] primeSieve = SharedCode.Math.GeneratePrimeSieve(limit: 14000);
+
+            for (int a = - limit; a < limit; a++)
+            {
+                for (int b = -limit; b <= limit; b++)
+                {
+                    int n = 0;
+                    int numberOfConsecutivePrimes = 0;
+                    bool isPrime = true;
+                    while (isPrime)
+                    {
+                        int quadraticFormulaResult = QuadraticFormula(a: a, b: b, n: n);
+                        if (quadraticFormulaResult <= 2)
+                        {
+                            break;
+                        }
+                        isPrime = !primeSieve[quadraticFormulaResult];
+                        if (isPrime)
+                        {
+                            n++;
+                            numberOfConsecutivePrimes++;
+                        }
+                    }
+
+                    if (numberOfConsecutivePrimes > largestNumConsecutivePrimes)
+                    {
+                        largestNumConsecutivePrimes = numberOfConsecutivePrimes;
+                        largestNumConsecutivePrimesA = a;
+                        largestNumConsecutivePrimesB = b;
+                    }
+                }
+            }
+            return largestNumConsecutivePrimesA * largestNumConsecutivePrimesB;
         }
 
         private static int QuadraticFormula(int a, int b, int n)
