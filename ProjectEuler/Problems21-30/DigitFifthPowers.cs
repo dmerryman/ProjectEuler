@@ -16,6 +16,16 @@ namespace ProjectEuler.Problems21_30
             // individual digit raised to the power of 5 is equal to testValue.
             // If it is, add that number to sumOfDigitFifthPowers.
             // return sumOfDigitFifthPowers.
+            int sumOfDigitFifthPowers = 0;
+            for (int testValue = 32; testValue <= 354294; testValue++)
+            {
+
+            }
+            throw new NotImplementedException();
+        }
+
+        private List<int> GetDigits(int testValue)
+        {
             throw new NotImplementedException();
         }
     }
