@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,13 +14,17 @@ namespace ProjectEuler.Problems21_30
         public static int FindNumberSpiralDiagnoals(int size)
         {
             // Create a 2 dimensional array of [size, size].
-            // Initialize a variable for the current count, number = 1.
-            // start with [size / 2, size / 2]
-            // Go right 1, down currSize / 2, left currSize - 1, up currSize - 1, right currSize - 1,
-            // incrementing number as you go. For each spiral completion, add 2 to currSize, with it starting at 3.
             int[,] spiral = GenerateSpiral(size: size);
+            int currSum = 0;
+            for (int i = 0; i < size; i++)
+            {
+                currSum += spiral[i, i];
+                currSum += spiral[size - i - 1, i];
+                Debug.WriteLine("Adding {0} and {1}", spiral[i, i], spiral[size - i - 1, size - 1]);
+            }
 
-            throw new NotImplementedException();
+            currSum -= spiral[size / 2, size / 2];
+            return currSum;
         }
 
         public static int FindNumberSpiralDiagonalsNoSpiral(int size)
@@ -50,13 +55,16 @@ namespace ProjectEuler.Problems21_30
             spiral[currRow, currCol] = currNumber;
             int currInterval = 3;
             currNumber++;
+            int initialRun = 1;
+            int cycleNumber = 0;
+            int extraInterval = 0;
             while (currNumber < Math.Pow(x: size, y: 2))
             {
+                cycleNumber++;
                 currCol++;
                 spiral[currRow, currCol] = currNumber;
                 currNumber++;
-                Debug.WriteLine("{0}", currInterval / 2);
-                for (int i = 0; i <= currInterval / 2; i++)
+                for (int i = 0; i <= (currInterval / 2) - initialRun + extraInterval; i++)
                 {
                     currRow++;
                     spiral[currRow, currCol] = currNumber;
@@ -72,6 +80,10 @@ namespace ProjectEuler.Problems21_30
 
                 for (int i = 0; i < currInterval - 1; i++)
                 {
+                    if (currInterval == 67)
+                    {
+                        int pause = 1;
+                    }
                     currRow--;
                     spiral[currRow, currCol] = currNumber;
                     currNumber++;
@@ -85,9 +97,35 @@ namespace ProjectEuler.Problems21_30
                 }
 
                 currInterval += 2;
+                initialRun = 0;
+                if (cycleNumber >= 2)
+                {
+                    extraInterval++;
+                }
             }
 
             return spiral;
+        }
+
+        private static void PrintInOrder(int[,] spiral, int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                bool printedThieLine = false;
+                for (int j = 0; j < size; j++)
+                {
+                    if (spiral[i, j] != 0)
+                    {
+                        Debug.Write(spiral[i, j] + "\t");
+                        printedThieLine = true;
+                    }
+
+                    if (printedThieLine)
+                    {
+                        Debug.WriteLine(String.Empty);
+                    }
+                }
+            }
         }
     }
 }
