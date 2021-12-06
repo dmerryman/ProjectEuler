@@ -67,6 +67,7 @@
     <Compile Include="PowerDigitSumTests.cs" />
     <Compile Include="Problems21-30\1000DigitFibonacciNumberTests.cs" />
     <Compile Include="Problems21-30\AmicableNumbersTests.cs" />
+    <Compile Include="Problems21-30\DistinctPowersTests.cs" />
     <Compile Include="Problems21-30\FindReciprocalCyclesTests.cs" />
     <Compile Include="Problems21-30\LexicographicPermutationsTests.cs" />
     <Compile Include="Problems21-30\NamesScoresTests.cs" />
