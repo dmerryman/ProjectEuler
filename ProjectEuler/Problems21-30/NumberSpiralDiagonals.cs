@@ -20,7 +20,6 @@ namespace ProjectEuler.Problems21_30
             {
                 currSum += spiral[i, i];
                 currSum += spiral[size - i - 1, i];
-                Debug.WriteLine("Adding {0} and {1}", spiral[i, i], spiral[size - i - 1, size - 1]);
             }
 
             currSum -= spiral[size / 2, size / 2];
