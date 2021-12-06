@@ -19,14 +19,25 @@ namespace ProjectEuler.Problems21_30
             int sumOfDigitFifthPowers = 0;
             for (int testValue = 32; testValue <= 354294; testValue++)
             {
-
+                List<int> digits = GetDigits(testValue: testValue);
             }
             throw new NotImplementedException();
         }
 
-        private List<int> GetDigits(int testValue)
+        private static List<int> GetDigits(int testValue)
         {
-            throw new NotImplementedException();
+            // Initialize a new List to store the digits.
+            // Loop until testValue is 0.
+            // Store mod 10 as a digit, and then divide testValue by 10.
+            List<int> digits = new List<int>();
+            while (testValue > 0)
+            {
+                int digitToAdd = testValue % 10;
+                digits.Add(item: digitToAdd);
+                testValue /= 10;
+            }
+
+            return digits;
         }
     }
 }
