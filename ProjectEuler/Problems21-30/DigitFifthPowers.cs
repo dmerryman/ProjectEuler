@@ -8,7 +8,7 @@ namespace ProjectEuler.Problems21_30
 {
     public static class DigitFifthPowers
     {
-        public static int FindDigitFifthPowers()
+        public static int FindDigitFifthPowersBasic()
         {
             // Initialize sumOfDigitFifthPowers to 0.
             // Loop for testValue from 32 to 354294
@@ -38,6 +38,11 @@ namespace ProjectEuler.Problems21_30
             }
 
             return digits;
+        }
+
+        private static bool CanBeWrittenAsSumOfFifthPowers(int testValue, List<int> digits)
+        {
+            throw new NotImplementedException();
         }
     }
 }

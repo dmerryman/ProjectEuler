@@ -9,7 +9,7 @@ namespace ProjectEulerTests.Problems21_30
         [TestMethod]
         public void TestFindDigitFifthPowers()
         {
-            Assert.AreEqual(443839, ProjectEuler.Problems21_30.DigitFifthPowers.FindDigitFifthPowers());
+            Assert.AreEqual(443839, ProjectEuler.Problems21_30.DigitFifthPowers.FindDigitFifthPowersBasic());
         }
     }
 }
