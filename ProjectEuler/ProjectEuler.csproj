@@ -75,6 +75,7 @@
     <Compile Include="Problems21-30\QuadraticPrimes.cs" />
     <Compile Include="Problems21-30\ReciprocalCycles.cs" />
     <Compile Include="Problems31-40\CoinSums.cs" />
+    <Compile Include="Problems31-40\PandigitalProducts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\BigNumber.cs" />
     <Compile Include="SharedCode\InputHelper.cs" />
