@@ -20,5 +20,10 @@ namespace ProjectEuler.Problems31_40
             // return currSum
             throw new NotImplementedException();
         }
+
+        public static bool IsPandigitalProduct(int first, int second, int third)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
