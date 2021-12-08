@@ -9,7 +9,13 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindPandigitalProducts()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems31_40.PandigitalProducts.FindPandigitalProducts());
+            Assert.AreEqual(45228, ProjectEuler.Problems31_40.PandigitalProducts.FindPandigitalProducts());
+        }
+
+        [TestMethod]
+        public void TestFindPandigitalProductsUnoptimized()
+        {
+            Assert.AreEqual(45228, ProjectEuler.Problems31_40.PandigitalProducts.FindPandigitalProductsUnOptimized());
         }
 
         [TestMethod]
