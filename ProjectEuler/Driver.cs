@@ -12,7 +12,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Project Euler!");
+            Console.WriteLine("Project Euler!!!");
             Problem11();
         }
 
