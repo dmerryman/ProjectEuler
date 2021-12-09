@@ -9,7 +9,7 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindDigitFactorials()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems31_40.DigitFactorials.FindDigitFactorials());
+            Assert.AreEqual(40730, ProjectEuler.Problems31_40.DigitFactorials.FindDigitFactorials());
         }
     }
 }

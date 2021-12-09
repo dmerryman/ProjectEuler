@@ -117,5 +117,11 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.AreEqual(4, ProjectEuler.SharedCode.Math.GetDigits(1234).Count);
             Assert.AreEqual(4, ProjectEuler.SharedCode.Math.GetDigits(1111).Count);
         }
+
+        [TestMethod]
+        public void TestCalculateFactorial()
+        {
+            Assert.AreEqual(362880, ProjectEuler.SharedCode.Math.CalculateFactorial(value: 9));
+        }
     }
 }

@@ -200,5 +200,21 @@ namespace ProjectEuler.SharedCode
 
             return digits;
         }
+
+        public static int GetNumberOfDigits(int value)
+        {
+            return (int)System.Math.Floor(System.Math.Log10(value) + 1);
+        }
+
+        public static int CalculateFactorial(int value)
+        {
+            int factorial = 1;
+            for (int i = 2; i <= value; i++)
+            {
+                factorial *= i;
+            }
+
+            return factorial;
+        }
     }
 }
