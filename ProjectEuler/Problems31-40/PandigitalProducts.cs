@@ -33,7 +33,46 @@ namespace ProjectEuler.Problems31_40
                         {
                             currSum += i;
                             pandigitalProductConfirmed = true;
-                            //Debug.WriteLine("{0} * {1} = {2} and it's a pandigital product.", factor1, factor2, i);
+                            Debug.WriteLine("{0} * {1} = {2} and it's a pandigital product.", factor1, factor2, i);
+                            break;
+                        }
+                    }
+
+                    if (pandigitalProductConfirmed)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return currSum;
+        }
+
+        public static int FindPandigitalProductsBetter()
+        {
+            // int currSum to hold sum of pandigital products.
+            // for int index = lower limit to upper limit
+            // Calculate the factors of index
+            // Loop through each combination of the factors of index.
+            // Combine multiplicand, multiplier, and product, and check to see if its
+            // pandigital.
+            // If it is, add index to currSum and break.
+            // return currSum
+            int currSum = 0;
+            bool pandigitalProductConfirmed = false;
+            for (int i = 1234; i <= 9876; i++)
+            {
+                List<int> factors = SharedCode.Math.FindProperDivisorsOf(number: i);
+                pandigitalProductConfirmed = false;
+                foreach (int factor1 in factors)
+                {
+                    foreach (int factor2 in factors)
+                    {
+                        if (IsPandigitalProductBetter(first: factor1, second: factor2, product: i))
+                        {
+                            currSum += i;
+                            pandigitalProductConfirmed = true;
+                            Debug.WriteLine("{0} * {1} = {2} and it's a pandigital product.", factor1, factor2, i);
                             break;
                         }
                     }
@@ -85,6 +124,78 @@ namespace ProjectEuler.Problems31_40
             }
 
             return currSum;
+        }
+
+        public static bool IsPandigitalProductBetter(int first, int second, int product)
+        {
+            // Combine all three numbers into a string numString.
+            // Cast numString as an int testNum
+            // Create a HashSet<int> digits to hold individual digits.
+            // Loop until testNum = 0.
+            // Add testNum % 10 to digits if its not already there.
+            // If that value is already in digits, return false.
+            // Divide tetNum by 10.
+            // Loop from int i = 1 to 9
+            // If digits doesn't contain i, return false
+            // return true
+            if (first * second != product)
+            {
+                // This isn't even close to a solution.
+                return false;
+            }
+
+            if (product == 6952 && first == 4 && second == 1738)
+            {
+                int pause = 1;
+            }
+
+            int testNum = (product * 100000);
+
+            int firstNumDigits = (int)Math.Floor(Math.Log10(first) + 1);
+            int secondNumDigits = (int)Math.Floor(Math.Log10(second) + 1);
+
+
+            testNum += firstNumDigits > secondNumDigits
+                ? (first * (int)Math.Pow(x: 10, y: 5 - firstNumDigits)) + second
+                : (second * (int)Math.Pow(x: 10, y: 5 - secondNumDigits)) + first;
+
+
+            //if (first / 1000 > 0)
+            //{
+            //    testNum += first * 10;
+            //    testNum += second;
+            //}
+            //else if (second / 1000 > 0)
+            //{
+            //    testNum += second * 10;
+            //    testNum += first;
+            //}
+            //else if (first / 100 > 0)
+            //{
+            //    testNum += first * 100;
+            //    testNum += second;
+            //}
+            //else if (second / 100 > 0)
+            //{
+            //    testNum += second * 100;
+            //    testNum += first;
+            //}
+
+            HashSet<int> digits = new HashSet<int>();
+            digits.Add(item: 0);
+
+            while (testNum != 0)
+            {
+                int digitToAdd = testNum % 10;
+                if (digits.Contains(item: digitToAdd))
+                {
+                    return false;
+                }
+
+                digits.Add(item: digitToAdd);
+                testNum /= 10;
+            }
+            return true;
         }
 
         public static bool IsPandigitalProduct(int first, int second, int product)

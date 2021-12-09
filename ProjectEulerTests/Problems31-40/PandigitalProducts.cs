@@ -19,6 +19,12 @@ namespace ProjectEulerTests.Problems31_40
         }
 
         [TestMethod]
+        public void TestFindPandigitalProductsBetter()
+        {
+            Assert.AreEqual(45228, ProjectEuler.Problems31_40.PandigitalProducts.FindPandigitalProductsBetter());
+        }
+
+        [TestMethod]
         public void TestIsPandigitalProductTrue()
         {
             Assert.IsTrue(ProjectEuler.Problems31_40.PandigitalProducts.IsPandigitalProduct(first: 39, second: 186, product: 7254));
