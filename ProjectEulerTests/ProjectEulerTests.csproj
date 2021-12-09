@@ -85,6 +85,7 @@
     <Compile Include="Problems1-10\SpecialPythagoreanTripletTests.cs" />
     <Compile Include="Problems1-10\SummationOfPrimesTests.cs" />
     <Compile Include="Problems1-10\SumSquareDifferenceTests.cs" />
+    <Compile Include="SharedCodeTests\Models\FractionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

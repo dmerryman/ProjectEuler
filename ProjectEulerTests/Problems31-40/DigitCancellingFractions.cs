@@ -9,7 +9,7 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindDigitCancellingFractions()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems31_40.DigitCancellingFractions.FindDigitCancellingFractions());
+            Assert.AreEqual(100, ProjectEuler.Problems31_40.DigitCancellingFractions.FindDigitCancellingFractions());
         }
     }
 }

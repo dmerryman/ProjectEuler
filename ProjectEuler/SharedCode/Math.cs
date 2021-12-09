@@ -81,6 +81,20 @@ namespace ProjectEuler.SharedCode
             return properDivisors;
         }
 
+        public static List<int> FindDivisorsOf(int number)
+        {
+            List<int> divisors = new List<int>();
+            for (int i = 2; i <= number / 2; i++)
+            {
+                if (number % i == 0)
+                {
+                    divisors.Add(item: i);
+                }
+            }
+            divisors.Add(item: number);
+            return divisors;
+        }
+
         public static int GetDecimalLength(int numerator, int denominator)
         {
             int length = 0;

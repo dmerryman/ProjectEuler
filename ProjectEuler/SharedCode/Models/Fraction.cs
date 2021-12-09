@@ -69,8 +69,8 @@ namespace ProjectEuler.SharedCode.Models
         public bool Reduce()
         {
             bool changed = false;
-            List<int> numeratorFactors = SharedCode.Math.FindProperDivisorsOf(number: this.Numerator);
-            List<int> denominatorFactors = SharedCode.Math.FindProperDivisorsOf(number: this.Denominator);
+            List<int> numeratorFactors = SharedCode.Math.FindDivisorsOf(number: this.Numerator);
+            List<int> denominatorFactors = SharedCode.Math.FindDivisorsOf(number: this.Denominator);
             List<int> commonFactors = new List<int>();
             foreach (int factor in numeratorFactors)
             {

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectEuler.SharedCode.Models;
 
 namespace ProjectEuler.Problems31_40
 {
@@ -26,22 +27,25 @@ namespace ProjectEuler.Problems31_40
             {
                 for (int numerator = 10; numerator < denominator; numerator++)
                 {
-                    if (CanBeIncorrectlyReduced(numerator: numerator, denominator: denominator))
+                    Fraction testFraction = ReduceIncorrectly(numerator: numerator, denominator: denominator);
+                    if (testFraction != null)
                     {
-                        currNumeratorProduct *= numerator;
-                        currDenominatorProduct *= denominator;
+                        currNumeratorProduct *= testFraction.Numerator;
+                        currDenominatorProduct *= testFraction.Denominator;
                     }
                 }
             }
 
-            return currDenominatorProduct;
+            Fraction newFraction = new Fraction(numerator: currNumeratorProduct, denominator: currDenominatorProduct);
+            newFraction.Reduce();
+            return newFraction.Denominator;
         }
 
-        public static bool CanBeIncorrectlyReduced(int numerator, int denominator)
+        public static Fraction ReduceIncorrectly(int numerator, int denominator)
         {
             if (numerator % 10 == 0 || denominator % 10 == 0)
             {
-                return false;
+                return null;
             }
             int[] numeratorDigits = SharedCode.Math.GetDigits(value: numerator).ToArray();
             int[] denominatorDigits = SharedCode.Math.GetDigits(value: denominator).ToArray();
@@ -59,16 +63,16 @@ namespace ProjectEuler.Problems31_40
                             if (Decimal.Divide(d1: numerator, d2: denominator) ==
                                 Decimal.Divide(d1: newNumerator, d2: newDenominator))
                             {
-                                Debug.WriteLine("Through sheer dumb like, {0} / {1} is actually equivalent to {2} / {3}",
-                                    numerator, denominator, newNumerator, newDenominator);
-                                return true;
+                                //Debug.WriteLine("Through sheer dumb like, {0} / {1} is actually equivalent to {2} / {3}",
+                                //    numerator, denominator, newNumerator, newDenominator);
+                                return new Fraction(numerator: newNumerator, denominator: newDenominator);
                             }
                         }
                     }
                 }
             }
 
-            return false;
+            return null;
         }
     }
 }
