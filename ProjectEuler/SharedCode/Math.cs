@@ -81,39 +81,6 @@ namespace ProjectEuler.SharedCode
             return properDivisors;
         }
 
-        //[Obsolete]
-        //public static int GetDecimalLengthOfNonRepeatingFraction(int numerator, int denominator)
-        //{
-        //    int length = 0;
-        //    while (length < 1000)
-        //    {
-        //        bool alreadyIncreasedLength = false;
-        //        while (denominator > numerator)
-        //        {
-        //            length++;
-        //            numerator *= 10;
-        //            alreadyIncreasedLength = true;
-        //        }
-
-        //        int quotient = numerator / denominator;
-        //        int remainder = numerator % denominator;
-        //        if (!alreadyIncreasedLength)
-        //        {
-        //            length++;
-        //        }
-
-        //        if (remainder == 0)
-        //        {
-        //            break;
-        //        }
-        //        else
-        //        {
-        //            numerator = remainder;
-        //        }
-        //    }
-        //    return length;
-        //}
-
         public static int GetDecimalLength(int numerator, int denominator)
         {
             int length = 0;
@@ -206,6 +173,18 @@ namespace ProjectEuler.SharedCode
                 }
             }
             return length;
+        }
+
+        public static List<int> GetDigits(int value)
+        {
+            List<int> digits = new List<int>();
+            while (value > 0)
+            {
+                digits.Add(item: value % 10);
+                value /= 10;
+            }
+
+            return digits;
         }
     }
 }

@@ -110,5 +110,12 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.AreEqual(1, ProjectEuler.SharedCode.Math.GetLengthOfReciprocalCycle(numerator:1, denominator: 3));
             Assert.AreEqual(6, ProjectEuler.SharedCode.Math.GetLengthOfReciprocalCycle(numerator: 1, denominator: 7));
         }
+
+        [TestMethod]
+        public void TestGetDigits()
+        {
+            Assert.AreEqual(4, ProjectEuler.SharedCode.Math.GetDigits(1234).Count);
+            Assert.AreEqual(4, ProjectEuler.SharedCode.Math.GetDigits(1111).Count);
+        }
     }
 }
