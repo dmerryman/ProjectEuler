@@ -65,5 +65,32 @@ namespace ProjectEuler.SharedCode.Models
         {
             return (other != null && this.Numerator == other.Numerator && this.Denominator == other.Denominator);
         }
+
+        public bool Reduce()
+        {
+            bool changed = false;
+            List<int> numeratorFactors = SharedCode.Math.FindProperDivisorsOf(number: this.Numerator);
+            List<int> denominatorFactors = SharedCode.Math.FindProperDivisorsOf(number: this.Denominator);
+            List<int> commonFactors = new List<int>();
+            foreach (int factor in numeratorFactors)
+            {
+                if (denominatorFactors.Contains(factor))
+                {
+                    commonFactors.Add(item: factor);
+                }
+            }
+
+            foreach (int factor in commonFactors)
+            {
+                if (this.Numerator % factor == 0 && this.Denominator % factor == 0)
+                {
+                    this.Numerator /= factor;
+                    this.Denominator /= factor;
+                    changed = true;
+                }
+            }
+
+            return changed;
+        }
     }
 }

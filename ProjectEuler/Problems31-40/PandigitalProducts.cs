@@ -144,11 +144,6 @@ namespace ProjectEuler.Problems31_40
                 return false;
             }
 
-            if (product == 6952 && first == 4 && second == 1738)
-            {
-                int pause = 1;
-            }
-
             int testNum = (product * 100000);
 
             int firstNumDigits = (int)Math.Floor(Math.Log10(first) + 1);

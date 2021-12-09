@@ -26,26 +26,49 @@ namespace ProjectEuler.Problems31_40
             {
                 for (int numerator = 10; numerator < denominator; numerator++)
                 {
-                    int[] numeratorDigits = SharedCode.Math.GetDigits(value: numerator).ToArray();
-                    List<int> denominatorDigits = SharedCode.Math.GetDigits(value: denominator);
-                    for (int i = 0; i < numeratorDigits.Length; i++)
+                    if (CanBeIncorrectlyReduced(numerator: numerator, denominator: denominator))
                     {
-                        for (int j = 0; j < denominatorDigits.Count; j++)
+                        currNumeratorProduct *= numerator;
+                        currDenominatorProduct *= denominator;
+                    }
+                }
+            }
+
+            return currDenominatorProduct;
+        }
+
+        public static bool CanBeIncorrectlyReduced(int numerator, int denominator)
+        {
+            if (numerator % 10 == 0 || denominator % 10 == 0)
+            {
+                return false;
+            }
+            int[] numeratorDigits = SharedCode.Math.GetDigits(value: numerator).ToArray();
+            int[] denominatorDigits = SharedCode.Math.GetDigits(value: denominator).ToArray();
+            for (int i = 0; i < numeratorDigits.Length; i++)
+            {
+                for (int j = 0; j < denominatorDigits.Length; j++)
+                {
+                    if (numeratorDigits[i] == denominatorDigits[j])
+                    {
+                        //Debug.WriteLine("{0} could be reduced in {1} / {2}", numeratorDigits[i], numerator, denominator);
+                        int newNumerator = i == 0? numeratorDigits[1]: numeratorDigits[0];
+                        int newDenominator = j == 0? denominatorDigits[1] : denominatorDigits[0];
+                        if (newDenominator != 0)
                         {
-                            if (numeratorDigits[i] == num)
+                            if (Decimal.Divide(d1: numerator, d2: denominator) ==
+                                Decimal.Divide(d1: newNumerator, d2: newDenominator))
                             {
-                                Debug.WriteLine("{0} could be reduced in {1} / {2}", n, numerator, denominator);
+                                Debug.WriteLine("Through sheer dumb like, {0} / {1} is actually equivalent to {2} / {3}",
+                                    numerator, denominator, newNumerator, newDenominator);
+                                return true;
                             }
                         }
                     }
                 }
             }
-            throw new NotImplementedException();
-        }
 
-        public static bool CanBeIncorrectlyReduced(int numerator, int denominator)
-        {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }
