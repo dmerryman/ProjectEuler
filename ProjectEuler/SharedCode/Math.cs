@@ -216,5 +216,6 @@ namespace ProjectEuler.SharedCode
 
             return factorial;
         }
+
     }
 }

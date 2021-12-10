@@ -87,6 +87,7 @@
     <Compile Include="Problems1-10\SummationOfPrimes.cs" />
     <Compile Include="Problems1-10\SumSquareDifference.cs" />
     <Compile Include="SharedCode\Models\Fraction.cs" />
+    <Compile Include="SharedCode\Strings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
