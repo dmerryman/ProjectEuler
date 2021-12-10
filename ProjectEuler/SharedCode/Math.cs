@@ -33,7 +33,7 @@ namespace ProjectEuler.SharedCode
 
         public static bool IsItPrime(int number)
         {
-            if (number <= 2)
+            if (number < 2)
             {
                 return false;
             }
@@ -55,7 +55,7 @@ namespace ProjectEuler.SharedCode
             }
 
             int ceiling = (int)System.Math.Sqrt(d: number);
-            for (int i = 3; i <= ceiling; i += 6)
+            for (int i = 3; i <= ceiling; i += 2)
             {
                 if (number % i == 0 || number % (i + 2) == 0)
                 {
