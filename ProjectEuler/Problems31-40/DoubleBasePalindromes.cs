@@ -10,6 +10,17 @@ namespace ProjectEuler.Problems31_40
     {
         public static int FindDoubleBasePalindromes(int limit)
         {
+            // int sumOfDoubleBasePalindromes = 0 to track the sum of double base palindromes.
+            // Loop for i from 1 to limit.
+                // Check to see if i is a palindrom.
+                    // if it is, convert to base 2 and check to see if that is a palindrome.
+                        // if it is, then add i to sumOfDoubleBasePalindromes
+            // return sumOfDoubleBasePalindromes
+            throw new NotImplementedException();
+        }
+
+        public static String ConvertToBaseTwo(int value)
+        {
             throw new NotImplementedException();
         }
     }

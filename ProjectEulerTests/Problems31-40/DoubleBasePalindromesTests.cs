@@ -59,11 +59,10 @@ namespace ProjectEulerTests.Problems31_40
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestFindDoubleBasePalindromes()
         {
-            //
-            // TODO: Add test logic here
-            //
+            Assert.AreEqual(1,
+                ProjectEuler.Problems31_40.DoubleBasePalindromes.FindDoubleBasePalindromes(limit: 1000000));
         }
     }
 }
