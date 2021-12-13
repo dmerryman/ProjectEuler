@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo(assemblyName: "ProjectEulerTests.Problems31_40")]
 namespace ProjectEuler.Problems31_40
 {
     public static class DoubleBasePalindromes
@@ -21,7 +24,8 @@ namespace ProjectEuler.Problems31_40
 
         public static String ConvertToBaseTwo(int value)
         {
-            throw new NotImplementedException();
+            return Convert.ToString(value: value, toBase: 2);
+            
         }
     }
 }

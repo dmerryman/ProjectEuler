@@ -32,6 +32,11 @@ namespace ProjectEuler.SharedCode
             return permutations;
         }
 
+        public static bool IsItAPalindrome(String s)
+        {
+            throw new NotImplementedException();
+        }
+
         private static string wordChange(string value, int index)
         {
             string newValue = "";
