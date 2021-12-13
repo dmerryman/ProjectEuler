@@ -61,14 +61,14 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindDoubleBasePalindromes()
         {
-            Assert.AreEqual(1,
+            Assert.AreEqual(872187,
                 ProjectEuler.Problems31_40.DoubleBasePalindromes.FindDoubleBasePalindromes(limit: 1000000));
         }
 
         [TestMethod]
         public void TestConvertToBaseTwo()
         {
-            Assert.AreEqual(101, ProjectEuler.Problems31_40.DoubleBasePalindromes.ConvertToBaseTwo(value: 5));
+            Assert.AreEqual("101", ProjectEuler.Problems31_40.DoubleBasePalindromes.ConvertToBaseTwo(value: 5));
         }
     }
 }

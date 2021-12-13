@@ -15,5 +15,13 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.AreEqual(6, permutations.Count);
             Assert.IsTrue(permutations.Contains("act"));
         }
+
+        [TestMethod]
+        public void TestIsItAPalindrome()
+        {
+            Assert.IsTrue(ProjectEuler.SharedCode.Strings.IsItAPalindrome("ABBA"));
+            Assert.IsTrue(ProjectEuler.SharedCode.Strings.IsItAPalindrome("RacECAR"));
+            Assert.IsFalse(ProjectEuler.SharedCode.Strings.IsItAPalindrome("NotAPalindrome"));
+        }
     }
 }

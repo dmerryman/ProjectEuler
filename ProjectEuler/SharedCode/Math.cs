@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectEuler.SharedCode.Models;
@@ -206,6 +207,11 @@ namespace ProjectEuler.SharedCode
             return (int)System.Math.Floor(System.Math.Log10(value) + 1);
         }
 
+        public static int GetNumberOfDigits(long value)
+        {
+            return (int)System.Math.Floor(System.Math.Log10(value) + 1);
+        }
+
         public static int CalculateFactorial(int value)
         {
             int factorial = 1;
@@ -215,6 +221,70 @@ namespace ProjectEuler.SharedCode
             }
 
             return factorial;
+        }
+
+        public static bool IsItAPalindrome(int value)
+        {
+            if (value < 10 && value >= 0)
+            {
+                return true;
+            }
+            int digitsCount = SharedCode.Math.GetNumberOfDigits(value: value);
+            Stack<int> digits = new Stack<int>(capacity: digitsCount / 2);
+            for (int i = 0; i < digitsCount / 2; i++)
+            {
+                int digitToPush = value % 10;
+                digits.Push(item: digitToPush);
+                value /= 10;
+            }
+
+            if (digitsCount % 2 != 0)
+            {
+                value /= 10;
+            }
+
+            while (value > 0)
+            {
+                int digitToCheck = value % 10;
+                if (digits.Pop() != digitToCheck)
+                {
+                    return false;
+                }
+
+                value /= 10;
+            }
+
+            return true;
+        }
+
+        public static bool IsItAPalindrome(long value)
+        {
+            int digitsCount = SharedCode.Math.GetNumberOfDigits(value: value);
+            Stack<int> digits = new Stack<int>(capacity: digitsCount / 2);
+            for (int i = 0; i < digitsCount / 2; i++)
+            {
+                int digitToPush = (int)(value % 10);
+                digits.Push(item: digitToPush);
+                value /= 10;
+            }
+
+            if (digitsCount % 2 != 0)
+            {
+                value /= 10;
+            }
+
+            while (value > 0)
+            {
+                int digitToCheck = (int)(value % 10);
+                if (digits.Pop() != digitToCheck)
+                {
+                    return false;
+                }
+
+                value /= 10;
+            }
+
+            return true;
         }
 
     }

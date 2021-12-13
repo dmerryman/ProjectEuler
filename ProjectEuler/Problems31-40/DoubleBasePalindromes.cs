@@ -19,7 +19,20 @@ namespace ProjectEuler.Problems31_40
                     // if it is, convert to base 2 and check to see if that is a palindrome.
                         // if it is, then add i to sumOfDoubleBasePalindromes
             // return sumOfDoubleBasePalindromes
-            throw new NotImplementedException();
+            int sumOfDoubleBasePalindromes = 0;
+            for (int i = 0; i < limit; i++)
+            {
+                if (SharedCode.Math.IsItAPalindrome(value: i))
+                {
+                    String baseTwoValue = ConvertToBaseTwo(value: i);
+                    if (SharedCode.Strings.IsItAPalindrome(s: baseTwoValue))
+                    {
+                        sumOfDoubleBasePalindromes += i;
+                    }
+                }
+            }
+
+            return sumOfDoubleBasePalindromes;
         }
 
         public static String ConvertToBaseTwo(int value)

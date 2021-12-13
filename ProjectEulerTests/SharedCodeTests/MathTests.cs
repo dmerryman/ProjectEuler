@@ -123,5 +123,14 @@ namespace ProjectEulerTests.SharedCodeTests
         {
             Assert.AreEqual(362880, ProjectEuler.SharedCode.Math.CalculateFactorial(value: 9));
         }
+
+        [TestMethod]
+        public void TestIsItAPalindrome()
+        {
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 1551));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 15251));
+            Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 12345));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 123456789987654321));
+        }
     }
 }

@@ -34,7 +34,16 @@ namespace ProjectEuler.SharedCode
 
         public static bool IsItAPalindrome(String s)
         {
-            throw new NotImplementedException();
+            String testValue = s.ToUpper();
+            for (int i = 0; i < testValue.Length / 2; i++)
+            {
+                if (testValue[i] != testValue[testValue.Length - i - 1])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private static string wordChange(string value, int index)
