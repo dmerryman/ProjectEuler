@@ -80,6 +80,7 @@
     <Compile Include="Problems31-40\DigitFactorials.cs" />
     <Compile Include="Problems31-40\DoubleBasePalindromes.cs" />
     <Compile Include="Problems31-40\PandigitalProducts.cs" />
+    <Compile Include="Problems31-40\TrunctablePrimes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\BigNumber.cs" />
     <Compile Include="SharedCode\InputHelper.cs" />
