@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: InternalsVisibleTo(assemblyName: "ProjectEulerTests.Problems31_40")]
 namespace ProjectEuler.Problems31_40
 {
     public static class CircularPrimes
