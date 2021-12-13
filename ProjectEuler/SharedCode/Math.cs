@@ -57,7 +57,7 @@ namespace ProjectEuler.SharedCode
             int ceiling = (int)System.Math.Sqrt(d: number);
             for (int i = 3; i <= ceiling; i += 2)
             {
-                if (number % i == 0 || number % (i + 2) == 0)
+                if (number % i == 0)
                 {
                     return false;
                 }

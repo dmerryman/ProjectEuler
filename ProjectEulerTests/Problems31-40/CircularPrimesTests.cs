@@ -15,7 +15,14 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindCircularPrimesLarge()
         {
-            Assert.AreEqual(13, ProjectEuler.Problems31_40.CircularPrimes.FindCircularPrimes(limit: 1000000));
+            Assert.AreEqual(55, ProjectEuler.Problems31_40.CircularPrimes.FindCircularPrimes(limit: 1000000));
         }
+
+        //[TestMethod]
+        //public void TestGetCyclicalPermutations()
+        //{
+        //    Assert.AreEqual(5, ProjectEuler.Problems31_40.CircularPrimes.GetCyclicalPermutations(value: 19937).Count);
+        //    Assert.AreEqual(99371, ProjectEuler.Problems31_40.CircularPrimes.GetCyclicalPermutations(value: 19937)[4]);
+        //}
     }
 }

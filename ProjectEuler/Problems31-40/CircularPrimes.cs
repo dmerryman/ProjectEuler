@@ -25,7 +25,7 @@ namespace ProjectEuler.Problems31_40
                 {
                     if (AreAllPermutationsPrime(value: testValue))
                     {
-                        //Debug.WriteLine("{0} is a circular prime", testValue);
+                        Debug.WriteLine("{0} is a circular prime", testValue);
                         numOfCircularPrimes++;
                     }
                 }
@@ -35,15 +35,14 @@ namespace ProjectEuler.Problems31_40
 
         public static bool AreAllPermutationsPrime(int value)
         {
-            if (value == 19)
-            {
-                int pause = 1;
-            }
+
             bool allPrime = true;
-            List<string> permutations = SharedCode.Strings.GetPermutations(value: value.ToString());
-            foreach (string s in permutations)
+            List<int> cyclicalRotations = GetCyclicalPermutations(value: value);
+            // only cyclical permutations.
+            for (int i = 1; i < cyclicalRotations.Count; i++)
             {
-                int testValue = Int32.Parse(s: s);
+                int testValue = cyclicalRotations[i];
+
                 if (!SharedCode.Math.IsItPrime(number: testValue))
                 {
                     return false;
@@ -51,6 +50,22 @@ namespace ProjectEuler.Problems31_40
             }
 
             return true;
+        }
+
+        public static List<int> GetCyclicalPermutations(int value)
+        {
+            int numberOfDigits = SharedCode.Math.GetNumberOfDigits(value: value);
+            List<int> cyclicalPermutations = new List<int>();
+            cyclicalPermutations.Add(item: value);
+            for (int i = 0; i < numberOfDigits - 1; i++)
+            {
+                int digitToCycle = value % 10;
+                value /= 10;
+                value += (int)Math.Pow(x: 10, y: numberOfDigits - 1) * digitToCycle;
+                cyclicalPermutations.Add(item: value);
+            }
+
+            return cyclicalPermutations;
         }
     }
 }
