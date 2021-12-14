@@ -19,7 +19,18 @@ namespace ProjectEuler.Problems31_40
             throw new NotImplementedException();
         }
 
-        private static bool IsItAPandigitalMultiple()
+        private static bool IsItAPandigitalMultiple(int testValue)
+        {
+            // int Hash<int> digitsAccountedFor to track digits currently accounted for.
+            // int currentMultiplier = 1 to track current multiplier.
+            // Loop until digitsAccountedFor.Count == 9
+                // multiply testValue by currentMultiplier and add each digit to digitsAccountedFor.
+                // If a duplicate is found, then this is not a pandigital multiple, so return false.
+            // return true.
+            throw new NotImplementedException();
+        }
+
+        private static int GetPandigitalMultiple(int testValue)
         {
             throw new NotImplementedException();
         }
