@@ -15,6 +15,7 @@ namespace ProjectEuler.SharedCode
         {
             // False indicates a prime number.
             bool[] sieve = new bool[limit];
+            sieve[1] = true;
             for (int i = 2; i < limit; i++)
             {
                 if (!sieve[i])

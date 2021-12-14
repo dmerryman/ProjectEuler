@@ -61,7 +61,21 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindTrunctablePrimes()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems31_40.TrunctablePrimes.FindTrunctablePrimes());
+            Assert.AreEqual(748317, ProjectEuler.Problems31_40.TrunctablePrimes.FindTrunctablePrimes());
+        }
+
+        [TestMethod]
+        public void TestFindTrunctablePrimesWithSieve()
+        {
+            Assert.AreEqual(748317, ProjectEuler.Problems31_40.TrunctablePrimes.FindTrunctablePrimesWithSieve());
+        }
+
+        [TestMethod]
+        public void TestGetNumberVariations()
+        {
+            List<int> variations = ProjectEuler.Problems31_40.TrunctablePrimes.GetNumberVariations(value: 3742);
+            Assert.AreEqual(7, variations.Count);
+            Assert.AreEqual(742, variations[6]);
         }
     }
 }
