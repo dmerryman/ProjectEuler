@@ -18,6 +18,28 @@ namespace ProjectEuler.Problems31_40
                     // if they all are, increment numTrunctablePrimes by one, and add the number to 
                     // sumTrunctablePrimes.
             // return sumTrunctablePrimes.
+            int numTrunctablePrimns = 0;
+            int sumTrunctablePrimes = 0;
+            int currNum = 11;
+            while (numTrunctablePrimns < 11)
+            {
+                if (SharedCode.Math.IsItPrime(number: currNum))
+                {
+
+                }
+
+                currNum++;
+            }
+            throw new NotImplementedException();
+        }
+
+        private static int IsItATrunctablePrime(int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<int> GetNumberVariations(int value)
+        {
             throw new NotImplementedException();
         }
     }
