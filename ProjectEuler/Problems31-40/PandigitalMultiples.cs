@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjectEuler.Problems31_40
 {
-    static public class PandigitalMultiples
+    public static class PandigitalMultiples
     {
-        static public int FindPandigitalMultiples()
+        public static int FindPandigitalMultiples()
         {
             // int largestPandigitalMultiple = int32.minvalue to track the largest pandigital multiple.
             // loop for int testValue from 1 to 98765432
@@ -16,6 +16,11 @@ namespace ProjectEuler.Problems31_40
                 // If it is, check to see if it's larger than largestPandigitalMultiple
                     // if it is, set largestPandigitalMultiple to that value.
             // return largestPandigitalMultiple
+            throw new NotImplementedException();
+        }
+
+        private static bool IsItAPandigitalMultiple()
+        {
             throw new NotImplementedException();
         }
 
