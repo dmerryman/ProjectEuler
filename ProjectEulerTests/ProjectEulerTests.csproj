@@ -80,6 +80,7 @@
     <Compile Include="Problems31-40\DigitCancellingFractions.cs" />
     <Compile Include="Problems31-40\DigitFactorialsTests.cs" />
     <Compile Include="Problems31-40\DoubleBasePalindromesTests.cs" />
+    <Compile Include="Problems31-40\PandigitalMultiplesTests.cs" />
     <Compile Include="Problems31-40\PandigitalProducts.cs" />
     <Compile Include="Problems31-40\TrunctablePrimesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
