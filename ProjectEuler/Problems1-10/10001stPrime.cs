@@ -17,7 +17,7 @@ namespace ProjectEuler.Problems1_10
                 testValue += 2;
                 if (IsItPrime(num: testValue))
                 {
-                    Console.WriteLine("{0} is prime", testValue);
+                    //Console.WriteLine("{0} is prime", testValue);
                     count++;
                 }
             }
