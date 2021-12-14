@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +33,19 @@ namespace ProjectEuler.Problems31_40
 
         private static int GetPandigitalMultiple(int testValue)
         {
-            throw new NotImplementedException();
+            int i = 1;
+            int panDigitalMultiple = 0;
+            int totalNumDigits = 0;
+
+            while (totalNumDigits < 9)
+            {
+                int valueToAdd = testValue * i;
+                int currNumDigits = SharedCode.Math.GetNumberOfDigits(value: valueToAdd);
+                panDigitalMultiple += valueToAdd * (int)Math.Pow(x: 10, y: 9 - currNumDigits - totalNumDigits);
+                totalNumDigits += SharedCode.Math.GetNumberOfDigits(value: testValue);
+                i++;
+            }
+            return panDigitalMultiple;
         }
 
     }
