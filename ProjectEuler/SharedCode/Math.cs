@@ -288,5 +288,21 @@ namespace ProjectEuler.SharedCode
             return true;
         }
 
+        public static bool ContainsDigit(int testValue, int digit)
+        {
+            while (testValue > 0)
+            {
+                int testDigit = testValue % 10;
+                if (testDigit == digit)
+                {
+                    return true;
+                }
+
+                testValue /= 10;
+            }
+
+            return false;
+        }
+
     }
 }

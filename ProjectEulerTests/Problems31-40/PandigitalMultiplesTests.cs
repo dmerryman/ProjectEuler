@@ -61,13 +61,20 @@ namespace ProjectEulerTests.Problems31_40
         [TestMethod]
         public void TestFindPandigitalMultiples()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems31_40.PandigitalMultiples.FindPandigitalMultiples());
+            Assert.AreEqual(932718654, ProjectEuler.Problems31_40.PandigitalMultiples.FindPandigitalMultiples());
         }
 
         //[TestMethod]
         //public void TestGetPandigitalMultiple()
         //{
         //    Assert.AreEqual(192384576, ProjectEuler.Problems31_40.PandigitalMultiples.GetPandigitalMultiple(testValue: 192));
+        //}
+
+        //[TestMethod]
+        //public void TestIsItAPandigitalMultiple()
+        //{
+        //    Assert.IsTrue(ProjectEuler.Problems31_40.PandigitalMultiples.IsItAPandigitalMultiple(testValue: 192));
+        //    Assert.IsFalse(ProjectEuler.Problems31_40.PandigitalMultiples.IsItAPandigitalMultiple(testValue: 100));
         //}
     }
 }

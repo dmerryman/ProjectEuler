@@ -132,5 +132,12 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 12345));
             Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 123456789987654321));
         }
+
+        [TestMethod]
+        public void TestContainsDigit()
+        {
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.ContainsDigit(testValue: 123456789, digit: 1));
+            Assert.IsFalse(ProjectEuler.SharedCode.Math.ContainsDigit(testValue: 23456789, digit: 1));
+        }
     }
 }

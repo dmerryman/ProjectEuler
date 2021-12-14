@@ -17,10 +17,21 @@ namespace ProjectEuler.Problems31_40
                 // If it is, check to see if it's larger than largestPandigitalMultiple
                     // if it is, set largestPandigitalMultiple to that value.
             // return largestPandigitalMultiple
-            throw new NotImplementedException();
+            int largestPandigitalMultiple = Int32.MinValue;
+            for (int testValue = 1; testValue <= 98765432; testValue++)
+            {
+                if (IsItAPandigitalMultiple(testValue: testValue))
+                {
+                    int panDigitalMultiple = GetPandigitalMultiple(testValue: testValue);
+                    largestPandigitalMultiple = panDigitalMultiple > largestPandigitalMultiple
+                        ? panDigitalMultiple
+                        : largestPandigitalMultiple;
+                }
+            }
+            return largestPandigitalMultiple;
         }
 
-        private static bool IsItAPandigitalMultiple(int testValue)
+        public static bool IsItAPandigitalMultiple(int testValue)
         {
             // int Hash<int> digitsAccountedFor to track digits currently accounted for.
             // int currentMultiplier = 1 to track current multiplier.
@@ -28,7 +39,26 @@ namespace ProjectEuler.Problems31_40
                 // multiply testValue by currentMultiplier and add each digit to digitsAccountedFor.
                 // If a duplicate is found, then this is not a pandigital multiple, so return false.
             // return true.
-            throw new NotImplementedException();
+            HashSet<int> digitsAccountedFor = new HashSet<int>();
+            int currMultiplier = 1;
+            while (digitsAccountedFor.Count < 9)
+            {
+                int nextValue = testValue * currMultiplier;
+                while (nextValue > 0)
+                {
+                    int digitToAdd = nextValue % 10;
+                    bool successfullyAdded = digitsAccountedFor.Add(item: digitToAdd);
+                    if (!successfullyAdded || digitToAdd == 0)
+                    {
+                        return false;
+                    }
+                    nextValue /= 10;
+                }
+
+                currMultiplier++;
+            }
+
+            return true;
         }
 
         private static int GetPandigitalMultiple(int testValue)
