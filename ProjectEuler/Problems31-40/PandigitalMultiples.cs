@@ -20,12 +20,15 @@ namespace ProjectEuler.Problems31_40
             int largestPandigitalMultiple = Int32.MinValue;
             for (int testValue = 1; testValue <= 98765432; testValue++)
             {
-                if (IsItAPandigitalMultiple(testValue: testValue))
+                if (!SharedCode.Math.ContainsDigit(testValue: testValue, digit: 0))
                 {
-                    int panDigitalMultiple = GetPandigitalMultiple(testValue: testValue);
-                    largestPandigitalMultiple = panDigitalMultiple > largestPandigitalMultiple
-                        ? panDigitalMultiple
-                        : largestPandigitalMultiple;
+                    if (IsItAPandigitalMultiple(testValue: testValue))
+                    {
+                        int panDigitalMultiple = GetPandigitalMultiple(testValue: testValue);
+                        largestPandigitalMultiple = panDigitalMultiple > largestPandigitalMultiple
+                            ? panDigitalMultiple
+                            : largestPandigitalMultiple;
+                    }
                 }
             }
             return largestPandigitalMultiple;
