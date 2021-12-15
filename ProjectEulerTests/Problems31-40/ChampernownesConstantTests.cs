@@ -58,10 +58,18 @@ namespace ProjectEulerTests.Problems31_40
         //
         #endregion
 
+        //[TestMethod]
+        //public void TestFindChampernownesConstant()
+        //{
+        //    Assert.AreEqual(1, ProjectEuler.Problems31_40.ChampernownesConstant.FindChampernownesConstant());
+        //}
+
         [TestMethod]
         public void TestFindChampernownesConstant()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems31_40.ChampernownesConstant.FindChampernownesConstant());
+            Assert.AreEqual(9, ProjectEuler.Problems31_40.ChampernownesConstant.GetDigitAtIndex(number: 987, digit: 1));
+            Assert.AreEqual(8, ProjectEuler.Problems31_40.ChampernownesConstant.GetDigitAtIndex(number: 987, digit: 2));
+            Assert.AreEqual(7, ProjectEuler.Problems31_40.ChampernownesConstant.GetDigitAtIndex(number: 987, digit: 3));
         }
     }
 }

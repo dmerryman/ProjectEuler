@@ -52,7 +52,24 @@ namespace ProjectEuler.Problems31_40
 
         public static int GetDigitAtIndex(int number, int digit)
         {
-            throw new NotImplementedException();
+            // Get the number of digits in number.
+            // int i = 1 to track the currentDigit we're at..
+            // divide by 10 and increment i each time until number of digits - 
+            
+            int numberOfDigitsInNumber = ProjectEuler.SharedCode.Math.GetNumberOfDigits(value: number);
+            if (digit > numberOfDigitsInNumber)
+            {
+                throw new Exception("Digit position not in number.");
+            }
+            int i = 1;
+            while (i < numberOfDigitsInNumber + 1 - digit)
+            {
+                number /= 10;
+                i++;
+            }
+
+            int digitToReturn = number % 10;
+            return digitToReturn;
         }
     }
 }
