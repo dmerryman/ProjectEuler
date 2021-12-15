@@ -44,7 +44,13 @@ namespace ProjectEuler.Problems31_40
             return digitCount + numberOfDigitsToAdd > nextDigitPosition;
         }
 
-        public static bool GetNextDigit(int nextDigitPosition, int digitCount, int nextNumber)
+        public static int GetNextDigit(int nextDigitPosition, int digitCount, int nextNumber)
+        {
+            // return the digit at nextDigitPosition - digitCount in nextNumber.
+            throw new NotImplementedException();
+        }
+
+        public static int GetDigitAtIndex(int number, int digit)
         {
             throw new NotImplementedException();
         }
