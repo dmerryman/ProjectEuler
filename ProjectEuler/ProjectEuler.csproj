@@ -79,6 +79,7 @@
     <Compile Include="Problems31-40\DigitCancellingFractions.cs" />
     <Compile Include="Problems31-40\DigitFactorials.cs" />
     <Compile Include="Problems31-40\DoubleBasePalindromes.cs" />
+    <Compile Include="Problems31-40\IntegerRightTriangles.cs" />
     <Compile Include="Problems31-40\PandigitalMultiples.cs" />
     <Compile Include="Problems31-40\PandigitalProducts.cs" />
     <Compile Include="Problems31-40\TrunctablePrimes.cs" />
