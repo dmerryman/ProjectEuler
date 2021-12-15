@@ -26,6 +26,12 @@ namespace ProjectEuler.Problems31_40
             while (digitCount <= 1000000)
             {
                 currNum++;
+                int numberOfDigitsFOrNextNumber = ProjectEuler.SharedCode.Math.GetNumberOfDigits(value: currNum);
+                if (DidWePassOne(nextDigitPosition: digitPositions[currentOne], digitCount: digitCount,
+                        numberOfDigitsToAdd: numberOfDigitsFOrNextNumber))
+                {
+
+                }
             }
             throw new NotImplementedException();
         }
@@ -36,6 +42,11 @@ namespace ProjectEuler.Problems31_40
                 // return true
             // return false
             return digitCount + numberOfDigitsToAdd > nextDigitPosition;
+        }
+
+        public static bool GetNextDigit(int nextDigitPosition, int digitCount, int nextNumber)
+        {
+            throw new NotImplementedException();
         }
     }
 }
