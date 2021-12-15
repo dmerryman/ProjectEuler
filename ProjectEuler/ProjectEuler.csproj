@@ -74,6 +74,7 @@
     <Compile Include="Problems21-30\NumberSpiralDiagonals.cs" />
     <Compile Include="Problems21-30\QuadraticPrimes.cs" />
     <Compile Include="Problems21-30\ReciprocalCycles.cs" />
+    <Compile Include="Problems31-40\ChampernownesConstant.cs" />
     <Compile Include="Problems31-40\CircularPrimes.cs" />
     <Compile Include="Problems31-40\CoinSums.cs" />
     <Compile Include="Problems31-40\DigitCancellingFractions.cs" />

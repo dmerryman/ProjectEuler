@@ -75,6 +75,7 @@
     <Compile Include="Problems21-30\NonAbundantSumsTests.cs" />
     <Compile Include="Problems21-30\NumberSpiralDiagonals.cs" />
     <Compile Include="Problems21-30\QuadraticPrimesTests.cs" />
+    <Compile Include="Problems31-40\ChampernownesConstantTests.cs" />
     <Compile Include="Problems31-40\CircularPrimesTests.cs" />
     <Compile Include="Problems31-40\CoinSumsTests.cs" />
     <Compile Include="Problems31-40\DigitCancellingFractions.cs" />

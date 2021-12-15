@@ -35,31 +35,19 @@ namespace ProjectEuler.SharedCode
 
         public static bool IsItPrime(int number)
         {
-            if (number < 2)
-            {
-                return false;
-            }
-            else if (number < 4)
+            if (number == 2 || number == 3)
             {
                 return true;
             }
-            else if (number % 2 == 0)
-            {
-                return false;
-            }
-            else if (number < 9)
-            {
-                return true;
-            }
-            else if (number % 3 == 0)
+
+            if (number <= 1 || number % 2 == 0 || number % 3 == 0)
             {
                 return false;
             }
 
-            int ceiling = (int)System.Math.Sqrt(d: number);
-            for (int i = 3; i <= ceiling; i += 2)
+            for (int i = 5; i * i <= number; i++)
             {
-                if (number % i == 0)
+                if (number % i == 0 || number % (i + 2) == 0)
                 {
                     return false;
                 }
