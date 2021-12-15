@@ -139,5 +139,13 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.IsTrue(ProjectEuler.SharedCode.Math.ContainsDigit(testValue: 123456789, digit: 1));
             Assert.IsFalse(ProjectEuler.SharedCode.Math.ContainsDigit(testValue: 23456789, digit: 1));
         }
+
+        [TestMethod]
+        public void TestIsItAnInteger()
+        {
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAnInteger(testValue: Math.Pow(x: 9999, y: 2)));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAnInteger(testValue: Math.Sqrt(d: 99980001)));
+            Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItAnInteger(testValue: Math.Sqrt(d: 9999)));
+        }
     }
 }

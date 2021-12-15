@@ -304,5 +304,10 @@ namespace ProjectEuler.SharedCode
             return false;
         }
 
+        public static bool IsItAnInteger(double testValue)
+        {
+            return testValue % 1 == 0;
+        }
+
     }
 }

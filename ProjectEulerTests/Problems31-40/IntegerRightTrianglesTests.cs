@@ -64,5 +64,12 @@ namespace ProjectEulerTests.Problems31_40
             Assert.AreEqual(840,
                 ProjectEuler.Problems31_40.IntegerRightTriangles.FindIntegerRightTriangles(perimeterLimit: 1000));
         }
+
+        [TestMethod]
+        public void TestFindIntegerRightTrianglesBetterTests()
+        {
+            Assert.AreEqual(840,
+                ProjectEuler.Problems31_40.IntegerRightTriangles.FindIntegerRightTrianglesBetter(perimeterLimit: 1000));
+        }
     }
 }
