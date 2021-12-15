@@ -18,6 +18,20 @@ namespace ProjectEuler.Problems31_40
                     // Check to see if this value contains one of the decimal places we need to track.
                         // if it does, multiple multipleValue by that digit.
             // return multipleValue
+            int digitCount = 0;
+            int currNum = 0;
+            int multipleValue = 1;
+            int[] digitPositions = new int[] { 1, 10, 100, 1000, 10000, 100000, 1000000 };
+            int currentOne = 0;
+            while (digitCount <= 1000000)
+            {
+                currNum++;
+            }
+            throw new NotImplementedException();
+        }
+
+        public static bool DidWePassOne(int nextDigitPosition, int digitCount, int numberOfDigitsToAdd)
+        {
             throw new NotImplementedException();
         }
     }
