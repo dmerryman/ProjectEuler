@@ -25,7 +25,7 @@ namespace ProjectEuler.Problems31_40
             // return maxNumberOfSolutions
             int maxNumberOfSolutions = Int32.MinValue;
             int perimeterWithMostSolutions = -1;
-            for (int perimeter = 3; perimeter <= perimeterLimit; perimeter++)
+            for (int perimeter = 4; perimeter <= perimeterLimit; perimeter += 2)
             {
                 int currNumberOfSolutions = 0;
                 for (int c = 2; c <= perimeter - 2; c++)
