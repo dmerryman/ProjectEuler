@@ -32,7 +32,10 @@ namespace ProjectEuler.Problems31_40
 
         public static bool DidWePassOne(int nextDigitPosition, int digitCount, int numberOfDigitsToAdd)
         {
-            throw new NotImplementedException();
+            // if digitCount + numberOfDigitsToAdd > nextDigitPosition
+                // return true
+            // return false
+            return digitCount + numberOfDigitsToAdd > nextDigitPosition;
         }
     }
 }
