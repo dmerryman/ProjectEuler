@@ -84,6 +84,7 @@
     <Compile Include="Problems31-40\PandigitalMultiples.cs" />
     <Compile Include="Problems31-40\PandigitalProducts.cs" />
     <Compile Include="Problems31-40\TrunctablePrimes.cs" />
+    <Compile Include="Problems41-50\CodedTriangleNumbers.cs" />
     <Compile Include="Problems41-50\PandigitalPrime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\BigNumber.cs" />
