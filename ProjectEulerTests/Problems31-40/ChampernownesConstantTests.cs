@@ -65,11 +65,17 @@ namespace ProjectEulerTests.Problems31_40
         //}
 
         [TestMethod]
-        public void TestFindChampernownesConstant()
+        public void TestGetDigitAtIndex()
         {
             Assert.AreEqual(9, ProjectEuler.Problems31_40.ChampernownesConstant.GetDigitAtIndex(number: 987, digit: 1));
             Assert.AreEqual(8, ProjectEuler.Problems31_40.ChampernownesConstant.GetDigitAtIndex(number: 987, digit: 2));
             Assert.AreEqual(7, ProjectEuler.Problems31_40.ChampernownesConstant.GetDigitAtIndex(number: 987, digit: 3));
+        }
+
+        [TestMethod]
+        public void TestFindChampernownesConstant()
+        {
+            Assert.AreEqual(210, ProjectEuler.Problems31_40.ChampernownesConstant.FindChampernownesConstant());
         }
     }
 }

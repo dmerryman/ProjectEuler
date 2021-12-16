@@ -147,5 +147,13 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAnInteger(testValue: Math.Sqrt(d: 99980001)));
             Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItAnInteger(testValue: Math.Sqrt(d: 9999)));
         }
+
+        [TestMethod]
+        public void TestGetDigitAtIndex()
+        {
+            Assert.AreEqual(9, ProjectEuler.SharedCode.Math.GetDigitAtIndex(number: 987, digit: 1));
+            Assert.AreEqual(8, ProjectEuler.SharedCode.Math.GetDigitAtIndex(number: 987, digit: 2));
+            Assert.AreEqual(7, ProjectEuler.SharedCode.Math.GetDigitAtIndex(number: 987, digit: 3));
+        }
     }
 }

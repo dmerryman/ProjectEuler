@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,20 @@ namespace ProjectEuler.Problems31_40
             while (digitCount <= 1000000)
             {
                 currNum++;
-                int numberOfDigitsFOrNextNumber = ProjectEuler.SharedCode.Math.GetNumberOfDigits(value: currNum);
+                int numberOfDigitsForNextNumber = ProjectEuler.SharedCode.Math.GetNumberOfDigits(value: currNum);
                 if (DidWePassOne(nextDigitPosition: digitPositions[currentOne], digitCount: digitCount,
-                        numberOfDigitsToAdd: numberOfDigitsFOrNextNumber))
+                        numberOfDigitsToAdd: numberOfDigitsForNextNumber))
                 {
-
+                    int digitToMultiplyBy = GetDigitAtIndex(number: currNum, digit: digitPositions[currentOne] - digitCount);
+                    //Debug.WriteLine("Multiplying by {0}", digitToMultiplyBy);
+                    multipleValue *= digitToMultiplyBy;
+                    currentOne++;
                 }
+
+                digitCount += numberOfDigitsForNextNumber;
             }
-            throw new NotImplementedException();
+
+            return multipleValue;
         }
 
         public static bool DidWePassOne(int nextDigitPosition, int digitCount, int numberOfDigitsToAdd)
@@ -41,15 +48,8 @@ namespace ProjectEuler.Problems31_40
             // if digitCount + numberOfDigitsToAdd > nextDigitPosition
                 // return true
             // return false
-            return digitCount + numberOfDigitsToAdd > nextDigitPosition;
+            return digitCount + numberOfDigitsToAdd >= nextDigitPosition;
         }
-
-        public static int GetNextDigit(int nextDigitPosition, int digitCount, int nextNumber)
-        {
-            // return the digit at nextDigitPosition - digitCount in nextNumber.
-            throw new NotImplementedException();
-        }
-
         public static int GetDigitAtIndex(int number, int digit)
         {
             // Get the number of digits in number.
@@ -57,10 +57,7 @@ namespace ProjectEuler.Problems31_40
             // divide by 10 and increment i each time until number of digits - 
             
             int numberOfDigitsInNumber = ProjectEuler.SharedCode.Math.GetNumberOfDigits(value: number);
-            if (digit > numberOfDigitsInNumber)
-            {
-                throw new Exception("Digit position not in number.");
-            }
+
             int i = 1;
             while (i < numberOfDigitsInNumber + 1 - digit)
             {
