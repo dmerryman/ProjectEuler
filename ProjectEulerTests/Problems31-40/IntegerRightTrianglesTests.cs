@@ -57,13 +57,13 @@ namespace ProjectEulerTests.Problems31_40
         // public void MyTestCleanup() { }
         //
         #endregion
-
-        [TestMethod]
-        public void TestFindIntegerRightTrianglesTests()
-        {
-            Assert.AreEqual(840,
-                ProjectEuler.Problems31_40.IntegerRightTriangles.FindIntegerRightTriangles(perimeterLimit: 1000));
-        }
+        // Way too slow
+        //[TestMethod]
+        //public void TestFindIntegerRightTrianglesTests()
+        //{
+        //    Assert.AreEqual(840,
+        //        ProjectEuler.Problems31_40.IntegerRightTriangles.FindIntegerRightTriangles(perimeterLimit: 1000));
+        //}
 
         [TestMethod]
         public void TestFindIntegerRightTrianglesBetterTests()

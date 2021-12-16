@@ -61,7 +61,13 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindPandigitalPrime()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.PandigitalPrime.FindPandigitalPrime());
+            Assert.AreEqual(7652413, ProjectEuler.Problems41_50.PandigitalPrime.FindPandigitalPrime());
+        }
+
+        [TestMethod]
+        public void TestFindPandigitalPrimeWithSieve()
+        {
+            Assert.AreEqual(7652413, ProjectEuler.Problems41_50.PandigitalPrime.FindPandigitalPrimeWithSieve());
         }
     }
 }
