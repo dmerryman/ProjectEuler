@@ -61,7 +61,13 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindCodedTriangleNumbers()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.CodedTriangleNumbers.FindCodedTriangleNumbers());
+            Assert.AreEqual(162, ProjectEuler.Problems41_50.CodedTriangleNumbers.FindCodedTriangleNumbers());
+        }
+
+        [TestMethod]
+        public void TestCalculateWordScores()
+        {
+            Assert.AreEqual(55, ProjectEuler.Problems41_50.CodedTriangleNumbers.CalculateWordScore(word: "SKY"));
         }
     }
 }
