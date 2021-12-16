@@ -155,5 +155,13 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.AreEqual(8, ProjectEuler.SharedCode.Math.GetDigitAtIndex(number: 987, digit: 2));
             Assert.AreEqual(7, ProjectEuler.SharedCode.Math.GetDigitAtIndex(number: 987, digit: 3));
         }
+
+        [TestMethod]
+        public void TestIsItPandigital()
+        {
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPandigital(number: 12));
+            Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPandigital(number: 135792468));
+            Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItPandigital(number: 12346795));
+        }
     }
 }

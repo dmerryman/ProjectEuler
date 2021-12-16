@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectEuler.SharedCode.Models;
@@ -314,6 +315,31 @@ namespace ProjectEuler.SharedCode
 
             int digitToReturn = number % 10;
             return digitToReturn;
+        }
+
+        public static bool IsItPandigital(int number)
+        {
+            HashSet<int> digitsAccountedFor = new HashSet<int>();
+            while (number > 0)
+            {
+                int digitToAdd = number % 10;
+                if (digitToAdd == 0 || digitsAccountedFor.Contains(item: digitToAdd))
+                {
+                    return false;
+                }
+
+                digitsAccountedFor.Add(digitToAdd);
+                number /= 10;
+            }
+            for (int i = 1; i <= digitsAccountedFor.Count; i++)
+            {
+                if (!digitsAccountedFor.Contains(item: i))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
     }
