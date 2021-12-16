@@ -99,7 +99,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Problems41-50\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\p022_names.txt" />
   </ItemGroup>
