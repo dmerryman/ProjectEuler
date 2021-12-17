@@ -20,12 +20,17 @@ namespace ProjectEuler.Problems41_50
             long sumOfSubstringDivisibleNumbers = 0;
             for (long testValue = 1023456789; testValue <= 9876543210; testValue++)
             {
-                if (IsItPandigital(number: testValue))
+                if (SharedCode.Math.GetDigitAtIndex(number: testValue, digit: 4) % 2 == 0 &&
+                    SharedCode.Math.GetDigitAtIndex(number: testValue, digit: 6) == 5)
+
                 {
-                    if (IsItSubstringDivisible(testValue: testValue))
+                    if (IsItPandigital(number: testValue))
                     {
-                        sumOfSubstringDivisibleNumbers += testValue;
-                        Debug.WriteLine("Adding {0} gives us {1}", testValue, sumOfSubstringDivisibleNumbers);
+                        if (IsItSubstringDivisible(testValue: testValue))
+                        {
+                            sumOfSubstringDivisibleNumbers += testValue;
+                            Debug.WriteLine("Adding {0} gives us {1}", testValue, sumOfSubstringDivisibleNumbers);
+                        }
                     }
                 }
             }
@@ -40,12 +45,16 @@ namespace ProjectEuler.Problems41_50
             foreach (string permutation in permutations)
             {
                 long valueToCheck = long.Parse(permutation);
-                if (IsItPandigital(number: valueToCheck))
+                if (SharedCode.Math.GetDigitAtIndex(number: valueToCheck, digit: 4) % 2 == 0 &&
+                    SharedCode.Math.GetDigitAtIndex(number: valueToCheck, digit: 6) == 5)
                 {
-                    if (IsItSubstringDivisible(testValue: valueToCheck))
+                    if (IsItPandigital(number: valueToCheck))
                     {
-                        sumOfSubstringDivisibleNumbers += valueToCheck;
-                        Debug.WriteLine("Adding {0} gives us {1}", valueToCheck, sumOfSubstringDivisibleNumbers);
+                        if (IsItSubstringDivisible(testValue: valueToCheck))
+                        {
+                            sumOfSubstringDivisibleNumbers += valueToCheck;
+                            //Debug.WriteLine("Adding {0} gives us {1}", valueToCheck, sumOfSubstringDivisibleNumbers);
+                        }
                     }
                 }
             }

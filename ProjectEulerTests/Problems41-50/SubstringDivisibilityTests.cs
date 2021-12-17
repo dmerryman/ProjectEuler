@@ -61,13 +61,15 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindSubstringDivisibilityPermutations()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibilityPermutations());
+            Assert.AreEqual(16695334890,
+                ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibilityPermutations());
         }
 
         [TestMethod]
         public void TestFindSubstringDivisibilitySlow()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibilitySlow());
+            Assert.AreEqual(16695334890,
+                ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibilitySlow());
         }
         [TestMethod]
         public void TestGetSubstring()
