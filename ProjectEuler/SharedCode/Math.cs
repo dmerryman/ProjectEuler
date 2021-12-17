@@ -317,6 +317,25 @@ namespace ProjectEuler.SharedCode
             return digitToReturn;
         }
 
+        public static int GetDigitAtIndex(long number, int digit)
+        {
+            // Get the number of digits in number.
+            // int i = 1 to track the currentDigit we're at.
+            // divide by 10 and increment i each time until i < number of digits + 1 - digit
+
+            int numberOfDigitsInNumber = ProjectEuler.SharedCode.Math.GetNumberOfDigits(value: number);
+
+            int i = 1;
+            while (i < numberOfDigitsInNumber + 1 - digit)
+            {
+                number /= 10;
+                i++;
+            }
+
+            int digitToReturn = (int)(number % 10);
+            return digitToReturn;
+        }
+
         public static bool IsItPandigital(int number)
         {
             HashSet<int> digitsAccountedFor = new HashSet<int>();

@@ -59,17 +59,42 @@ namespace ProjectEulerTests.Problems41_50
         #endregion
 
         [TestMethod]
-        public void TestFindSubstringDivisibility()
+        public void TestFindSubstringDivisibilityPermutations()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibility());
+            Assert.AreEqual(1, ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibilityPermutations());
         }
 
+        [TestMethod]
+        public void TestFindSubstringDivisibilitySlow()
+        {
+            Assert.AreEqual(1, ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibilitySlow());
+        }
         [TestMethod]
         public void TestGetSubstring()
         {
             Assert.AreEqual(406, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 2, endDigit: 4));
             Assert.AreEqual(63, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 3, endDigit: 5));
             Assert.AreEqual(63572, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 3, endDigit: 8));
+            Assert.AreEqual(289, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 8, endDigit: 10));
+            Assert.AreEqual(289, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 149635728, startDigit: 8, endDigit: 10));
+        }
+
+        [TestMethod]
+        public void TestIsItSubstringDivisible()
+        {
+            Assert.IsTrue(ProjectEuler.Problems41_50.SubstringDivisibility.IsItSubstringDivisible(testValue: 1406357289));
+        }
+
+        [TestMethod]
+        public void TestIsItPandigital()
+        {
+            Assert.IsTrue(ProjectEuler.Problems41_50.SubstringDivisibility.IsItPandigital(number: 1406357289));
+        }
+
+        [TestMethod]
+        public void TestGetPermutations()
+        {
+            Assert.Equals(3628800, ProjectEuler.Problems41_50.SubstringDivisibility.GetPermutations(number: 1234567890).Count);
         }
     }
 }
