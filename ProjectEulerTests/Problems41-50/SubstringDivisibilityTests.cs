@@ -63,5 +63,13 @@ namespace ProjectEulerTests.Problems41_50
         {
             Assert.AreEqual(1, ProjectEuler.Problems41_50.SubstringDivisibility.FindSubstringDivisibility());
         }
+
+        [TestMethod]
+        public void TestGetSubstring()
+        {
+            Assert.AreEqual(406, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 2, endDigit: 4));
+            Assert.AreEqual(63, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 3, endDigit: 5));
+            Assert.AreEqual(63572, ProjectEuler.Problems41_50.SubstringDivisibility.GetSubstring(number: 1406357289, startDigit: 3, endDigit: 8));
+        }
     }
 }

@@ -341,6 +341,5 @@ namespace ProjectEuler.SharedCode
 
             return true;
         }
-
     }
 }
