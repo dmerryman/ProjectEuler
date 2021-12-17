@@ -341,5 +341,13 @@ namespace ProjectEuler.SharedCode
 
             return true;
         }
+
+        public static int GetSubString(int number, int startDigit, int endDigit)
+        {
+            int numberOfDigits = SharedCode.Math.GetNumberOfDigits(value: number);
+            int returnNumber = number % (int)System.Math.Pow(x: 10, y: numberOfDigits + 1 - startDigit);
+            returnNumber /= (int)System.Math.Pow(x: 10, y: numberOfDigits - endDigit);
+            return returnNumber;
+        }
     }
 }

@@ -163,5 +163,12 @@ namespace ProjectEulerTests.SharedCodeTests
             Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItPandigital(number: 135792468));
             Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItPandigital(number: 12346795));
         }
+
+        [TestMethod]
+        public void TestGetSubstring()
+        {
+            Assert.AreEqual(456,
+                ProjectEuler.SharedCode.Math.GetSubString(number: 123456789, startDigit: 4, endDigit: 6));
+        }
     }
 }

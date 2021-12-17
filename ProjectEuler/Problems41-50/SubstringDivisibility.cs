@@ -31,8 +31,9 @@ namespace ProjectEuler.Problems41_50
 
         public static int GetSubstring(int number, int startDigit, int endDigit)
         {
-            int returnNumber = number % (int)Math.Pow(x: 10, y: 11 - startDigit);
-            returnNumber /= (int)Math.Pow(x: 10, y: 10 - endDigit);
+            int numberOfDigits = SharedCode.Math.GetNumberOfDigits(value: number);
+            int returnNumber = number % (int)Math.Pow(x: 10, y: numberOfDigits + 1 - startDigit);
+            returnNumber /= (int)Math.Pow(x: 10, y: numberOfDigits - endDigit);
             return returnNumber;
         }
     }
