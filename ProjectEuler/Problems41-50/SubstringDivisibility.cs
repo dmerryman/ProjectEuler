@@ -21,12 +21,24 @@ namespace ProjectEuler.Problems41_50
 
         public static bool IsItSubstringDivisible(int testValue)
         {
-            int[] divisors = new int[] {2, 3, 5, 7, 11, 13, 17 };
             // foreach digit d2 - d10
                 // check to see if d2d3d4 is divisible by the appropriate number.
                     // if it isn't, return false.
             // return true.
-            throw new NotImplementedException();
+            int[] divisors = new int[] { 2, 3, 5, 7, 11, 13, 17 };
+            int numToDivideBy = 0;
+            for (int i = 2; i < 9; i++)
+            {
+                int numberToCheck = GetSubstring(number: testValue, startDigit: i, endDigit: i + 2);
+                if (numberToCheck % divisors[numToDivideBy] != 0)
+                {
+                    return false;
+                }
+
+                numToDivideBy++;
+            }
+
+            return true;
         }
 
         public static int GetSubstring(int number, int startDigit, int endDigit)
