@@ -87,6 +87,7 @@
     <Compile Include="Problems31-40\TrunctablePrimesTests.cs" />
     <Compile Include="Problems41-50\CodedTriangleNumbersTests.cs" />
     <Compile Include="Problems41-50\PandigitalPrimeTests.cs" />
+    <Compile Include="Problems41-50\PentagonNumbersTests.cs" />
     <Compile Include="Problems41-50\SubstringDivisibilityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCodeTests\BigNumberTests.cs" />
