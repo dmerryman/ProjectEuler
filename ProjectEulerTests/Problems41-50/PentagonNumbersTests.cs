@@ -61,7 +61,13 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindPentagonNumbers()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.PentagonNumbers.FindPentagonNumbers());
+            Assert.AreEqual(5482660, ProjectEuler.Problems41_50.PentagonNumbers.FindPentagonNumbers());
+        }
+
+        [TestMethod]
+        public void TestFindPentagonNumbersWithSieve()
+        {
+            Assert.AreEqual(5482660, ProjectEuler.Problems41_50.PentagonNumbers.FindPentagonNumbersWithSieve());
         }
     }
 }

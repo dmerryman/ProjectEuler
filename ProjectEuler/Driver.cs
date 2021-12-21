@@ -27,7 +27,7 @@ namespace ProjectEuler
         {
             int answer = LargestProductInAGrid.FindLargestProductInAGrid(numMultiplier: 4);
             Console.WriteLine("The answer to problem 11 is {0}.", answer);
-            Console.ReadKey();
+             Console.ReadKey();
         }
     }
 }

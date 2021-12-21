@@ -9,21 +9,85 @@ namespace ProjectEuler.Problems41_50
 {
     public static class PentagonNumbers
     {
-        public static int FindPentagonNumbers()
+        public static long FindPentagonNumbers()
         {
-            List<int> pentagonNumbers = GetPentagonNumbers(amount: 100000);
-            int pause = 1;
-            throw new NotImplementedException();
+            long smallestDifference = long.MaxValue;
+            long smallestPairFirstNum = -1;
+            long smallestPairSecondNum = -1;
+            List<long> pentagonNumbers = GetPentagonNumbers(amount: 2500);
+            long[] pentagonNumbersArray = pentagonNumbers.ToArray();
+            for (int i = 0; i < pentagonNumbersArray.Length; i++)
+            {
+                for (int j = i; j < pentagonNumbersArray.Length; j++)
+                {
+                    if (IsSumPentagonal(pentagonNumbers: pentagonNumbers, num1: pentagonNumbersArray[i], num2: pentagonNumbersArray[j]))
+                    {
+                        if (IsDifferencePentagonal(pentagonNumbers: pentagonNumbers, num1: pentagonNumbersArray[i], num2: pentagonNumbersArray[j]))
+                        {
+                            if (Math.Abs(pentagonNumbersArray[i] - pentagonNumbersArray[j]) < smallestDifference)
+                            {
+                                smallestPairFirstNum = pentagonNumbersArray[i];
+                                smallestPairSecondNum = pentagonNumbersArray[j];
+                                smallestDifference = Math.Abs(pentagonNumbersArray[i] - pentagonNumbersArray[j]);
+                                Debug.WriteLine("{0} and {1} is a solution, and their difference is {2}",
+                                    smallestPairFirstNum, smallestPairSecondNum, smallestDifference);
+                            }
+                        }
+                    }
+                }
+            }
+            return smallestDifference;
         }
 
-        public static int GetPentagonNumber(int n)
+        public static long FindPentagonNumbersWithSieve()
+        {
+            int limit = (int)GetPentagonNumber(n: 2500);
+            long smallesDifference = long.MaxValue;
+            bool[] pentagonalSieve = GeneratePentagonalSieve(limit: limit);
+            for (int i = 0; i < pentagonalSieve.Length; i++)
+            {
+                if (!pentagonalSieve[i])
+                {
+                    continue;
+                }
+                for (int j = i + 1; j < pentagonalSieve.Length; j++)
+                {
+                    if (!pentagonalSieve[j] || i + j >= pentagonalSieve.Length)
+                    {
+                        continue;
+                    }
+                    else if (pentagonalSieve[i + j] && pentagonalSieve[Math.Abs(value: i - j)])
+                    {
+                        if ((i + j) < smallesDifference)
+                        {
+                            smallesDifference = Math.Abs(i - j);
+                        }
+                    }
+                }
+            }
+
+            return smallesDifference;
+        }
+
+        private static bool[] GeneratePentagonalSieve(int limit)
+        {
+            bool[] pentagonalSieve = new bool[limit + 1];
+            for (int i = 1; i <= 2500; i++)
+            {
+                pentagonalSieve[GetPentagonNumber(n: i)] = true;
+            }
+
+            return pentagonalSieve;
+        }
+
+        private static long GetPentagonNumber(int n)
         {
             return n * ((3 * n) - 1) / 2;
         }
 
-        public static List<int> GetPentagonNumbers(int amount)
+        private static List<long> GetPentagonNumbers(int amount)
         {
-            List<int> pentagonNumbers = new List<int>(amount);
+            List<long> pentagonNumbers = new List<long>(amount);
             for (int i = 1; i <= amount; i++)
             {
                 pentagonNumbers.Add(item: i * ((3 * i) - 1) / 2);
@@ -32,12 +96,12 @@ namespace ProjectEuler.Problems41_50
             return pentagonNumbers;
         }
 
-        public static bool IsSumPentagonal(List<int> pentagonNumbers, int num1, int num2)
+        private static bool IsSumPentagonal(List<long> pentagonNumbers, long num1, long num2)
         {
             return pentagonNumbers.Contains(item: num1 + num2);
         }
 
-        public static bool IsDifferencePentagonal(List<int> pentagonNumbers, int num1, int num2)
+        private static bool IsDifferencePentagonal(List<long> pentagonNumbers, long num1, long num2)
         {
             return pentagonNumbers.Contains((int)(Math.Abs(num1 - num2)));
         }
