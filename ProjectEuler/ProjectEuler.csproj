@@ -88,6 +88,7 @@
     <Compile Include="Problems41-50\PandigitalPrime.cs" />
     <Compile Include="Problems41-50\PentagonNumbers.cs" />
     <Compile Include="Problems41-50\SubstringDivisibility.cs" />
+    <Compile Include="Problems41-50\TriangularPentagonalAndHexagonal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\BigNumber.cs" />
     <Compile Include="SharedCode\InputHelper.cs" />
