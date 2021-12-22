@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,14 +9,30 @@ namespace ProjectEuler.Problems41_50
 {
     public static class TriangularPentagonalAndHexagonal
     {
-        public static int FindTriangularPentagonalAndHexagonal()
+        public static long FindTriangularPentagonalAndHexagonal()
         {
-            bool[] sieve = new bool[100000];
-            for (int i = 1; i < sieve.Length; i++)
+            int n = 143;
+            long currNum = 0;
+            while (true)
             {
-
+                n++;
+                long testValue = n * (2 * n - 1);
+                if (IsItPentagonal(value: testValue))
+                {
+                    return testValue;
+                }
             }
-            throw new NotImplementedException();
+        }
+
+        public static bool IsItPentagonal(long value)
+        {
+            double testValue = (Math.Sqrt(d: 1 + 24 * value) + 1) / 6;
+            if (SharedCode.Math.IsItAnInteger(testValue: testValue))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

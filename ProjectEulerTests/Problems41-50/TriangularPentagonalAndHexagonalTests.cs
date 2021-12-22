@@ -61,7 +61,7 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindTriangularPentagonalAndHexagonal()
         {
-            Assert.AreEqual(1,
+            Assert.AreEqual(1533776805,
                 ProjectEuler.Problems41_50.TriangularPentagonalAndHexagonal.FindTriangularPentagonalAndHexagonal());
         }
     }
