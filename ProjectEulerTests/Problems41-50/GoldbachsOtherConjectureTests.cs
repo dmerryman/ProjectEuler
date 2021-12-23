@@ -61,7 +61,7 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindGoldbachsOtherConjecture()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.GoldbachsOtherConjecture.FindGoldbachsOtherConjecture());
+            Assert.AreEqual(5777, ProjectEuler.Problems41_50.GoldbachsOtherConjecture.FindGoldbachsOtherConjecture());
         }
     }
 }
