@@ -14,17 +14,20 @@ namespace ProjectEuler.Problems41_50
                 // int currNum = 2 as a starting number
                     // If it's a composite number, check if it cant be written as the sum of a prime and twice a square
                         // if it can be, return that number.
-            int currNum = 2;
+            int currNum = 3;
             while (true)
             {
-
-                currNum++;
+                if (!SharedCode.Math.IsItPrime(number: currNum))
+                {
+                    if (!CanBeWrittenAsSum(testValue: currNum))
+                    {
+                        break;
+                    }
+                }
+                currNum += 2;
             }
 
-            if (!SharedCode.Math.IsItPrime(number: currNum))
-            {
-
-            }
+            return currNum;
         }
 
         public static bool CanBeWrittenAsSum(int testValue)
@@ -32,26 +35,27 @@ namespace ProjectEuler.Problems41_50
             // for int index = 2 to testValue
                 // check to see if index is prime
                     // if it is, check to see if a square can be added to it.
-            throw new NotImplementedException();
+            for (int index = 2; index < testValue; index++)
+            {
+                if (SharedCode.Math.IsItPrime(number: index))
+                {
+                    if (CanBeCompletedWithASquare(primeValue: index, testValue: testValue))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public static bool CanBeCompletedWithASquare(int primeValue, int testValue)
         {
-            // for int i = 1 to testValue
-                // for int j = 1 until i * j > testValue
-                    // check if primeValue + i * j == testValue
-                        // if it is, return true.
-                // increment j
-            // increment i
-            // return false
-            for (int i = 1; i < testValue; i++)
+            for (int i = 1; 2 * i * i <= testValue; i++)
             {
-                for (int j = 1; i * j < testValue; j++)
+                if (primeValue + (2 * i * i) == testValue)
                 {
-                    if (primeValue + (i * j) == testValue)
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
 
