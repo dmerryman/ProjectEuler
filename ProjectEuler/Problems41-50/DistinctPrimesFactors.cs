@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,32 @@ namespace ProjectEuler.Problems41_50
             int currNum = 1;
             while (currNumConsecutive < numConsecutive)
             {
-
+                int numberOfDistinctPrimeFactors = GetNumberOfDistinctPrimeFactors(number: currNum);
+                if (DoesItHaveNDistinctPrimeFactors(n: numConsecutive,
+                        numberOfDistinctPrimeFactors: numberOfDistinctPrimeFactors))
+                {
+                    if (currNumConsecutive == 0)
+                    {
+                        currFirstNum = currNum;
+                    }
+                    currNumConsecutive++;
+                }
+                else
+                {
+                    currNumConsecutive = 0;
+                }
+                currNum++;
             }
-            throw new NotImplementedException();
+
+            return currFirstNum;
         }
 
-        public static int GetNumberOfDistinctPrimeFactors(int number)
+        private static bool DoesItHaveNDistinctPrimeFactors(int n, int numberOfDistinctPrimeFactors)
+        {
+            return n == numberOfDistinctPrimeFactors;
+        }
+
+        private static int GetNumberOfDistinctPrimeFactors(int number)
         {
             Dictionary<int, int> distinctPrimeFactorsDictionary = new Dictionary<int, int>();
             int loopThrough = number;

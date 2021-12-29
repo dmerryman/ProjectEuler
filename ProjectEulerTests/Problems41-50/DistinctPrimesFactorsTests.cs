@@ -59,23 +59,30 @@ namespace ProjectEulerTests.Problems41_50
         #endregion
 
         [TestMethod]
-        public void TestFindDistinctPrimesFactors()
+        public void TestFindDistinctPrimesFactorsSmall()
         {
             Assert.AreEqual(14,
                 ProjectEuler.Problems41_50.DistinctPrimesFactors.FindDistinctPrimesFactors(numConsecutive: 2));
-            Assert.AreEqual(14,
-                ProjectEuler.Problems41_50.DistinctPrimesFactors.FindDistinctPrimesFactors(numConsecutive: 2));
+            Assert.AreEqual(644,
+                ProjectEuler.Problems41_50.DistinctPrimesFactors.FindDistinctPrimesFactors(numConsecutive: 3));
         }
 
         [TestMethod]
-        public void TestGetNumberOfDistinctPrimeFactors()
+        public void TestFindDistinctPrimeFactors()
         {
-            Assert.AreEqual(2,
-                ProjectEuler.Problems41_50.DistinctPrimesFactors.GetNumberOfDistinctPrimeFactors(number: 14));
-            Assert.AreEqual(2,
-                ProjectEuler.Problems41_50.DistinctPrimesFactors.GetNumberOfDistinctPrimeFactors(number: 15));
-            Assert.AreEqual(3,
-                ProjectEuler.Problems41_50.DistinctPrimesFactors.GetNumberOfDistinctPrimeFactors(number: 644));
+            Assert.AreEqual(134043,
+                ProjectEuler.Problems41_50.DistinctPrimesFactors.FindDistinctPrimesFactors(numConsecutive: 4));
         }
+
+        //[TestMethod]
+        //public void TestGetNumberOfDistinctPrimeFactors()
+        //{
+        //    Assert.AreEqual(2,
+        //        ProjectEuler.Problems41_50.DistinctPrimesFactors.GetNumberOfDistinctPrimeFactors(number: 14));
+        //    Assert.AreEqual(2,
+        //        ProjectEuler.Problems41_50.DistinctPrimesFactors.GetNumberOfDistinctPrimeFactors(number: 15));
+        //    Assert.AreEqual(3,
+        //        ProjectEuler.Problems41_50.DistinctPrimesFactors.GetNumberOfDistinctPrimeFactors(number: 644));
+        //}
     }
 }
