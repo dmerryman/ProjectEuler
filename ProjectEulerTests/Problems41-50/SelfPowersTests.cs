@@ -67,7 +67,7 @@ namespace ProjectEulerTests.Problems41_50
         [TestMethod]
         public void TestFindSelfPowersLarge()
         {
-            Assert.AreEqual(110846700, ProjectEuler.Problems41_50.SelfPowers.FindSelfPowers(limit: 1000));
+            Assert.AreEqual(9110846700, ProjectEuler.Problems41_50.SelfPowers.FindSelfPowers(limit: 1000));
         }
     }
 }
