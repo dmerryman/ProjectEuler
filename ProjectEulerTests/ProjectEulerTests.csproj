@@ -90,6 +90,7 @@
     <Compile Include="Problems41-50\GoldbachsOtherConjectureTests.cs" />
     <Compile Include="Problems41-50\PandigitalPrimeTests.cs" />
     <Compile Include="Problems41-50\PentagonNumbersTests.cs" />
+    <Compile Include="Problems41-50\SelfPowersTests.cs" />
     <Compile Include="Problems41-50\SubstringDivisibilityTests.cs" />
     <Compile Include="Problems41-50\TriangularPentagonalAndHexagonalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
