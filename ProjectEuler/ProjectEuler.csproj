@@ -89,6 +89,7 @@
     <Compile Include="Problems41-50\GoldbachsOtherConjecture.cs" />
     <Compile Include="Problems41-50\PandigitalPrime.cs" />
     <Compile Include="Problems41-50\PentagonNumbers.cs" />
+    <Compile Include="Problems41-50\PrimePermutations.cs" />
     <Compile Include="Problems41-50\SelfPowers.cs" />
     <Compile Include="Problems41-50\SubstringDivisibility.cs" />
     <Compile Include="Problems41-50\TriangularPentagonalAndHexagonal.cs" />
