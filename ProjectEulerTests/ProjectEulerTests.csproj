@@ -86,6 +86,7 @@
     <Compile Include="Problems31-40\PandigitalProducts.cs" />
     <Compile Include="Problems31-40\TrunctablePrimesTests.cs" />
     <Compile Include="Problems41-50\CodedTriangleNumbersTests.cs" />
+    <Compile Include="Problems41-50\DistinctPrimesFactorsTests.cs" />
     <Compile Include="Problems41-50\GoldbachsOtherConjectureTests.cs" />
     <Compile Include="Problems41-50\PandigitalPrimeTests.cs" />
     <Compile Include="Problems41-50\PentagonNumbersTests.cs" />
