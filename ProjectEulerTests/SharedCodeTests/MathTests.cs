@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ProjectEulerTests.SharedCodeTests
@@ -169,6 +170,15 @@ namespace ProjectEulerTests.SharedCodeTests
         {
             Assert.AreEqual(456,
                 ProjectEuler.SharedCode.Math.GetSubString(number: 123456789, startDigit: 4, endDigit: 6));
+        }
+
+        [TestMethod]
+        public void TestGetPrimeList()
+        {
+            List<int> primeNumbers = ProjectEuler.SharedCode.Math.GeneratePrimeList(limit: 10);
+            Assert.AreEqual(4, primeNumbers.Count);
+            Assert.AreEqual(2, primeNumbers.First());
+            Assert.AreEqual(7, primeNumbers.Last());
         }
     }
 }

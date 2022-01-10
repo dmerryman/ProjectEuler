@@ -34,6 +34,37 @@ namespace ProjectEuler.SharedCode
             return sieve;
         }
 
+        public static List<int> GeneratePrimeList(int limit)
+        {
+            bool[] sieve = new bool[limit + 1];
+            sieve[1] = true;
+            for (int i = 2; i < limit + 1; i++)
+            {
+                if (!sieve[i])
+                {
+                    int multiple = 2;
+                    int currNum = i * multiple;
+                    while (currNum < limit + 1)
+                    {
+                        sieve[currNum] = true;
+                        multiple++;
+                        currNum = i * multiple;
+                    }
+                }
+            }
+
+            List<int> primeNumbers = new List<int>();
+            for (int i = 2; i < sieve.Length; i++)
+            {
+                if (!sieve[i])
+                {
+                    primeNumbers.Add(item: i);
+                }
+            }
+
+            return primeNumbers;
+        }
+
         public static bool IsItPrime(int number)
         {
             if (number == 2 || number == 3)
