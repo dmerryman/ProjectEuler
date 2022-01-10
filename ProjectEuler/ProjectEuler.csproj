@@ -85,6 +85,7 @@
     <Compile Include="Problems31-40\PandigitalProducts.cs" />
     <Compile Include="Problems31-40\TrunctablePrimes.cs" />
     <Compile Include="Problems41-50\CodedTriangleNumbers.cs" />
+    <Compile Include="Problems41-50\ConsecutivePrimeSum.cs" />
     <Compile Include="Problems41-50\DistinctPrimesFactors.cs" />
     <Compile Include="Problems41-50\GoldbachsOtherConjecture.cs" />
     <Compile Include="Problems41-50\PandigitalPrime.cs" />
