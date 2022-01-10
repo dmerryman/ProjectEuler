@@ -11,8 +11,10 @@ namespace ProjectEulerTests.SharedCodeTests
         public void TestGetPermutations()
         {
             List<string> permutations = ProjectEuler.SharedCode.Strings.GetPermutations("cat");
+            List<string> otherPermutations = ProjectEuler.SharedCode.Strings.GetPermutations("1487");
 
             Assert.AreEqual(6, permutations.Count);
+            Assert.AreEqual(24, otherPermutations.Count);
             Assert.IsTrue(permutations.Contains("act"));
         }
 

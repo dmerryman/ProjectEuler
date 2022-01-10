@@ -16,48 +16,46 @@ namespace ProjectEuler.Problems41_50
                 // Get all permutations of the prime.
                     // check to see if any 3 of the permutations meet the requirement (all prime, same interval between them.
             bool[] primeSieve = ProjectEuler.SharedCode.Math.GeneratePrimeSieve(limit: 10000);
+            List<int> possibleCandidates = new List<int>();
             for (int testValue = 1001; testValue < primeSieve.Length; testValue += 2)
             {
                 if (!primeSieve[testValue])
                 {
                     // This is prime.
                     String testValueString = testValue.ToString();
+                    if (testValue == 1487)
+                    {
+                        int pause3 = 1;
+                    }
                     int[] primePermutations = GetPrimePermutations(primeNumber: testValue, primeSieve: primeSieve).OrderBy(s =>s).ToArray();
+                    HashSet<int> differences = new HashSet<int>();
                     if (primePermutations.Length > 2)
                     {
-                        HashSet<int> differences = new HashSet<int>();
-                        List<Pair> pairs = new List<Pair>();
+                        if (testValue == 1487)
+                        {
+                            int pause2 = 1;
+                        }
+                        bool possibleMatch = false;
                         for (int i = 0; i < primePermutations.Length - 1; i++)
                         {
                             for (int j = i + 1; j < primePermutations.Length; j++)
                             {
-                                int difference = primePermutations[j] - primePermutations[i];
-                                if (!differences.Add(difference))
+                                if (!differences.Add(item: primePermutations[j] - primePermutations[i]))
                                 {
-                                    // Possible Match.
-                                    Pair newPair = new Pair(firstNum: primePermutations[i], primePermutations[j]);
-                                    pairs.Add(item: newPair);
+                                    possibleMatch = true;
                                 }
                             }
                         }
 
-                        if (pairs.Count > 1)
+                        if (possibleMatch)
                         {
-                            foreach (var pair in pairs)
-                            {
-                                for (int i = 0; i < primePermutations.Length - 1; i++)
-                                {
-                                    for (int j = 0; j < primePermutations.Length; j++)
-                                    {
-                                        Pair newPair = new Pair(firstNum: primePermutations[i],
-                                            secondNum: primePermutations[j]);
-                                    }
-                                }
-                            }
+                            possibleCandidates.Add(item: testValue);
                         }
                     }
                 }
             }
+
+            int pause = 1;
             throw new NotImplementedException();
         }
 
@@ -88,29 +86,5 @@ namespace ProjectEuler.Problems41_50
             }
             return primePermutations;
         }
-    }
-
-    public class Pair
-    {
-        private int FirstNum { get; set; }
-        private int SecondNum { get; set; }
-
-        public Pair(int firstNum, int secondNum)
-        {
-            this.FirstNum = firstNum;
-            this.SecondNum = secondNum;
-        }
-
-        public bool InSequence(Pair otherPair)
-        {
-            return otherPair.FirstNum == this.SecondNum || this.FirstNum == otherPair.SecondNum;
-        }
-
-        public bool InSequenceEqualIntervals(Pair otherPair)
-        {
-            return otherPair.FirstNum - this.FirstNum == otherPair.SecondNum - otherPair.FirstNum;
-        }
-
-
     }
 }
