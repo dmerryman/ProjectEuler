@@ -9,67 +9,45 @@ namespace ProjectEuler.Problems41_50
 {
     public static class PrimePermutations
     {
-        public static int FindPrimePermutations()
+        public static string FindPrimePermutations()
         {
             // Get a sieve for 4 digit prime numbers.
             // Loop through every prime in sieve.
                 // Get all permutations of the prime.
                     // check to see if any 3 of the permutations meet the requirement (all prime, same interval between them.
+            string returnValue = string.Empty;
             bool[] primeSieve = ProjectEuler.SharedCode.Math.GeneratePrimeSieve(limit: 10000);
-            List<int> possibleCandidates = new List<int>();
+            int numCase = 0;
             for (int testValue = 1001; testValue < primeSieve.Length; testValue += 2)
             {
                 if (!primeSieve[testValue])
                 {
                     // This is prime.
-                    String testValueString = testValue.ToString();
-                    if (testValue == 1487)
-                    {
-                        int pause3 = 1;
-                    }
                     int[] primePermutations = GetPrimePermutations(primeNumber: testValue, primeSieve: primeSieve).OrderBy(s =>s).ToArray();
-                    HashSet<int> differences = new HashSet<int>();
                     if (primePermutations.Length > 2)
                     {
-                        if (testValue == 1487)
-                        {
-                            int pause2 = 1;
-                        }
-                        bool possibleMatch = false;
                         for (int i = 0; i < primePermutations.Length - 1; i++)
                         {
                             for (int j = i + 1; j < primePermutations.Length; j++)
                             {
-                                if (!differences.Add(item: primePermutations[j] - primePermutations[i]))
+                                if (primePermutations[i] - testValue == primePermutations[j] - primePermutations[i])
                                 {
-                                    possibleMatch = true;
+                                    if (numCase != 1)
+                                    {
+                                        numCase++;
+                                    }
+                                    else
+                                    {
+                                        returnValue = string.Empty + testValue + primePermutations[i] + primePermutations[j];
+                                    }
                                 }
                             }
-                        }
-
-                        if (possibleMatch)
-                        {
-                            possibleCandidates.Add(item: testValue);
                         }
                     }
                 }
             }
-
-            int pause = 1;
-            throw new NotImplementedException();
+            return returnValue;
         }
-
-        //private bool CheckIntervals(int[,] differences)
-        //{
-        //    HashSet<int> differences = new HashSet<int>();
-        //    for (int col = 0; col < differences.GetLength(0); col++)
-        //    {
-        //        for (int row = 0; row < differences.GetLength(1); row++)
-        //        {
-
-        //        }
-        //    }
-        //}
 
         private static HashSet<int> GetPrimePermutations(int primeNumber, bool[] primeSieve)
         {

@@ -59,9 +59,9 @@ namespace ProjectEulerTests.Problems41_50
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestFindPrimePermutations()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems41_50.PrimePermutations.FindPrimePermutations());
+            Assert.AreEqual("296962999629", ProjectEuler.Problems41_50.PrimePermutations.FindPrimePermutations());
         }
     }
 }
