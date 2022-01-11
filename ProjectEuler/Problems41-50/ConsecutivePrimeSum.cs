@@ -24,36 +24,46 @@ namespace ProjectEuler.Problems41_50
             var primeNumbers = ProjectEuler.SharedCode.Math.GeneratePrimeList(limit: limit).ToArray();
             for (int i = primeNumbers.Length - 1; i >= 0; i--)
             {
-                if (i == 12)
-                {
-                    int pause = 1;
-                }
                 var currNumTerms = 0;
                 var currSum = 0;
-                int currStartingPoint = i - 1;
-                for (int j = i - 1; j >= 0; j--)
+                if (i < 1)
                 {
-                    currSum += primeNumbers[j];
-                    currNumTerms++;
-                    if (currSum == primeNumbers[i])
+                    if (maxNumTerms == 0)
                     {
-                        // We hit our target.
-                        if (currNumTerms > maxNumTerms)
-                        {
-                            maxNumTerms = currNumTerms;
-                            sumWithMaxNumTerms = primeNumbers[i];
-                        }
-
+                        sumWithMaxNumTerms = 2;
                     }
-                    else if (currSum > primeNumbers[i])
-                    {
-                        // We overshot our target.
-                        // Problem seems to be here.
-                        currSum -= primeNumbers[j + 1];
-                        currNumTerms--;
-                    }
-                    // Not enough terms left here.
                 }
+                else
+                {
+                    int indexToSubtract = i - 1;
+                    int numToSubtract = primeNumbers[i - 1];
+                    for (int j = i - 1; j >= 0; j--)
+                    {
+                        currSum += primeNumbers[j];
+                        currNumTerms++;
+                        if (currSum == primeNumbers[i])
+                        {
+                            // We hit our target.
+                            if (currNumTerms > maxNumTerms)
+                            {
+                                maxNumTerms = currNumTerms;
+                                sumWithMaxNumTerms = primeNumbers[i];
+                            }
+
+                        }
+                        else if (currSum > primeNumbers[i])
+                        {
+                            // We overshot our target.
+                            currSum -= numToSubtract;
+                            currNumTerms--;
+                            indexToSubtract--;
+                            numToSubtract = primeNumbers[indexToSubtract];
+                        }
+                        // Not enough terms left here.
+                    }
+                }
+                
+                
             }
 
             return sumWithMaxNumTerms;
