@@ -21,10 +21,6 @@ namespace ProjectEuler.Problems51_60
             var currNum = 9;
             while (true)
             {
-                if (currNum == 87124)
-                {
-                    int pause = 1;
-                }
                 var digitsInCurrNum = ProjectEuler.SharedCode.Math.GetDigits(value: currNum);
                 var uniqueDigitsInCurrNum = digitsInCurrNum.ToHashSet();
                 if (digitsInCurrNum.Count != uniqueDigitsInCurrNum.Count)
@@ -54,7 +50,6 @@ namespace ProjectEuler.Problems51_60
                             //Debug.WriteLine("{0} had different digits from {1}", multipliedNum, currNum);
                             break;
                         }
-                        //Debug.WriteLine("{0} has the same digits as {1}", multipliedNum, currNum);
                     }
                 }
 

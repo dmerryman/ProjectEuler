@@ -59,9 +59,15 @@ namespace ProjectEulerTests.Problems51_60
         #endregion
 
         [TestMethod]
-        public void TestFindPermutedMultiplesTests()
+        public void TestFindPermutedMultiplesSmall()
         {
             Assert.AreEqual(125874, ProjectEuler.Problems51_60.PermutedMultiples.FindPermutedMultiples(numMultiplier: 2));
+        }
+
+        [TestMethod]
+        public void TestFindPermutedMultiplesLarge()
+        {
+            Assert.AreEqual(142857, ProjectEuler.Problems51_60.PermutedMultiples.FindPermutedMultiples(numMultiplier: 6));
         }
     }
 }
