@@ -62,22 +62,34 @@ namespace ProjectEulerTests.Problems51_60
         [TestMethod]
         public void TestFindPrimeDigitReplacements()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems51_60.PrimeDigitReplacements.FindPrimeDigitReplacements(targetNumber: 8));
+            Assert.AreEqual(121313, ProjectEuler.Problems51_60.PrimeDigitReplacements.FindPrimeDigitReplacements(targetNumber: 8));
         }
 
         [TestMethod]
-        public void TestCombinations()
+        public void TestFindPrimeDigitReplacementsSmall()
         {
-            var combinations = ProjectEuler.Problems51_60.PrimeDigitReplacements.GetPossibleVariations(input: "11");
-            Assert.AreEqual(4, combinations.Count);
+            Assert.AreEqual(13, ProjectEuler.Problems51_60.PrimeDigitReplacements.FindPrimeDigitReplacements(targetNumber: 6));
         }
 
         [TestMethod]
-
-        public void TestGetNumberOfPrimesForReplacement()
+        public void TestFindPrimeDigitReplacementMedium()
         {
-            bool[] primeSieve = ProjectEuler.SharedCode.Math.GeneratePrimeSieve(limit: 10000000);
-            Assert.AreEqual(7, ProjectEuler.Problems51_60.PrimeDigitReplacements.GetNumberOfPrimesForReplacement(primeSieve: primeSieve, variation: "56XX3"));
+            Assert.AreEqual(56003, ProjectEuler.Problems51_60.PrimeDigitReplacements.FindPrimeDigitReplacements(targetNumber: 7));
         }
+
+        //[TestMethod]
+        //public void TestCombinations()
+        //{
+        //    var combinations = ProjectEuler.Problems51_60.PrimeDigitReplacements.GetPossibleVariations(input: "11");
+        //    Assert.AreEqual(4, combinations.Count);
+        //}
+
+        //[TestMethod]
+
+        //public void TestGetNumberOfPrimesForReplacement()
+        //{
+        //    bool[] primeSieve = ProjectEuler.SharedCode.Math.GeneratePrimeSieve(limit: 10000000);
+        //    Assert.AreEqual(7, ProjectEuler.Problems51_60.PrimeDigitReplacements.GetNumberOfPrimesForReplacement(primeSieve: primeSieve, variation: "56XX3"));
+        //}
     }
 }
