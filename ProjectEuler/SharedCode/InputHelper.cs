@@ -26,5 +26,18 @@ namespace ProjectEuler.SharedCode
             string[] pieces = str.Split(',');
             return pieces;
         }
+
+        public static List<string> ReadInput(string path)
+        {
+            StreamReader reader = File.OpenText(path: path);
+            List<string> lines = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                lines.Add(item: line);
+            }
+
+            return lines;
+        }
     }
 }
