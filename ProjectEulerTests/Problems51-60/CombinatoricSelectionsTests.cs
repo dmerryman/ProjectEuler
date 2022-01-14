@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace ProjectEulerTests.Problems51_60
 {
@@ -61,7 +62,19 @@ namespace ProjectEulerTests.Problems51_60
         [TestMethod]
         public void TestFindCombinatoricsSelections()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems51_60.CombinatoricSelections.FindCombinatoricSelections());
+            Assert.AreEqual(4075, ProjectEuler.Problems51_60.CombinatoricSelections.FindCombinatoricSelections());
         }
+
+        [TestMethod]
+        public void TestFindCombinatoricsSelectionsFaster()
+        {
+            Assert.AreEqual(4075, ProjectEuler.Problems51_60.CombinatoricSelections.FindCombinatoricSelectionsFaster());
+        }
+
+        //[TestMethod]
+        //public void TestCalculateNumberOfCombinations()
+        //{
+        //    Assert.AreEqual(10, ProjectEuler.Problems51_60.CombinatoricSelections.CalculateNumberOfCombinations(n: 5, r: 3));
+        //}
     }
 }

@@ -20,10 +20,6 @@ namespace ProjectEuler.Problems21_30
             int sumOfDigitFifthPowers = 0;
             for (int testValue = 32; testValue <= 354294; testValue++)
             {
-                if (testValue == 4150)
-                {
-                    int pause = 1;
-                }
                 List<int> digits = GetDigits(testValue: testValue);
                 if (CanBeWrittenAsSumOfFifthPowers(testValue: testValue, digits: digits, power: 5))
                 {
