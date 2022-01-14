@@ -63,5 +63,18 @@ namespace ProjectEulerTests.Problems51_60
         {
             Assert.AreEqual(1, ProjectEuler.Problems51_60.PokerHands.FindPokerHands());
         }
+
+        [TestMethod]
+        public void TestStraightFlush()
+        {
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[]{ "5H", "6H", "7H", "8H", "9D"}));
+        }
+
+        [TestMethod]
+        public void TestGetLowestValue()
+        {
+            Assert.AreEqual("5",
+                ProjectEuler.Problems51_60.PokerHands.GetLowestValue(new string[] { "5H", "6H", "7H", "8H", "9D" }));
+        }
     }
 }
