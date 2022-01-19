@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace ProjectEuler.Problems51_60
 {
     public static class PokerHands
     {
-        public static string[] values = new string[]{"2", "3", "4", "5", "6", "7", "8", "9", "J", "Q", "K", "A"};
+        public static string[] values = new string[]{"2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"};
         public static string[] suits = new string[] { "H", "C", "S", "D" };
         public static int FindPokerHands()
         {
@@ -36,24 +37,124 @@ namespace ProjectEuler.Problems51_60
             throw new NotImplementedException();
         }
 
-        public static bool IsItAStraightFlush(string[] hand)
+        public static bool IsItARoyalFlush(string[] hand)
         {
-            bool returnValue = true;
-            string suit = hand[0].Substring(1, 1);
-            foreach (var card in hand)
+            bool returnValue = false;
+            if (IsItAllSameSuit(hand: hand))
             {
-                if (!(suit == hand[1].Substring(1, 1) && suit == hand[2].Substring(1, 1) &&
-                    suit == hand[3].Substring(1, 1) && suit == hand[4].Substring(1, 1)))
-                {
-                    returnValue = false;
-                }
+                returnValue = true;
             }
 
             if (returnValue)
             {
+                HashSet<string> requiredCards = new HashSet<string>() { values[8], values[9], values[10], values[11], values[12] };
+                for (int i = 0; i < hand.Length; i++)
+                {
+                    if (requiredCards.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
+                    {
+                        returnValue = false;
+                    }
+                }
+            }
 
+            return returnValue;
+        }
+
+        public static bool IsItAStraightFlush(string[] hand)
+        {
+            bool returnValue = false;
+            string suit = hand[0].Substring(1, 1);
+            if (IsItAllSameSuit(hand: hand))
+            {
+                returnValue = true;
+            }
+
+            if (returnValue)
+            {
+                string lowestValueCard = GetLowestValue(hand: hand);
+                returnValue = IsInIncreasingOrder(hand: hand, lowestValue: lowestValueCard);
             }
             return returnValue;
+        }
+
+        public static bool IsItAllSameSuit(string[] hand)
+        {
+            bool allSameSuit = false;
+            string suit = hand[0].Substring(startIndex: 1, length: 1);
+            if ((suit == hand[1].Substring(1, 1) && suit == hand[2].Substring(1, 1) &&
+                 suit == hand[3].Substring(1, 1) && suit == hand[4].Substring(1, 1)))
+            {
+                allSameSuit = true;
+            }
+
+            return allSameSuit;
+        }
+
+        public static bool IsInIncreasingOrder(string[] hand, string lowestValue)
+        {
+            bool isItInIncreasingOrder = true;
+            int lowestValueIndex = -1;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == lowestValue)
+                {
+                    lowestValueIndex = i;
+                    break;
+                }
+            }
+
+            if (lowestValueIndex == 0)
+            {
+                HashSet<string> valuesFromHand = new HashSet<string>();
+                for (int i = 0; i < hand.Length; i++)
+                {
+                    if (!valuesFromHand.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
+                    {
+                        isItInIncreasingOrder = false;
+                    }
+                }
+
+                int highestLowIndex = -1;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (valuesFromHand.Contains(values[i]))
+                    {
+                        highestLowIndex = i;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                int numRemaining = 4 - highestLowIndex;
+                for (int i = 0; i < numRemaining; i++)
+                {
+                    if (valuesFromHand.Add(item: values[values.Length - 1 - i]))
+                    {
+                        isItInIncreasingOrder = false;
+                    }
+                }
+
+            }
+            else
+            {
+                HashSet<string> valuesRequired = new HashSet<string>();
+                for (int i = 0; i < 5; i++)
+                {
+                    valuesRequired.Add(item: values[lowestValueIndex + i]);
+                }
+
+                for (int i = 0; i < hand.Length; i++)
+                {
+                    if (valuesRequired.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
+                    {
+                        isItInIncreasingOrder = false;
+                    }
+                }
+            }
+
+            return isItInIncreasingOrder;
         }
 
         public static string GetLowestValue(string[] hand)

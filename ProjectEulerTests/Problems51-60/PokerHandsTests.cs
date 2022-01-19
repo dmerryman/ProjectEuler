@@ -65,9 +65,17 @@ namespace ProjectEulerTests.Problems51_60
         }
 
         [TestMethod]
-        public void TestStraightFlush()
+        public void TestStraightFlushFails()
         {
             Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[]{ "5H", "6H", "7H", "8H", "9D"}));
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[] { "5H", "6H", "7H", "8H", "TH" }));
+        }
+
+        [TestMethod]
+        public void TestStraightFlush()
+        {
+            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[] { "5H", "6H", "7H", "8H", "9H" }));
+            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[] { "QH", "KH", "AH", "2H", "3H" }));
         }
 
         [TestMethod]
@@ -75,6 +83,56 @@ namespace ProjectEulerTests.Problems51_60
         {
             Assert.AreEqual("5",
                 ProjectEuler.Problems51_60.PokerHands.GetLowestValue(new string[] { "5H", "6H", "7H", "8H", "9D" }));
+        }
+
+        [TestMethod]
+        public void TestIsItInIncreasingOrder()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsInIncreasingOrder(new string[]
+                    { "5H", "6H", "7H", "8H", "9D" }, "5"));
+        }
+
+        [TestMethod]
+        public void TestIsItInIncreasingOrderFails()
+        {
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsInIncreasingOrder(new string[]
+                    { "4H", "6H", "7H", "8H", "9D" }, "4"));
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsInIncreasingOrder(new string[]
+                    { "2H", "4H", "5H", "AH", "KD" }, "2"));
+        }
+
+        [TestMethod]
+        public void TestIsItInIncreasingOrderWithOverflow()
+        {
+
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsInIncreasingOrder(new string[]
+                    { "JH", "QH", "KH", "AH", "2D" }, "2"));
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsInIncreasingOrder(new string[]
+                    { "AH", "5H", "4H", "3H", "2D" }, "2"));
+        }
+
+        [TestMethod]
+        public void TestIsItARoyalFlush()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
+                    { "JH", "TH", "QH", "KH", "AH" }));
+        }
+
+        [TestMethod]
+        public void TestIsItARoyalFlushFail()
+        {
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
+                    { "5H", "TH", "QH", "KH", "AH" }));
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
+                    { "JD", "TH", "QH", "KH", "AH" }));
         }
     }
 }
