@@ -28,13 +28,139 @@ namespace ProjectEuler.Problems51_60
                 var cards = game.Split();
                 var p1Cards = new string[]{ cards[0], cards[1], cards[2], cards[3], cards[4] };
                 var p2Cards = new string[] { cards[5], cards[6], cards[7], cards[8], cards[9] };
+                if (DoesPlayer1Win(p1Hand: p1Cards, p2Hand: p2Cards))
+                {
+                    numHandsPlayer1Won++;
+                }
             }
-            throw new NotImplementedException();
+
+            return numHandsPlayer1Won;
         }
 
-        public static bool DoesPlayer1Win(string[] cards)
+        public static bool DoesPlayer1Win(string[] p1Hand, string[] p2Hand)
         {
-            throw new NotImplementedException();
+            bool p1Win = false;
+            var p1Score = GetHandRank(hand: p1Hand);
+            var p2Score = GetHandRank(hand: p2Hand);
+            if (p1Score > p2Score)
+            {
+                return true;
+            }
+            else if (p1Score == p2Score)
+            {
+                // Tiebreaker.
+            }
+
+            return p1Win;
+        }
+
+        public static int GetHandRank(string[] hand)
+        {
+            if (IsItARoyalFlush(hand: hand))
+            {
+                return 10;
+            }
+
+            if (IsItAStraightFlush(hand: hand))
+            {
+                return 9;
+            }
+
+            if (IsItFourOfAKind(hand: hand))
+            {
+                return 8;
+            }
+
+            if (IsItAFullHouse(hand: hand))
+            {
+                return 7;
+            }
+
+            if (IsItAFlush(hand: hand))
+            {
+                return 6;
+            }
+            return -1;
+        }
+
+        public static bool IsItAFlush(string[] hand)
+        {
+            bool isItAFlush = false;
+            string suit = hand[0].Substring(startIndex: 1, length: 1);
+            if (suit == hand[1].Substring(startIndex: 1, length: 1) &&
+                suit == hand[2].Substring(startIndex: 1, length: 1) &&
+                suit == hand[3].Substring(startIndex: 1, length: 1) &&
+                suit == hand[4].Substring(startIndex: 1, length: 1))
+            {
+                isItAFlush = true;
+            }
+
+            return isItAFlush;
+        }
+        public static bool IsItAFullHouse(string[] hand)
+        {
+            Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
+            bool isItAFullHouse = false;
+            bool foundThree = false;
+            bool foundPair = false;
+            foreach (var card in hand)
+            {
+                var value = card.Substring(startIndex: 0, length: 1);
+                if (!valuesInHand.ContainsKey(key: value))
+                {
+                    valuesInHand.Add(key: value, value: 1);
+                }
+                else
+                {
+                    valuesInHand[value]++;
+                }
+            }
+
+            foreach (var value in valuesInHand)
+            {
+                if (value.Value == 3)
+                {
+                    foundThree = true;
+                }
+                else if (value.Value == 2)
+                {
+                    foundPair = true;
+                }
+            }
+
+            if (foundThree && foundPair)
+            {
+                isItAFullHouse = true;
+            }
+
+            return isItAFullHouse;
+        }
+        public static bool IsItFourOfAKind(string[] hand)
+        {
+            Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
+            bool isItFourOfAKind = false;
+            foreach (var card in hand)
+            {
+                var value = card.Substring(startIndex: 0, length: 1);
+                if (!valuesInHand.ContainsKey(key: value))
+                {
+                    valuesInHand.Add(key: value, value: 1);
+                }
+                else
+                {
+                    valuesInHand[value]++;
+                }
+            }
+
+            foreach (var value in valuesInHand)
+            {
+                if (value.Value == 4)
+                {
+                    isItFourOfAKind = true;
+                }
+            }
+
+            return isItFourOfAKind;
         }
 
         public static bool IsItARoyalFlush(string[] hand)

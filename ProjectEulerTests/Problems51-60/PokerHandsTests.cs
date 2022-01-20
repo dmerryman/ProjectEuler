@@ -134,5 +134,38 @@ namespace ProjectEulerTests.Problems51_60
                 ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
                     { "JD", "TH", "QH", "KH", "AH" }));
         }
+
+        [TestMethod]
+
+        public void TestIsItFourOfAKind()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsItFourOfAKind(hand: new string[]
+                    { "JH", "JD", "JC", "JS", "AH" }));
+        }
+
+        [TestMethod]
+        public void TestIsItFourOfAKindFail()
+        {
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsItFourOfAKind(hand: new string[]
+                    { "JH", "JD", "JC", "AH", "AS" }));
+        }
+
+        [TestMethod]
+        public void TestIsItAFullHouse()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsItAFullHouse(
+                    hand: new string[] { "KH", "KC", "KD", "QH", "QC" }));
+        }
+
+        [TestMethod]
+        public void TestIsItAFullHouseFail()
+        {
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsItAFullHouse(
+                    hand: new string[] { "KH", "KC", "KD", "QH", "AC" }));
+        }
     }
 }
