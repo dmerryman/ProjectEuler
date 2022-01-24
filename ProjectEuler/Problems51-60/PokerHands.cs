@@ -86,7 +86,36 @@ namespace ProjectEuler.Problems51_60
             {
                 return 5;
             }
-            return -1;
+
+            if (IsItThreeOfAKind(hand: hand))
+            {
+                return 4;
+            }
+
+            if (IsItTwoPairs(hand: hand))
+            {
+                return 3;
+            }
+
+            if (IsItOnePair(hand: hand))
+            {
+                return 2;
+            }
+
+            return 1;
+        }
+
+        public static bool IsItOnePair(string[] hand)
+        {
+            throw new NotImplementedException();
+        }
+        public static bool IsItTwoPairs(string[] hand)
+        {
+            throw new NotImplementedException();
+        }
+        public static bool IsItThreeOfAKind(string[] hand)
+        {
+            throw new NotImplementedException();
         }
 
         public static bool IsItAStraight(string[] hand)
@@ -148,8 +177,38 @@ namespace ProjectEuler.Problems51_60
         }
         public static bool IsItFourOfAKind(string[] hand)
         {
+            //Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
+            //bool isItFourOfAKind = false;
+            //foreach (var card in hand)
+            //{
+            //    var value = card.Substring(startIndex: 0, length: 1);
+            //    if (!valuesInHand.ContainsKey(key: value))
+            //    {
+            //        valuesInHand.Add(key: value, value: 1);
+            //    }
+            //    else
+            //    {
+            //        valuesInHand[value]++;
+            //    }
+            //}
+
+            //foreach (var value in valuesInHand)
+            //{
+            //    if (value.Value == 4)
+            //    {
+            //        isItFourOfAKind = true;
+            //    }
+            //}
+
+            //return isItFourOfAKind;
+
+            return (GetHighestNumberOfSameValues(hand: hand) == 4);
+        }
+
+        private static int GetHighestNumberOfSameValues(string[] hand)
+        {
             Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
-            bool isItFourOfAKind = false;
+            int highestNumberOfSameValues = 0;
             foreach (var card in hand)
             {
                 var value = card.Substring(startIndex: 0, length: 1);
@@ -165,13 +224,13 @@ namespace ProjectEuler.Problems51_60
 
             foreach (var value in valuesInHand)
             {
-                if (value.Value == 4)
+                if (value.Value > highestNumberOfSameValues)
                 {
-                    isItFourOfAKind = true;
+                    highestNumberOfSameValues = value.Value;
                 }
             }
 
-            return isItFourOfAKind;
+            return highestNumberOfSameValues;
         }
 
         public static bool IsItARoyalFlush(string[] hand)
