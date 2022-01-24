@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Policy;
@@ -80,7 +81,17 @@ namespace ProjectEuler.Problems51_60
             {
                 return 6;
             }
+
+            if (IsItAStraight(hand: hand))
+            {
+                return 5;
+            }
             return -1;
+        }
+
+        public static bool IsItAStraight(string[] hand)
+        {
+            return IsInIncreasingOrder(hand: hand);
         }
 
         public static bool IsItAFlush(string[] hand)
@@ -197,8 +208,7 @@ namespace ProjectEuler.Problems51_60
 
             if (returnValue)
             {
-                string lowestValueCard = GetLowestValue(hand: hand);
-                returnValue = IsInIncreasingOrder(hand: hand, lowestValue: lowestValueCard);
+                returnValue = IsInIncreasingOrder(hand: hand);
             }
             return returnValue;
         }
@@ -216,72 +226,121 @@ namespace ProjectEuler.Problems51_60
             return allSameSuit;
         }
 
-        public static bool IsInIncreasingOrder(string[] hand, string lowestValue)
+        public static bool IsInIncreasingOrder(string[] hand)
         {
-            bool isItInIncreasingOrder = true;
-            int lowestValueIndex = -1;
-            for (int i = 0; i < values.Length; i++)
+            bool increasingOrder = false;
+            HashSet<string> uniqueValuesInHand = new HashSet<string>();
+            int numUniqueValuesInHand = 0;
+            foreach (var card in hand)
             {
-                if (values[i] == lowestValue)
+                if (uniqueValuesInHand.Add(item: card.Substring(startIndex: 0, length: 1)))
                 {
-                    lowestValueIndex = i;
-                    break;
+                    numUniqueValuesInHand++;
                 }
             }
 
-            if (lowestValueIndex == 0)
+            if (numUniqueValuesInHand == 5)
             {
-                HashSet<string> valuesFromHand = new HashSet<string>();
-                for (int i = 0; i < hand.Length; i++)
+                string[] valuesAltered = new string[values.Length + 4];
+                for (int i = 0; i < values.Length; i++)
                 {
-                    if (!valuesFromHand.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
-                    {
-                        isItInIncreasingOrder = false;
-                    }
+                    valuesAltered[i] = values[i];
                 }
 
-                int highestLowIndex = -1;
                 for (int i = 0; i < 4; i++)
                 {
-                    if (valuesFromHand.Contains(values[i]))
+                    valuesAltered[values.Length + i] = values[i];
+                }
+
+                int numConsecutive = 0;
+                for (int i = 0; i < valuesAltered.Length && numConsecutive < 5; i++)
+                {
+                    if (uniqueValuesInHand.Contains(item: valuesAltered[i]))
                     {
-                        highestLowIndex = i;
+                        numConsecutive++;
                     }
                     else
                     {
-                        break;
+                        numConsecutive = 0;
                     }
                 }
 
-                int numRemaining = 4 - highestLowIndex;
-                for (int i = 0; i < numRemaining; i++)
+                if (numConsecutive == 5)
                 {
-                    if (valuesFromHand.Add(item: values[values.Length - 1 - i]))
-                    {
-                        isItInIncreasingOrder = false;
-                    }
-                }
-
-            }
-            else
-            {
-                HashSet<string> valuesRequired = new HashSet<string>();
-                for (int i = 0; i < 5; i++)
-                {
-                    valuesRequired.Add(item: values[lowestValueIndex + i]);
-                }
-
-                for (int i = 0; i < hand.Length; i++)
-                {
-                    if (valuesRequired.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
-                    {
-                        isItInIncreasingOrder = false;
-                    }
+                    increasingOrder = true;
                 }
             }
 
-            return isItInIncreasingOrder;
+            return increasingOrder;
         }
+
+        //public static bool IsInIncreasingOrder(string[] hand, string lowestValue)
+        //{
+        //    bool isItInIncreasingOrder = true;
+        //    int lowestValueIndex = -1;
+        //    for (int i = 0; i < values.Length; i++)
+        //    {
+        //        if (values[i] == lowestValue)
+        //        {
+        //            lowestValueIndex = i;
+        //            break;
+        //        }
+        //    }
+
+        //    if (lowestValueIndex == 0)
+        //    {
+        //        HashSet<string> valuesFromHand = new HashSet<string>();
+        //        for (int i = 0; i < hand.Length; i++)
+        //        {
+        //            if (!valuesFromHand.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
+        //            {
+        //                isItInIncreasingOrder = false;
+        //            }
+        //        }
+
+        //        int highestLowIndex = -1;
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            if (valuesFromHand.Contains(values[i]))
+        //            {
+        //                highestLowIndex = i;
+        //            }
+        //            else
+        //            {
+        //                break;
+        //            }
+        //        }
+
+        //        int numRemaining = 4 - highestLowIndex;
+        //        for (int i = 0; i < numRemaining; i++)
+        //        {
+        //            if (valuesFromHand.Add(item: values[values.Length - 1 - i]))
+        //            {
+        //                isItInIncreasingOrder = false;
+        //            }
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        HashSet<string> valuesRequired = new HashSet<string>();
+        //        for (int i = 0; i < 5; i++)
+        //        {
+        //            Debug.WriteLine("Adding item from values[{0}] to valuesRequired Array.", lowestValueIndex + i);
+        //            valuesRequired.Add(item: values[lowestValueIndex + i]);
+        //        }
+
+        //        for (int i = 0; i < hand.Length; i++)
+        //        {
+        //            if (valuesRequired.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
+        //            {
+        //                isItInIncreasingOrder = false;
+        //            }
+        //        }
+        //    }
+
+        //    return isItInIncreasingOrder;
+        //}
 
         public static string GetLowestValue(string[] hand)
         {
