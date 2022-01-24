@@ -122,20 +122,22 @@ namespace ProjectEulerTests.Problems51_60
         [TestMethod]
         public void TestIsItARoyalFlush()
         {
+            String highestRelevantCard = String.Empty;
             Assert.IsTrue(
                 ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
-                    { "JH", "TH", "QH", "KH", "AH" }));
+                    { "JH", "TH", "QH", "KH", "AH" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItARoyalFlushFail()
         {
+            String highestRelevantCard = String.Empty;
             Assert.IsFalse(
                 ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
-                    { "5H", "TH", "QH", "KH", "AH" }));
+                    { "5H", "TH", "QH", "KH", "AH" }, highestRelevantCard: ref highestRelevantCard));
             Assert.IsFalse(
                 ProjectEuler.Problems51_60.PokerHands.IsItARoyalFlush(hand: new string[]
-                    { "JD", "TH", "QH", "KH", "AH" }));
+                    { "JD", "TH", "QH", "KH", "AH" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
@@ -194,6 +196,52 @@ namespace ProjectEulerTests.Problems51_60
         public void TestIsItAStraightFail()
         {
             Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(hand: new string[] { "2H", "3D", "4C", "5S", "9H" }));
+        }
+
+        [TestMethod]
+        public void TestIsItThreeOfAKind()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsItThreeOfAKind(hand: new string[]
+                    { "2H", "2D", "2C", "5S", "9H" }));
+        }
+
+        [TestMethod]
+        public void TestIsItThreeOfAKindFail()
+        {
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(hand: new string[] { "2H", "2D", "4C", "5S", "9H" }));
+        }
+
+        [TestMethod]
+        public void TestIsItTwoPairs()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsItTwoPairs(hand: new string[]
+                    { "2H", "2D", "3C", "3S", "9H" }));
+        }
+
+        [TestMethod]
+        public void TestIsItTwoPairsFail()
+        {
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsItTwoPairs(hand: new string[]
+                    { "2H", "2D", "3C", "4S", "9H" }));
+        }
+
+        [TestMethod]
+        public void TestIsItOnePair()
+        {
+            Assert.IsTrue(
+                ProjectEuler.Problems51_60.PokerHands.IsItOnePair(hand: new string[]
+                    { "2H", "2D", "3C", "4S", "9H" }));
+        }
+
+        [TestMethod]
+        public void TestIsItOnePairFail()
+        {
+            Assert.IsFalse(
+                ProjectEuler.Problems51_60.PokerHands.IsItOnePair(hand: new string[]
+                    { "2H", "KD", "3C", "4S", "9H" }));
         }
     }
 }

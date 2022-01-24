@@ -41,8 +41,10 @@ namespace ProjectEuler.Problems51_60
         public static bool DoesPlayer1Win(string[] p1Hand, string[] p2Hand)
         {
             bool p1Win = false;
-            var p1Score = GetHandRank(hand: p1Hand);
-            var p2Score = GetHandRank(hand: p2Hand);
+            string p1HighestRelevantCard = String.Empty;
+            string p2HighestRelevantCard = String.Empty;
+            var p1Score = GetHandRank(hand: p1Hand, ref p1HighestRelevantCard);
+            var p2Score = GetHandRank(hand: p2Hand, ref p2HighestRelevantCard);
             if (p1Score > p2Score)
             {
                 return true;
@@ -50,14 +52,52 @@ namespace ProjectEuler.Problems51_60
             else if (p1Score == p2Score)
             {
                 // Tiebreaker.
+                int winStatus = ResolveTie(p1HighestRelevantCard: p1HighestRelevantCard,
+                    p2HighestRelevantCard: p2HighestRelevantCard);
+                if (winStatus == 1)
+                {
+                    return true;
+                }
+                else if (winStatus == 0)
+                {
+                    // investigate further.
+                }
+                else if (winStatus == -1)
+                {
+                    // Player 2 wins.
+                    return false;
+                }
             }
 
             return p1Win;
         }
 
-        public static int GetHandRank(string[] hand)
+        private static int ResolveTie(string p1HighestRelevantCard, string p2HighestRelevantCard)
         {
-            if (IsItARoyalFlush(hand: hand))
+            for (int i = values.Length - 1; i >= 0; i--)
+            {
+                if (values[i] == p1HighestRelevantCard && values[i] == p2HighestRelevantCard)
+                {
+                    return 0;
+                }
+
+                if (values[i] == p1HighestRelevantCard)
+                {
+                    return 1;
+                }
+
+                if (values[i] == p2HighestRelevantCard)
+                {
+                    return -1;
+                }
+            }
+
+            throw new Exception("Error in breaking tie.");
+        }
+
+        public static int GetHandRank(string[] hand, ref string highestRelevantCard)
+        {
+            if (IsItARoyalFlush(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 10;
             }
@@ -102,20 +142,50 @@ namespace ProjectEuler.Problems51_60
                 return 2;
             }
 
+            highestRelevantCard = GetHighestValue(relevantCards: hand);
             return 1;
         }
 
         public static bool IsItOnePair(string[] hand)
         {
-            throw new NotImplementedException();
+            return (GetNumberOfPairs(hand: hand) == 1);
         }
         public static bool IsItTwoPairs(string[] hand)
         {
-            throw new NotImplementedException();
+            return (GetNumberOfPairs(hand: hand) == 2);
         }
+
+        private static int GetNumberOfPairs(string[] hand)
+        {
+            Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
+            int numberOfPairs = 0;
+            foreach (var card in hand)
+            {
+                var value = card.Substring(startIndex: 0, length: 1);
+                if (!valuesInHand.ContainsKey(key: value))
+                {
+                    valuesInHand.Add(key: value, value: 1);
+                }
+                else
+                {
+                    valuesInHand[value]++;
+                }
+            }
+
+            foreach (var value in valuesInHand)
+            {
+                if (value.Value == 2)
+                {
+                    numberOfPairs++;
+                }
+            }
+
+            return numberOfPairs;
+        }
+
         public static bool IsItThreeOfAKind(string[] hand)
         {
-            throw new NotImplementedException();
+            return (GetHighestNumberOfSameValues(hand: hand) == 3);
         }
 
         public static bool IsItAStraight(string[] hand)
@@ -177,31 +247,6 @@ namespace ProjectEuler.Problems51_60
         }
         public static bool IsItFourOfAKind(string[] hand)
         {
-            //Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
-            //bool isItFourOfAKind = false;
-            //foreach (var card in hand)
-            //{
-            //    var value = card.Substring(startIndex: 0, length: 1);
-            //    if (!valuesInHand.ContainsKey(key: value))
-            //    {
-            //        valuesInHand.Add(key: value, value: 1);
-            //    }
-            //    else
-            //    {
-            //        valuesInHand[value]++;
-            //    }
-            //}
-
-            //foreach (var value in valuesInHand)
-            //{
-            //    if (value.Value == 4)
-            //    {
-            //        isItFourOfAKind = true;
-            //    }
-            //}
-
-            //return isItFourOfAKind;
-
             return (GetHighestNumberOfSameValues(hand: hand) == 4);
         }
 
@@ -233,7 +278,7 @@ namespace ProjectEuler.Problems51_60
             return highestNumberOfSameValues;
         }
 
-        public static bool IsItARoyalFlush(string[] hand)
+        public static bool IsItARoyalFlush(string[] hand, ref string highestRelevantCard)
         {
             bool returnValue = false;
             if (IsItAllSameSuit(hand: hand))
@@ -251,6 +296,11 @@ namespace ProjectEuler.Problems51_60
                         returnValue = false;
                     }
                 }
+            }
+
+            if (returnValue)
+            {
+                highestRelevantCard = GetHighestValue(relevantCards: hand);
             }
 
             return returnValue;
@@ -333,74 +383,6 @@ namespace ProjectEuler.Problems51_60
             return increasingOrder;
         }
 
-        //public static bool IsInIncreasingOrder(string[] hand, string lowestValue)
-        //{
-        //    bool isItInIncreasingOrder = true;
-        //    int lowestValueIndex = -1;
-        //    for (int i = 0; i < values.Length; i++)
-        //    {
-        //        if (values[i] == lowestValue)
-        //        {
-        //            lowestValueIndex = i;
-        //            break;
-        //        }
-        //    }
-
-        //    if (lowestValueIndex == 0)
-        //    {
-        //        HashSet<string> valuesFromHand = new HashSet<string>();
-        //        for (int i = 0; i < hand.Length; i++)
-        //        {
-        //            if (!valuesFromHand.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
-        //            {
-        //                isItInIncreasingOrder = false;
-        //            }
-        //        }
-
-        //        int highestLowIndex = -1;
-        //        for (int i = 0; i < 5; i++)
-        //        {
-        //            if (valuesFromHand.Contains(values[i]))
-        //            {
-        //                highestLowIndex = i;
-        //            }
-        //            else
-        //            {
-        //                break;
-        //            }
-        //        }
-
-        //        int numRemaining = 4 - highestLowIndex;
-        //        for (int i = 0; i < numRemaining; i++)
-        //        {
-        //            if (valuesFromHand.Add(item: values[values.Length - 1 - i]))
-        //            {
-        //                isItInIncreasingOrder = false;
-        //            }
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        HashSet<string> valuesRequired = new HashSet<string>();
-        //        for (int i = 0; i < 5; i++)
-        //        {
-        //            Debug.WriteLine("Adding item from values[{0}] to valuesRequired Array.", lowestValueIndex + i);
-        //            valuesRequired.Add(item: values[lowestValueIndex + i]);
-        //        }
-
-        //        for (int i = 0; i < hand.Length; i++)
-        //        {
-        //            if (valuesRequired.Add(item: hand[i].Substring(startIndex: 0, length: 1)))
-        //            {
-        //                isItInIncreasingOrder = false;
-        //            }
-        //        }
-        //    }
-
-        //    return isItInIncreasingOrder;
-        //}
-
         public static string GetLowestValue(string[] hand)
         {
             for (int i = 0; i < values.Length; i++)
@@ -414,6 +396,22 @@ namespace ProjectEuler.Problems51_60
             }
 
             throw new Exception("Card not found");
+        }
+
+        private static string GetHighestValue(string[] relevantCards)
+        {
+            for (int i = values.Length - 1; i >= 0; i--)
+            {
+                foreach (var card in relevantCards)
+                {
+                    if (values[i] == card.Substring(startIndex: 0, length: 1))
+                    {
+                        return values[i];
+                    }
+                }
+            }
+
+            throw new Exception();
         }
     }
 }
