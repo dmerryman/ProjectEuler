@@ -96,6 +96,7 @@
     <Compile Include="Problems41-50\SubstringDivisibilityTests.cs" />
     <Compile Include="Problems41-50\TriangularPentagonalAndHexagonalTests.cs" />
     <Compile Include="Problems51-60\CombinatoricSelectionsTests.cs" />
+    <Compile Include="Problems51-60\LychrelNumbersTests.cs" />
     <Compile Include="Problems51-60\PermutedMultiplesTests.cs" />
     <Compile Include="Problems51-60\PokerHandsTests.cs" />
     <Compile Include="Problems51-60\PrimeDigitReplacementsTests.cs" />
