@@ -60,9 +60,15 @@ namespace ProjectEulerTests.Problems51_60
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestFindLychrelNumbers()
         {
             Assert.AreEqual(1, ProjectEuler.Problems51_60.LychrelNumbers.FindLychrelNumbers(numIterations: 50, limit: 10000));
+        }
+
+        [TestMethod]
+        public void TestIsItALychrelNumber()
+        {
+            Assert.IsTrue(ProjectEuler.Problems51_60.LychrelNumbers.IsItALychrelNumber(testNumber: 349, numIterations: 50));
         }
     }
 }

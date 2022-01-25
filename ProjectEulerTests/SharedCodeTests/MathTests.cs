@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Numerics;
 
 namespace ProjectEulerTests.SharedCodeTests
 {
@@ -128,6 +129,7 @@ namespace ProjectEulerTests.SharedCodeTests
         [TestMethod]
         public void TestIsItAPalindrome()
         {
+            int value1 = 1551;
             Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 1551));
             Assert.IsTrue(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 15251));
             Assert.IsFalse(ProjectEuler.SharedCode.Math.IsItAPalindrome(value: 12345));

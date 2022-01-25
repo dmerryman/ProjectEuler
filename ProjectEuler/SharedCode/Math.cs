@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
@@ -309,6 +310,11 @@ namespace ProjectEuler.SharedCode
             return true;
         }
 
+        public static bool IsItAPalindrome(BigInteger value)
+        {
+            return SharedCode.Strings.IsItAPalindrome(s: value.ToString());
+        }
+
         public static bool ContainsDigit(int testValue, int digit)
         {
             while (testValue > 0)
@@ -399,6 +405,12 @@ namespace ProjectEuler.SharedCode
             int returnNumber = number % (int)System.Math.Pow(x: 10, y: numberOfDigits + 1 - startDigit);
             returnNumber /= (int)System.Math.Pow(x: 10, y: numberOfDigits - endDigit);
             return returnNumber;
+        }
+
+        public static BigInteger ReverseNumber(BigInteger number)
+        {
+            string reversedNumber = new String(number.ToString().ToCharArray().Reverse().ToArray());
+            return BigInteger.Parse(reversedNumber);
         }
     }
 }
