@@ -61,6 +61,15 @@ namespace ProjectEuler.Problems51_60
                 else if (winStatus == 0)
                 {
                     // investigate further.
+                    int lastTieResolveResult = ResolveTieLastAttempt(p1Hand: p1Hand, p2Hand: p2Hand);
+                    if (lastTieResolveResult == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else if (winStatus == -1)
                 {
@@ -70,6 +79,51 @@ namespace ProjectEuler.Problems51_60
             }
 
             return p1Win;
+        }
+
+        private static int ResolveTieLastAttempt(string[] p1Hand, string[] p2Hand)
+        {
+            List<int> p1ValueIndexes = new List<int>();
+            List<int> p2ValueIndexes = new List<int>();
+            foreach (var card in p1Hand)
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (values[i] == card.Substring(startIndex: 0, length: 1))
+                    {
+                        p1ValueIndexes.Add(item: i);
+                        break;
+                    }
+                }
+            }
+            foreach (var card in p2Hand)
+            {
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (values[i] == card.Substring(startIndex: 0, length: 1))
+                    {
+                        p2ValueIndexes.Add(item: i);
+                        break;
+                    }
+                }
+            }
+
+            p1ValueIndexes.Sort();
+            p2ValueIndexes.Sort();
+
+            for (int i = p1ValueIndexes.Count - 1; i >= 0; i--)
+            {
+                if (p1ValueIndexes[i] > p2ValueIndexes[i])
+                {
+                    return 1;
+                }
+                else if (p2ValueIndexes[i] > p1ValueIndexes[i])
+                {
+                    return -1;
+                }
+            }
+
+            return 0;
         }
 
         private static int ResolveTie(string p1HighestRelevantCard, string p2HighestRelevantCard)
@@ -102,42 +156,42 @@ namespace ProjectEuler.Problems51_60
                 return 10;
             }
 
-            if (IsItAStraightFlush(hand: hand))
+            if (IsItAStraightFlush(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 9;
             }
 
-            if (IsItFourOfAKind(hand: hand))
+            if (IsItFourOfAKind(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 8;
             }
 
-            if (IsItAFullHouse(hand: hand))
+            if (IsItAFullHouse(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 7;
             }
 
-            if (IsItAFlush(hand: hand))
+            if (IsItAFlush(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 6;
             }
 
-            if (IsItAStraight(hand: hand))
+            if (IsItAStraight(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 5;
             }
 
-            if (IsItThreeOfAKind(hand: hand))
+            if (IsItThreeOfAKind(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 4;
             }
 
-            if (IsItTwoPairs(hand: hand))
+            if (IsItTwoPairs(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 3;
             }
 
-            if (IsItOnePair(hand: hand))
+            if (IsItOnePair(hand: hand, highestRelevantCard: ref highestRelevantCard))
             {
                 return 2;
             }
@@ -146,18 +200,19 @@ namespace ProjectEuler.Problems51_60
             return 1;
         }
 
-        public static bool IsItOnePair(string[] hand)
+        public static bool IsItOnePair(string[] hand, ref string highestRelevantCard)
         {
-            return (GetNumberOfPairs(hand: hand) == 1);
+            return (GetNumberOfPairs(hand: hand, highestRelevantCard: ref highestRelevantCard) == 1);
         }
-        public static bool IsItTwoPairs(string[] hand)
+        public static bool IsItTwoPairs(string[] hand, ref string highestRelevantCard)
         {
-            return (GetNumberOfPairs(hand: hand) == 2);
+            return (GetNumberOfPairs(hand: hand, highestRelevantCard: ref highestRelevantCard) == 2);
         }
 
-        private static int GetNumberOfPairs(string[] hand)
+        private static int GetNumberOfPairs(string[] hand, ref string highestRelevantCard)
         {
             Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
+            List<string> pairValues = new List<string>();
             int numberOfPairs = 0;
             foreach (var card in hand)
             {
@@ -177,23 +232,42 @@ namespace ProjectEuler.Problems51_60
                 if (value.Value == 2)
                 {
                     numberOfPairs++;
+                    pairValues.Add(item: value.Key);
+                }
+            }
+
+            if (pairValues.Count > 0)
+            {
+                for (int i = values.Length - 1; i >= 0; i--)
+                {
+                    if (pairValues.Contains(item: values[i]))
+                    {
+                        highestRelevantCard = values[i];
+                        break;
+                    }
                 }
             }
 
             return numberOfPairs;
         }
 
-        public static bool IsItThreeOfAKind(string[] hand)
+        public static bool IsItThreeOfAKind(string[] hand, ref string highestRelevantCard)
         {
-            return (GetHighestNumberOfSameValues(hand: hand) == 3);
+            return (GetHighestNumberOfSameValues(hand: hand, highestRelevantCard: ref highestRelevantCard) == 3);
         }
 
-        public static bool IsItAStraight(string[] hand)
+        public static bool IsItAStraight(string[] hand, ref string highestRelevantCard)
         {
-            return IsInIncreasingOrder(hand: hand);
+            bool isInIncreasingOrder = IsInIncreasingOrder(hand: hand);
+            if (isInIncreasingOrder)
+            {
+                highestRelevantCard = GetHighestValue(relevantCards: hand);
+            }
+
+            return isInIncreasingOrder;
         }
 
-        public static bool IsItAFlush(string[] hand)
+        public static bool IsItAFlush(string[] hand, ref string highestRelevantCard)
         {
             bool isItAFlush = false;
             string suit = hand[0].Substring(startIndex: 1, length: 1);
@@ -205,9 +279,14 @@ namespace ProjectEuler.Problems51_60
                 isItAFlush = true;
             }
 
+            if (isItAFlush)
+            {
+                highestRelevantCard = GetHighestValue(relevantCards: hand);
+            }
+
             return isItAFlush;
         }
-        public static bool IsItAFullHouse(string[] hand)
+        public static bool IsItAFullHouse(string[] hand, ref string highestRelevantCard)
         {
             Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
             bool isItAFullHouse = false;
@@ -230,6 +309,7 @@ namespace ProjectEuler.Problems51_60
             {
                 if (value.Value == 3)
                 {
+                    highestRelevantCard = value.Key;
                     foundThree = true;
                 }
                 else if (value.Value == 2)
@@ -245,12 +325,12 @@ namespace ProjectEuler.Problems51_60
 
             return isItAFullHouse;
         }
-        public static bool IsItFourOfAKind(string[] hand)
+        public static bool IsItFourOfAKind(string[] hand, ref string highestRelevantCard)
         {
-            return (GetHighestNumberOfSameValues(hand: hand) == 4);
+            return (GetHighestNumberOfSameValues(hand: hand, highestRelevantCard: ref highestRelevantCard) == 4);
         }
 
-        private static int GetHighestNumberOfSameValues(string[] hand)
+        private static int GetHighestNumberOfSameValues(string[] hand, ref string highestRelevantCard)
         {
             Dictionary<string, int> valuesInHand = new Dictionary<string, int>();
             int highestNumberOfSameValues = 0;
@@ -272,6 +352,7 @@ namespace ProjectEuler.Problems51_60
                 if (value.Value > highestNumberOfSameValues)
                 {
                     highestNumberOfSameValues = value.Value;
+                    highestRelevantCard = value.Key;
                 }
             }
 
@@ -306,7 +387,7 @@ namespace ProjectEuler.Problems51_60
             return returnValue;
         }
 
-        public static bool IsItAStraightFlush(string[] hand)
+        public static bool IsItAStraightFlush(string[] hand, ref string highestRelevantCard)
         {
             bool returnValue = false;
             string suit = hand[0].Substring(1, 1);
@@ -318,6 +399,11 @@ namespace ProjectEuler.Problems51_60
             if (returnValue)
             {
                 returnValue = IsInIncreasingOrder(hand: hand);
+            }
+
+            if (returnValue)
+            {
+                highestRelevantCard = GetHighestValue(relevantCards: hand);
             }
             return returnValue;
         }
@@ -411,7 +497,7 @@ namespace ProjectEuler.Problems51_60
                 }
             }
 
-            throw new Exception();
+            throw new Exception("Error in getting highest value from hand");
         }
     }
 }

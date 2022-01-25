@@ -61,21 +61,27 @@ namespace ProjectEulerTests.Problems51_60
         [TestMethod]
         public void TestFindPokerHands()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems51_60.PokerHands.FindPokerHands());
+            Assert.AreEqual(376, ProjectEuler.Problems51_60.PokerHands.FindPokerHands());
         }
 
         [TestMethod]
         public void TestStraightFlushFails()
         {
-            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[]{ "5H", "6H", "7H", "8H", "9D"}));
-            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[] { "5H", "6H", "7H", "8H", "TH" }));
+            string highestRelevantCard = String.Empty;
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(
+                new string[] { "5H", "6H", "7H", "8H", "9D" }, highestRelevantCard: ref highestRelevantCard));
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(
+                new string[] { "5H", "6H", "7H", "8H", "TH" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestStraightFlush()
         {
-            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[] { "5H", "6H", "7H", "8H", "9H" }));
-            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(new string[] { "QH", "KH", "AH", "2H", "3H" }));
+            string highestRelevantCard = String.Empty;
+            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(
+                new string[] { "5H", "6H", "7H", "8H", "9H" }, highestRelevantCard: ref highestRelevantCard));
+            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraightFlush(
+                new string[] { "QH", "KH", "AH", "2H", "3H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
@@ -144,104 +150,123 @@ namespace ProjectEulerTests.Problems51_60
 
         public void TestIsItFourOfAKind()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsTrue(
                 ProjectEuler.Problems51_60.PokerHands.IsItFourOfAKind(hand: new string[]
-                    { "JH", "JD", "JC", "JS", "AH" }));
+                    { "JH", "JD", "JC", "JS", "AH" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItFourOfAKindFail()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsFalse(
                 ProjectEuler.Problems51_60.PokerHands.IsItFourOfAKind(hand: new string[]
-                    { "JH", "JD", "JC", "AH", "AS" }));
+                    { "JH", "JD", "JC", "AH", "AS" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItAFullHouse()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsTrue(
                 ProjectEuler.Problems51_60.PokerHands.IsItAFullHouse(
-                    hand: new string[] { "KH", "KC", "KD", "QH", "QC" }));
+                    hand: new string[] { "KH", "KC", "KD", "QH", "QC" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItAFullHouseFail()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsFalse(
                 ProjectEuler.Problems51_60.PokerHands.IsItAFullHouse(
-                    hand: new string[] { "KH", "KC", "KD", "QH", "AC" }));
+                    hand: new string[] { "KH", "KC", "KD", "QH", "AC" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItAFlush()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsTrue(
-                ProjectEuler.Problems51_60.PokerHands.IsItAFlush(hand: new string[] { "KH", "5H", "3H", "9H", "QH" }));
+                ProjectEuler.Problems51_60.PokerHands.IsItAFlush(hand: new string[] { "KH", "5H", "3H", "9H", "QH" },
+                    highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItAFlushFail()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsFalse(
-                ProjectEuler.Problems51_60.PokerHands.IsItAFlush(hand: new string[] { "KH", "5H", "3H", "9H", "QD" }));
+                ProjectEuler.Problems51_60.PokerHands.IsItAFlush(hand: new string[] { "KH", "5H", "3H", "9H", "QD" },
+                    highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItAStraight()
         {
-            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(hand: new string[]{"2H", "3D", "4C", "5S", "6H"}));
+            string highestRelevantCard = String.Empty;
+            Assert.IsTrue(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(
+                hand: new string[] { "2H", "3D", "4C", "5S", "6H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         public void TestIsItAStraightFail()
         {
-            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(hand: new string[] { "2H", "3D", "4C", "5S", "9H" }));
+            string highestRelevantCard = String.Empty;
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(
+                hand: new string[] { "2H", "3D", "4C", "5S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItThreeOfAKind()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsTrue(
                 ProjectEuler.Problems51_60.PokerHands.IsItThreeOfAKind(hand: new string[]
-                    { "2H", "2D", "2C", "5S", "9H" }));
+                    { "2H", "2D", "2C", "5S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItThreeOfAKindFail()
         {
-            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(hand: new string[] { "2H", "2D", "4C", "5S", "9H" }));
+            string highestRelevantCard = String.Empty;
+            Assert.IsFalse(ProjectEuler.Problems51_60.PokerHands.IsItAStraight(
+                hand: new string[] { "2H", "2D", "4C", "5S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItTwoPairs()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsTrue(
                 ProjectEuler.Problems51_60.PokerHands.IsItTwoPairs(hand: new string[]
-                    { "2H", "2D", "3C", "3S", "9H" }));
+                    { "2H", "2D", "3C", "3S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItTwoPairsFail()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsFalse(
                 ProjectEuler.Problems51_60.PokerHands.IsItTwoPairs(hand: new string[]
-                    { "2H", "2D", "3C", "4S", "9H" }));
+                    { "2H", "2D", "3C", "4S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItOnePair()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsTrue(
                 ProjectEuler.Problems51_60.PokerHands.IsItOnePair(hand: new string[]
-                    { "2H", "2D", "3C", "4S", "9H" }));
+                    { "2H", "2D", "3C", "4S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
 
         [TestMethod]
         public void TestIsItOnePairFail()
         {
+            string highestRelevantCard = String.Empty;
             Assert.IsFalse(
                 ProjectEuler.Problems51_60.PokerHands.IsItOnePair(hand: new string[]
-                    { "2H", "KD", "3C", "4S", "9H" }));
+                    { "2H", "KD", "3C", "4S", "9H" }, highestRelevantCard: ref highestRelevantCard));
         }
     }
 }
