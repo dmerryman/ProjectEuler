@@ -18,5 +18,14 @@ namespace ProjectEuler.Problems51_60
                 
             throw new NotImplementedException();
         }
+
+        public static bool IsItALychrelNumber(int testNumber, int numIterations)
+        {
+            // for int i = 0 to numIterations
+                // Check to see if adding the number reversed makes a palindrome.
+                    // If it does, return true.
+            // return false.
+            throw new NotImplementedException();
+        }
     }
 }
