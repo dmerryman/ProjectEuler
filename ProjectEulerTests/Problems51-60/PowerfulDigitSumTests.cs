@@ -61,7 +61,7 @@ namespace ProjectEulerTests.Problems51_60
         [TestMethod]
         public void TestFindPowerfulDigitSum()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems51_60.PowerfulDigitSum.FindPowerfulDigitSum(limit: 100));
+            Assert.AreEqual(972, ProjectEuler.Problems51_60.PowerfulDigitSum.FindPowerfulDigitSum(limit: 100));
         }
     }
 }

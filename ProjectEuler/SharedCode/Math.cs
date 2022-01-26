@@ -225,6 +225,13 @@ namespace ProjectEuler.SharedCode
             return digits;
         }
 
+        public static List<int> GetDigits(BigInteger value)
+        {
+            var numericString = value.ToString();
+            var digitsList = Array.ConvertAll(numericString.ToCharArray(), c => (int)Char.GetNumericValue(c)).ToList();
+            return digitsList;
+        }
+
         public static int GetNumberOfDigits(int value)
         {
             return (int)System.Math.Floor(System.Math.Log10(value) + 1);
