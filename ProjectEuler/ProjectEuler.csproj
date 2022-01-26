@@ -98,6 +98,7 @@
     <Compile Include="Problems51-60\LychrelNumbers.cs" />
     <Compile Include="Problems51-60\PermutedMultiples.cs" />
     <Compile Include="Problems51-60\PokerHands.cs" />
+    <Compile Include="Problems51-60\PowerfulDigitSum.cs" />
     <Compile Include="Problems51-60\PrimeDigitReplacements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCode\BigNumber.cs" />
