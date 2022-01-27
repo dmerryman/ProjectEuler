@@ -61,7 +61,19 @@ namespace ProjectEulerTests.Problems51_60
         [TestMethod]
         public void TestFindSpiralPrimes()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems51_60.SpiralPrimes.FindSpiralPrimes(percentageLimit: 10);
+            Assert.AreEqual(26241, ProjectEuler.Problems51_60.SpiralPrimes.FindSpiralPrimes(percentageLimit: 10));
+        }
+
+        [TestMethod]
+        public void TestFindSpiralPrimesWithSieve()
+        {
+            Assert.AreEqual(26241, ProjectEuler.Problems51_60.SpiralPrimes.FindSpiralPrimesWithSieve(percentageLimit: 10));
+        }
+
+        [TestMethod]
+        public void TestFindSpiralPrimesHybrid()
+        {
+            Assert.AreEqual(26241, ProjectEuler.Problems51_60.SpiralPrimes.FindSpiralPrimesHybrid(percentageLimit: 10, sieveLimit: 1000000));
         }
     }
 }
