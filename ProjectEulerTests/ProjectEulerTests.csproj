@@ -104,6 +104,7 @@
     <Compile Include="Problems51-60\PrimeDigitReplacementsTests.cs" />
     <Compile Include="Problems51-60\SpiralPrimesTests.cs" />
     <Compile Include="Problems51-60\SquareRootConvergentsTests.cs" />
+    <Compile Include="Problems51-60\XORDecryptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCodeTests\BigNumberTests.cs" />
     <Compile Include="SharedCodeTests\MathTests.cs" />
