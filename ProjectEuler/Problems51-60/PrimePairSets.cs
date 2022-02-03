@@ -12,7 +12,6 @@ namespace ProjectEuler.Problems51_60
     {
         public static int FindPrimePairSets(int numberOfPrimes)
         {
-            // 1.8 mins using toString()
             // Get a prime number sieve.
             int lowestSumOfPrimePairs = Int32.MaxValue;
             bool[] primeSieve = SharedCode.Math.GeneratePrimeSieve(limit: 10000000);
@@ -179,8 +178,6 @@ namespace ProjectEuler.Problems51_60
             bool returnValue = true;
             int newNum = (prime1 * (int)Math.Pow(x: 10, y: SharedCode.Math.GetNumberOfDigits(value: prime2))) + prime2;
             int newNum2 = (prime2 * (int)Math.Pow(x: 10, y: SharedCode.Math.GetNumberOfDigits(value: prime1))) + prime1;
-            //int newNum = Int32.Parse(prime1.ToString() + prime2.ToString());
-            //int newNum2 = Int32.Parse(prime2.ToString() + prime1.ToString());
             if (newNum < primeSieve.Length)
             {
                 returnValue = !primeSieve[newNum];
