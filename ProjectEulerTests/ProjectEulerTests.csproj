@@ -102,6 +102,7 @@
     <Compile Include="Problems51-60\PokerHandsTests.cs" />
     <Compile Include="Problems51-60\PowerfulDigitSumTests.cs" />
     <Compile Include="Problems51-60\PrimeDigitReplacementsTests.cs" />
+    <Compile Include="Problems51-60\PrimePairSetsTests.cs" />
     <Compile Include="Problems51-60\SpiralPrimesTests.cs" />
     <Compile Include="Problems51-60\SquareRootConvergentsTests.cs" />
     <Compile Include="Problems51-60\XORDecryptionTests.cs" />
