@@ -63,5 +63,11 @@ namespace ProjectEulerTests.Problems51_60
         {
             Assert.AreEqual(26033, ProjectEuler.Problems51_60.PrimePairSets.FindPrimePairSets(numberOfPrimes: 5));
         }
+
+        [TestMethod]
+        public void TestFindPrimePairSetsNoDictionary()
+        {
+            Assert.AreEqual(26033, ProjectEuler.Problems51_60.PrimePairSets.FindPrimePairSetsNoDictionary(numberOfPrimes: 5));
+        }
     }
 }

@@ -12,7 +12,19 @@ namespace ProjectEuler.Problems51_60
     {
         public static int FindPrimePairSets(int numberOfPrimes)
         {
+            // int lowestSumOfPrimePairs = int32.maxvalue to track the lowest sum of prime pairs.
+            // Dictionary<int, List<int>> hold a set of prime numbers as the key, and for each key, a list of other prime numbers that
+            //  they form a pair with.
             // Get a prime number sieve.
+            // Get a list of prime numbers.
+            // for each prime1 in prime number list
+                // for each prime2 in primenumber list.
+                    // Check to see if these 2 prime numbers are a pair.
+                        // If they are, then set prime1 as a key in primePairs with prime2 as a new value in a list..
+            // primePairs now has each prime number that has at least 1 pair, and a list of the prime numbers they form a pair with.
+            // Go through the dictionary, and remove each entry that has a count less than numberOfPrimes.
+            // go through primepairs again looking for 3's, 4's, 5's etc until you reach numberOfPrimes.
+            // return lowestSumOfPrimePairs
             int lowestSumOfPrimePairs = Int32.MaxValue;
             bool[] primeSieve = SharedCode.Math.GeneratePrimeSieve(limit: 10000000);
             List<int> primeNumbers = SharedCode.Math.GeneratePrimeList(limit: 10000);
@@ -39,62 +51,6 @@ namespace ProjectEuler.Problems51_60
             TrimTheImpossibleOnes(dictionary: primePairs, primeSieve: primeSieve, numPrimes: numberOfPrimes);
             primePairs = TrimSomeMore(dictionary: primePairs, primeSieve: primeSieve);
             TrimTheImpossibleOnes(dictionary: primePairs, primeSieve: primeSieve, numPrimes: numberOfPrimes);
-            //foreach (var primePairEntry in primePairs)
-            //{
-            //    foreach (var num1 in primePairEntry.Value)
-            //    {
-            //        int originalCount = primePairEntry.Value.Count;
-            //        foreach (var num2 in primePairEntry.Value)
-            //        {
-            //            foreach (var num3 in primePairEntry.Value)
-            //            {
-            //                foreach (var num4 in primePairEntry.Value)
-            //                {
-            //                    if (num1 != num2 && num1 != num3 && num1 != num4 && num2 != num3 && num2 != num4 &&
-            //                        num3 != num4)
-            //                    {
-            //                        if (CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num2) &&
-            //                            CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num3) &&
-            //                            CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num4) &&
-            //                            CheckIfPrimePair(primeSieve: primeSieve, prime1: num2, prime2: num3) &&
-            //                            CheckIfPrimePair(primeSieve: primeSieve, prime1: num2, prime2: num4) &&
-            //                            CheckIfPrimePair(primeSieve: primeSieve, prime1: num3, prime2: num4))
-            //                        {
-            //                            //Debug.WriteLine("{0}, {1}, {2}, {3}, and {4} are a candidate.", primePairEntry.Key, num1, num2, num3, num4);
-            //                            int sumOfPrimePairs = primePairEntry.Key + num1 + num2 + num3 + num4;
-            //                            if (sumOfPrimePairs < lowestSumOfPrimePairs)
-            //                            {
-            //                                values = new List<int>();
-            //                                values.Add(item: primePairEntry.Key);
-            //                                values.Add(item: num1);
-            //                                values.Add(item: num2);
-            //                                values.Add(item: num3);
-            //                                values.Add(item: num4);
-            //                                lowestSumOfPrimePairs = sumOfPrimePairs;
-            //                            }
-            //                        }
-            //                    }
-            //                }
-
-
-            //                //if (num1 != num2 && num2 != num3 && num1 != num3)
-            //                //{
-            //                //    if (CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num2) &&
-            //                //        CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num3) &&
-            //                //        CheckIfPrimePair(primeSieve: primeSieve, prime1: num2, prime2: num3))
-            //                //    {
-            //                //        Debug.WriteLine("{0}, {1}, {2}, and {3} are a candidate.", primePairEntry.Key, num1, num2, num3);
-            //                //        int sumOfPrimePairs = primePairEntry.Key + num1 + num2 + num3;
-            //                //        if (sumOfPrimePairs < lowestSumOfPrimePairs)
-            //                //        {
-            //                //            lowestSumOfPrimePairs = sumOfPrimePairs;
-            //                //        }
-            //                //    }
-            //                //}
-            //            }
-            //        }
-            //    }
-            //}
 
             int[] keysArray = primePairs.Keys.ToArray();
             for (int i = 0; i < keysArray.Length; i++)
@@ -121,6 +77,8 @@ namespace ProjectEuler.Problems51_60
                                     CheckIfPrimePair(primeSieve: primeSieve, prime1: valuesArray[l],
                                         prime2: valuesArray[m]))
                                 {
+                                    Debug.WriteLine("A possible solution is {0}, {1}, {2}, {3}, and {4}", keysArray[i],
+                                        valuesArray[j], valuesArray[k], valuesArray[l], valuesArray[m]);
                                     int sumOfPrimePairs = keysArray[i] + valuesArray[j] + valuesArray[k] +
                                                           valuesArray[l] + valuesArray[m];
                                     if (sumOfPrimePairs < lowestSumOfPrimePairs)
@@ -132,6 +90,81 @@ namespace ProjectEuler.Problems51_60
                                         values.Add(valuesArray[k]);
                                         values.Add(valuesArray[l]);
                                         values.Add(valuesArray[m]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            Debug.WriteLine("The winning numbers are {0}, {1}, {2}, {3}, and {4}.", values[0], values[1], values[2], values[3], values[4]);
+            return lowestSumOfPrimePairs;
+        }
+
+        public static int FindPrimePairSetsNoDictionary(int numberOfPrimes)
+        {
+            int lowestSumOfPrimePairs = Int32.MaxValue;
+            bool[] primeSieve = SharedCode.Math.GeneratePrimeSieve(limit: 10000000);
+            var primeNumbers = SharedCode.Math.GeneratePrimeList(limit: 10000).ToArray();
+            List<int> values = new List<int>();
+
+            for (int i = 0; i < primeNumbers.Length - 4; i++)
+            {
+                for (int j = i + 1; j < primeNumbers.Length - 3; j++)
+                {
+                    if (!CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[i], prime2: primeNumbers[j]))
+                    {
+                        continue;
+                    }
+                    for (int k = j + 1; k < primeNumbers.Length - 2; k++)
+                    {
+                        if (!CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[i],
+                                prime2: primeNumbers[k]) ||
+                            !CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[j], prime2: primeNumbers[k]))
+                        {
+                            continue;
+                        }
+                        for (int l = k + 1; l < primeNumbers.Length - 1; l++)
+                        {
+                            if (!CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[i],
+                                    prime2: primeNumbers[l]) ||
+                                !CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[j],
+                                    prime2: primeNumbers[l]) ||
+                                !CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[k],
+                                    prime2: primeNumbers[l]))
+                            {
+                                continue;
+                            }
+                            for (int m = l + 1; m < primeNumbers.Length; m++)
+                            {
+                                if (!CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[i],
+                                        prime2: primeNumbers[m]) ||
+                                    !CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[j],
+                                        prime2: primeNumbers[m]) ||
+                                    !CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[k],
+                                        prime2: primeNumbers[m]) ||
+                                    !CheckIfPrimePair(primeSieve: primeSieve, prime1: primeNumbers[l],
+                                        prime2: primeNumbers[m]))
+                                {
+                                    continue;
+                                }
+
+                                {
+                                    Debug.WriteLine("A possible solution is {0}, {1}, {2}, {3}, and {4}",
+                                        primeNumbers[i],
+                                        primeNumbers[j], primeNumbers[k], primeNumbers[l], primeNumbers[m]);
+                                    int sumOfPrimePairs = primeNumbers[i] + primeNumbers[j] + primeNumbers[k] +
+                                                          primeNumbers[l] + primeNumbers[m];
+                                    if (sumOfPrimePairs < lowestSumOfPrimePairs)
+                                    {
+                                        lowestSumOfPrimePairs = sumOfPrimePairs;
+                                        values = new List<int>();
+                                        values.Add(item: primeNumbers[i]);
+                                        values.Add(item: primeNumbers[j]);
+                                        values.Add(item: primeNumbers[k]);
+                                        values.Add(item: primeNumbers[l]);
+                                        values.Add(item: primeNumbers[m]);
                                     }
                                 }
                             }
@@ -162,26 +195,6 @@ namespace ProjectEuler.Problems51_60
         private static Dictionary<int, List<int>> TrimSome(Dictionary<int, List<int>> dictionary, bool[] primeSieve)
         {
             Dictionary<int, List<int>> trimmedDictionary = new Dictionary<int, List<int>>();
-            //foreach (var primePairEntry in dictionary)
-            //{
-            //    foreach (var num1 in primePairEntry.Value)
-            //    {
-            //        foreach (var num2 in primePairEntry.Value)
-            //        {
-            //            if (num1 != num2)
-            //            {
-            //                if (CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num2))
-            //                {
-            //                    AddToDictionary(dictionary: trimmedDictionary,
-            //                        originalPrimeNumber: primePairEntry.Key, addedPrimeNumber: num1);
-            //                    AddToDictionary(dictionary: trimmedDictionary,
-            //                        originalPrimeNumber: primePairEntry.Key, addedPrimeNumber: num2);
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-
             int[] keysArray = dictionary.Keys.ToArray();
             for (int i = 0; i < keysArray.Length; i++)
             {
@@ -207,33 +220,6 @@ namespace ProjectEuler.Problems51_60
         private static Dictionary<int, List<int>> TrimSomeMore(Dictionary<int, List<int>> dictionary, bool[] primeSieve)
         {
             Dictionary<int, List<int>> trimmedDictionary = new Dictionary<int, List<int>>();
-            //foreach (var primePairEntry in dictionary)
-            //{
-            //    foreach (var num1 in primePairEntry.Value)
-            //    {
-            //        foreach (var num2 in primePairEntry.Value)
-            //        {
-            //            foreach (var num3 in primePairEntry.Value)
-            //            {
-            //                if (num1 != num2 && num1 != num3 && num2 != num3)
-            //                {
-            //                    if (CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num2) &&
-            //                        CheckIfPrimePair(primeSieve: primeSieve, prime1: num1, prime2: num3) &&
-            //                        CheckIfPrimePair(primeSieve: primeSieve, prime1: num2, prime2: num3))
-            //                    {
-            //                        AddToDictionary(dictionary: trimmedDictionary,
-            //                            originalPrimeNumber: primePairEntry.Key, addedPrimeNumber: num1);
-            //                        AddToDictionary(dictionary: trimmedDictionary,
-            //                            originalPrimeNumber: primePairEntry.Key, addedPrimeNumber: num2);
-            //                        AddToDictionary(dictionary: trimmedDictionary,
-            //                            originalPrimeNumber: primePairEntry.Key, addedPrimeNumber: num3);
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-
             int[] keysArray = dictionary.Keys.ToArray();
             for (int i = 0; i < keysArray.Length; i++)
             {
