@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -100,6 +101,36 @@ namespace ProjectEuler.Problems51_60
 
             Debug.WriteLine("The winning numbers are {0}, {1}, {2}, {3}, and {4}.", values[0], values[1], values[2], values[3], values[4]);
             return lowestSumOfPrimePairs;
+        }
+
+        private static Dictionary<int, int> analyzePrimePairsDictionary(Dictionary<int, List<int>> primePairs)
+        {
+            Dictionary<int, int> primePairsAnalysis = new Dictionary<int, int>();
+            foreach (var entry in primePairs)
+            {
+                if (!primePairsAnalysis.ContainsKey(key: entry.Key))
+                {
+                    primePairsAnalysis.Add(key: entry.Key, value: 1);
+                }
+                else
+                {
+                    primePairsAnalysis[entry.Key]++;
+                }
+
+                foreach (var value in entry.Value)
+                {
+                    if (!primePairsAnalysis.ContainsKey(key: value))
+                    {
+                        primePairsAnalysis.Add(key: value, value: 1);
+                    }
+                    else
+                    {
+                        primePairsAnalysis[value]++;
+                    }
+                }
+            }
+
+            return primePairsAnalysis;
         }
 
         public static int FindPrimePairSetsNoDictionary(int numberOfPrimes)
@@ -277,6 +308,7 @@ namespace ProjectEuler.Problems51_60
 
             return returnValue;
         }
+
 
         private static void AddToDictionary(Dictionary<int, List<int>> dictionary, int originalPrimeNumber,
             int addedPrimeNumber)
