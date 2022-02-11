@@ -61,7 +61,7 @@ namespace ProjectEulerTests.Problems61_70
         [TestMethod]
         public void TestFindCyclicalFigurateNumbers()
         {
-            Assert.AreEqual(1, ProjectEuler.Problems61_70.CyclicalFigurateNumbers.FindCyclicalFigurateNumbers());
+            Assert.AreEqual(19291, ProjectEuler.Problems61_70.CyclicalFigurateNumbers.FindCyclicalFigurateNumbers());
         }
     }
 }

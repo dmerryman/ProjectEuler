@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,325 +12,143 @@ namespace ProjectEuler.Problems61_70
     {
         public static int FindCyclicalFigurateNumbers()
         {
-            // int sumOfCyclicaFigurateNumbers = int32.maxvalue to track the sum of the cyclicak figurate numbers.
-            // int[] cyclicalFigurateNumbers = new int[6] to track the cyclical figurate numbers.
-            // Get A list of 4 digit values for triangle, square, pentagonal, hexagonal, heptagonal, and octragonal numbers
-            List<int> triangularNumbers = GetTriangularNumbers(limit: 10000);
-            List<int> squareNumbers = GetSquareNumbers(limit: 10000);
-            List<int> pentagonalNumbers = GetPentagonalNumbers(limit: 10000);
-            List<int> hexagonalNumbers = GetHexagonalNumbers(limit: 10000);
-            List<int> heptagonalNumbers = GetHeptagonalNumbers(limit: 10000);
-            List<int> octagonalNumbers = GetOctagonalNumbers(limit: 10000);
-            HashSet<int> valuesToCheck = GetValuesToCheck(triangularNumbers: triangularNumbers,
-                squareNumbers: squareNumbers, pentagonalNumbers: pentagonalNumbers, hexagonalNumbers: hexagonalNumbers,
-                heptagonalNumbers: heptagonalNumbers, octagonalNumbers: octagonalNumbers);
-            List<int> valuesSorted = valuesToCheck.ToList();
-            valuesSorted.Sort();
-            foreach (var triangularNum in triangularNumbers)
+            int sumOfValues = Int32.MaxValue;
+
+            int[] solution = new int[6];
+            int[][] numbers = new int[6][];
+
+            // Getting lists of numbers.
+            for (int i = 0; i < 6; i++)
             {
-                if (triangularNum % 100 == 0)
+                numbers[i] = generateNumbers(type: i);
+            }
+
+            for (int i = 0; i < numbers[5].Length; i++)
+            {
+                // Starting with the last octagonal number.
+                solution[5] = numbers[5][i];
+                if (FindNext(last: 5, length: 1, solution: solution, numbers: numbers))
+                {
+                    break;
+                }
+            }
+
+            Debug.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", solution[0], solution[1], solution[2], solution[3],
+                solution[4], solution[5]);
+            sumOfValues = solution.Sum();
+            int pause = 1;
+            return sumOfValues;
+        }
+
+        private static void WriteStatus(int[] solution)
+        {
+            Debug.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", solution[0], solution[1], solution[2], solution[3],
+                solution[4], solution[5]);
+        }
+
+        private static bool FindNext(int last, int length, int[] solution, int[][] numbers)
+        {
+            // Looping through each element of solution.
+            for (int i = 0; i < solution.Length; i++)
+            {
+                // Looping until we get to the first 0 element.
+                if (solution[i] != 0)
                 {
                     continue;
                 }
-                foreach (var squareNum in squareNumbers)
+
+                for (int j = 0; j < numbers[i].Length; j++)
                 {
-                    if (triangularNum == squareNum || squareNum % 100 == 0)
+                    // Checking next value in numbers[i].
+                    bool unique = true;
+                    for (int k = 0; k < solution.Length; k++)
                     {
-                        continue;
-                    }
-                    foreach (var pentagonalNum in pentagonalNumbers)
-                    {
-                        if (triangularNum == pentagonalNum || squareNum == pentagonalNum)
+                        // Checking each number in solution to make sure numbers[i][j] isn't there yet.
+                        if (numbers[i][j] == solution[k])
                         {
-                            continue;
+                            unique = false;
+                            break;
                         }
-                        foreach (var hexagonalNum in hexagonalNumbers)
+                    }
+
+                    if (unique)
+                    {
+                        // numbers[i][j] is not in the solution yet.
+                        //Debug.WriteLine("Checking to see if {0} fits with {1}", numbers[i][j], solution[last]);
+                        if (((numbers[i][j] / 100) == (solution[last] % 100)))
                         {
-                            if (triangularNum == hexagonalNum || squareNum == hexagonalNum ||
-                                pentagonalNum == hexagonalNum)
+                            // numbers[i][j] meshes with the value in solution[last].
+                            //Debug.WriteLine("A match! {0} fits with {1}", numbers[i][j], solution[last]);
+                            // Adding this value to solution.
+                            solution[i] = numbers[i][j];
+                            // If this is the last value in the set, we should check to see if it loops
+                            // back around to the first one we placed.
+                            if (length == 5)
                             {
-                                continue;
+                                if (solution[5] / 100 == solution[i] % 100)
+                                {
+                                    // solution has been found.
+                                    return true;
+                                }
                             }
-                            foreach (var heptagonalNum in heptagonalNumbers)
+
+                            // Proceeding to the next slot in solution.
+                            if (FindNext(last: i, length: length + 1, solution: solution, numbers: numbers))
                             {
-                                if (triangularNum == heptagonalNum || squareNum == heptagonalNum ||
-                                    pentagonalNum == heptagonalNum || hexagonalNum == heptagonalNum)
-                                {
-                                    continue;
-                                }
-                                foreach (var octagonalNum in octagonalNumbers)
-                                {
-                                    if (triangularNum == octagonalNum || squareNum == octagonalNum ||
-                                        pentagonalNum == octagonalNum || hexagonalNum == octagonalNum ||
-                                        heptagonalNum == octagonalNum)
-                                    {
-                                        continue;
-                                    }
-                                    else
-                                    {
-                                        int[] possibleCyclicalNums = new[]
-                                        {
-                                            triangularNum, squareNum, pentagonalNum, hexagonalNum, heptagonalNum,
-                                            octagonalNum
-                                        };
-                                        if (IsCyclical6Values(valuesToCheck: possibleCyclicalNums))
-                                        {
-                                            Debug.WriteLine("{0}, {1}, {2}, {3}, {4}, {5} are cyclical.",
-                                                                            possibleCyclicalNums[0], possibleCyclicalNums[1],
-                                                                            possibleCyclicalNums[2], possibleCyclicalNums[3],
-                                                                            possibleCyclicalNums[4], possibleCyclicalNums[5]);
-                                            return triangularNum + squareNum + pentagonalNum + hexagonalNum +
-                                                   heptagonalNum + octagonalNum;
-                                        }
-                                    }
-                                }
+                                // solution has been found.
+                                return true;
                             }
                         }
                     }
                 }
+                // No next value was found for thevalue in solution[i], so we're gonna go back.
+
+                solution[i] = 0;
+                
             }
-            //for (int i = 0; i < valuesSorted.Count - 5; i++)
-            //{
-            //    for (int j = i + 1; j < valuesSorted.Count - 4; j++)
-            //    {
-            //        for (int k = j + 1; k < valuesSorted.Count - 3; k++)
-            //        {
-            //            for (int l = k + 1; l < valuesSorted.Count - 2; l++)
-            //            {
-            //                for (int m = l + 1; m < valuesSorted.Count - 1; m++)
-            //                {
-            //                    for (int n = m + 1; n < valuesSorted.Count; n++)
-            //                    {
-            //                        int[] possibleCyclicalArray = new[]
-            //                        {
-            //                            valuesSorted[i], valuesSorted[j], valuesSorted[k], valuesSorted[l],
-            //                            valuesSorted[m], valuesSorted[n]
-            //                        };
-            //                        if (IsCyclical6Values(valuesToCheck: possibleCyclicalArray))
-            //                        {
-            //                            Debug.WriteLine("{0}, {1}, {2}, {3}, {4}, {5} are cyclical.",
-            //                                possibleCyclicalArray[0], possibleCyclicalArray[1],
-            //                                possibleCyclicalArray[2], possibleCyclicalArray[3],
-            //                                possibleCyclicalArray[4], possibleCyclicalArray[5]);
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            int pause = 1;
-            throw new NotImplementedException();
+            // not done yet.
+            return false;
         }
 
-        private static bool IsCyclical6Values(int[] valuesToCheck)
+        private static int[] generateNumbers(int type)
         {
-            // divide by 100 to get first two digits.
-            // % 100 to get the last two digits.
-            bool returnValue = true;
-            string debugLine = String.Empty;
-            if (valuesToCheck.Length != 6)
+            List<int> numbers = new List<int>();
+            int n = 0;
+            int currNumber = 0;
+            while (currNumber < 10000)
             {
-                return false;
-            }
-
-            for (int i = 0; i < valuesToCheck.Length - 1; i++)
-            {
-                if (valuesToCheck[i] % 100 != valuesToCheck[i + 1] / 100)
-                {
-                    if (!String.IsNullOrEmpty(debugLine))
-                    {
-                        Debug.WriteLine(debugLine);
-                    }
-                    return false;
-                }
-                else
-                {
-                    debugLine += valuesToCheck[i] + ", " + valuesToCheck[i + 1];
-                }
-            }
-
-            if (valuesToCheck[valuesToCheck.Length - 1] % 100 != valuesToCheck[0] / 100)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private static HashSet<int> GetValuesToCheck(List<int> triangularNumbers, List<int> squareNumbers,
-            List<int> pentagonalNumbers, List<int> hexagonalNumbers, List<int> heptagonalNumbers,
-            List<int> octagonalNumbers)
-        {
-            HashSet<int> valuesToCheck = new HashSet<int>();
-            foreach (var value in triangularNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            foreach (var value in squareNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            foreach (var value in triangularNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            foreach (var value in pentagonalNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            foreach (var value in hexagonalNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            foreach (var value in heptagonalNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            foreach (var value in octagonalNumbers)
-            {
-                if (Has4Digits(value: value))
-                {
-                    valuesToCheck.Add(item: value);
-                }
-            }
-
-            return valuesToCheck;
-        }
-
-        private static bool Has4Digits(int value)
-        {
-            return value > 999 && value < 10000;
-        }
-
-        private static List<int> GetTriangularNumbers(int limit)
-        {
-            List<int> triangularNumbers = new List<int>();
-            int currNum = 1;
-            int valueToAdd = 2;
-            while (currNum < limit)
-            {
-                if (Has4Digits(value: currNum))
-                {
-                    triangularNumbers.Add(item: currNum);
-                }
-                currNum += valueToAdd;
-                valueToAdd++;
-            }
-
-            return triangularNumbers;
-        }
-
-        private static List<int> GetSquareNumbers(int limit)
-        {
-            List<int> squareNumbers = new List<int>();
-            int currNum = 1;
-            int numToSquare = 1;
-            while (currNum < limit)
-            {
-                if (Has4Digits(value: currNum))
-                {
-                    squareNumbers.Add(item: currNum);
-                }
-                numToSquare++;
-                currNum = (int)Math.Pow(x: numToSquare, y: 2);
-            }
-
-            return squareNumbers;
-        }
-
-        private static List<int> GetPentagonalNumbers(int limit)
-        {
-            List<int> pentagonalNumbers = new List<int>();
-            int currNum = 1;
-            int n = 1;
-            while (currNum < limit)
-            {
-                if (Has4Digits(value: currNum))
-                {
-                    pentagonalNumbers.Add(item: currNum);
-                }
                 n++;
-                currNum = currNum + (3 * n) - 2;
-            }
-            return pentagonalNumbers;
-        }
-
-        private static List<int> GetHexagonalNumbers(int limit)
-        {
-            List<int> hexagonalNumbers = new List<int>();
-            int currNum = 1;
-            int n = 1;
-            while (currNum < limit)
-            {
-                if (Has4Digits(value: currNum))
+                switch (type)
                 {
-                    hexagonalNumbers.Add(item: currNum);
+                    case 0:
+                        currNumber = n * (n + 1) / 2;
+                        break;
+                    case 1:
+                        currNumber = n * n;
+                        break;
+                    case 2:
+                        currNumber = n * (3 * n - 1) / 2;
+                        break;
+                    case 3:
+                        currNumber = n * (2 * n - 1);
+                        break;
+                    case 4:
+                        currNumber = n * (5 * n - 3) / 2;
+                        break;
+                    case 5:
+                        currNumber = n * (3 * n - 2);
+                        break;
                 }
-                n++;
-                currNum = n * ((2 * n) - 1);
-            }
 
-            return hexagonalNumbers;
-        }
-
-        private static List<int> GetHeptagonalNumbers(int limit)
-        {
-            List<int> heptagonalNumbers = new List<int>();
-            int currNum = 1;
-            int n = 1;
-            while (currNum < limit)
-            {
-                if (Has4Digits(value: currNum))
+                if (currNumber > 999 && currNumber < 10000)
                 {
-                    heptagonalNumbers.Add(item: currNum);
+                    numbers.Add(item: currNumber);
                 }
-                n++;
-                currNum = ((5 * n * n) - (3 * n)) / 2;
             }
 
-            return heptagonalNumbers;
+            return numbers.ToArray();
         }
 
-        private static List<int> GetOctagonalNumbers(int limit)
-        {
-            List<int> octagonalNumbers = new List<int>();
-            int currNum = 1;
-            int n = 1;
-            while (currNum < limit)
-            {
-                if (Has4Digits(value: currNum))
-                {
-                    octagonalNumbers.Add(item: currNum);
-                }
-                n++;
-                currNum = (3 * n * n - 2 * n);
-            }
-
-            return octagonalNumbers;
-        }
+        
     }
 }
