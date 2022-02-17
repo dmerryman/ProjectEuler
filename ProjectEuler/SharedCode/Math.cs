@@ -242,6 +242,11 @@ namespace ProjectEuler.SharedCode
             return (int)System.Math.Floor(System.Math.Log10(value) + 1);
         }
 
+        public static int GetNumberOfDigits(double value)
+        {
+            return (int)System.Math.Floor(System.Math.Log10(value) + 1);
+        }
+
         public static int GetNumberOfDigits(BigInteger value)
         {
             return value.ToString().Length;

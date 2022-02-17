@@ -108,6 +108,7 @@
     <Compile Include="Problems51-60\XORDecryptionTests.cs" />
     <Compile Include="Problems61-70\CubicPermutationsTests.cs" />
     <Compile Include="Problems61-70\CyclicalFigurateNumbersTests.cs" />
+    <Compile Include="Problems61-70\PowerfulDigitCountsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedCodeTests\BigNumberTests.cs" />
     <Compile Include="SharedCodeTests\MathTests.cs" />
