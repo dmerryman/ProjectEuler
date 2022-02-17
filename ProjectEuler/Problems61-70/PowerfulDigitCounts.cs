@@ -11,7 +11,7 @@ namespace ProjectEuler.Problems61_70
     {
         public static int FindPowerfulDigitCounts()
         {
-            // int numPowerfulDigitNumbers = 0 to track the number of powerful digit numbers. end when x^y has more digits than y for y = 1?
+            // int numPowerfulDigitNumbers = 0 to track the number of powerful digit numbers. end when x^y has less digits than y for y = 1?
             // for int currNum = 1 to (determine ceiling)
                 // determine number of powerful digit numbers resulting from this currNum
                 // Add number of powerful digit numbers to numPowerfulDigitNumbers.
