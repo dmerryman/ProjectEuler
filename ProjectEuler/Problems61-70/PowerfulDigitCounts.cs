@@ -25,8 +25,6 @@ namespace ProjectEuler.Problems61_70
                 currentNumberOfPowerfulDigitNumbers = GetNumberOfPowerfulDigits(number: currentValue);
                 numPowerfulDigitNumbers += currentNumberOfPowerfulDigitNumbers;
             }
-
-            int pause = 1;
             return numPowerfulDigitNumbers;
         }
 
@@ -50,14 +48,11 @@ namespace ProjectEuler.Problems61_70
                 if (currNumberOfDigits == currExponent)
                 {
                     currNumPowerfulDigits++;
-                    Debug.WriteLine("{0} = {1}^{2}", currentValue, number, currExponent);
                 }
                 currExponent++;
                 currentValue = Math.Pow(x: number, y: currExponent);
                 currNumberOfDigits = SharedCode.Math.GetNumberOfDigits(value: currentValue);
             }
-
-            Debug.WriteLine("");
             return currNumPowerfulDigits;
         }
     }
